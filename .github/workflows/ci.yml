@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [staging, main]
+  pull_request:
+    branches: [staging, main]
+
+jobs:
+  frontend:
+    name: Frontend
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run build
+
+  backend:
+    name: Backend
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    services:
+      db:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: felanmalan
+          POSTGRES_USER: felanmalan
+          POSTGRES_PASSWORD: ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U felanmalan"
+          --health-interval 5s
+          --health-retries 10
+    env:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/felanmalan
+      SPRING_DATASOURCE_USERNAME: felanmalan
+      SPRING_DATASOURCE_PASSWORD: ci
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+      - run: ./mvnw -B verify
+
+  enforce-staging:
+    name: PR mot main måste komma från staging
+    if: github.event_name == 'pull_request' && github.base_ref == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kontrollera källgren
+        run: |
+          if [ "${{ github.head_ref }}" != "staging" ]; then
+            echo "::error::PR:er mot main får endast komma från 'staging' (nuvarande källgren: ${{ github.head_ref }})"
+            exit 1
+          fi
