@@ -105,4 +105,4 @@ Mer information i [CONTRIBUTING.md](docs/CONTRIBUTING.md) och [uppstart.md](docs
 
 ## Board
 
-[Felanmälan i GitHub Projects](https://github.com/orgs/Tre-Musketradar/projects)
+[Felanmälan i GitHub Projects](https://github.com/orgs/Tre-Musketradar/projects/3)
