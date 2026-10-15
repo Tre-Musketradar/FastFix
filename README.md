@@ -11,7 +11,7 @@ Projekt i kursen **Producera och leverera mjukvara**. Repot innehåller frontend
 | Namn | GitHub |
 |---|---|
 | Jose Muñoz | [@JoseMunozO](https://github.com/JoseMunozO) |
-| Martin Friis | |
+| Martin Friis | [@MarFri8](https://github.com/MarFri8) |
 | Ermias Demessie | [@EDebuger](https://github.com/EDebuger) |
 
 ## Roller
