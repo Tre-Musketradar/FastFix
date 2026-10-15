@@ -6,6 +6,14 @@ Projekt i kursen **Producera och leverera mjukvara**. Repot innehåller frontend
 
 **Status:** Sprint 0 — uppstart och planering.
 
+## Teamet
+
+| Namn | GitHub |
+|---|---|
+| Jose | [@JoseMunozO](https://github.com/JoseMunozO) |
+| | [@EDebuger](https://github.com/EDebuger) |
+| | |
+
 ## Roller
 
 | Roll | Kan |
@@ -23,6 +31,8 @@ Projekt i kursen **Producera och leverera mjukvara**. Repot innehåller frontend
 | Databas | PostgreSQL 17 |
 | Lokal miljö | Docker Compose |
 | CI | GitHub Actions: ett jobb för frontend, ett för backend |
+
+Valen motiveras i [beslutsloggen](docs/beslutslogg.md).
 
 ## Kom igång
 
@@ -81,9 +91,18 @@ Mer information i [CONTRIBUTING.md](docs/CONTRIBUTING.md) och [uppstart.md](docs
 
 | Dokument | Innehåll |
 |----------|----------|
-| [Projektförslag](docs/mvp/projektforslag-felanmalan.md) | Bakgrund, roller, user stories, databasschema och risker |
-| [User stories](docs/mvp/user-stories.md) | Ordnad backlog med acceptanskriterier, prioritet och storlek (utkast) |
-| [Frontendplan](docs/mvp/frontend-plan.md) | Vyer per roll, mappstruktur, plan per sprint och öppna frågor |
-| [Definition of Done](docs/dod/definition-of-done.md) | När en user story räknas som klar (utkast) |
-| [Mockups](docs/mockups/) | Skisser av gränssnittet |
-| [Uppstart](docs/uppstart.md) | Teknikval, beslut och hur repot sattes upp |
+| [Gruppkontrakt](docs/gruppkontrakt.md) | Hur vi samarbetar |
+| [Definition of Done](docs/definition-of-done.md) | När en story räknas som klar |
+| [MVP](docs/mvp.md) | Vad som ingår i första versionen |
+| [Databasschema](docs/databasschema.md) | Tabeller och relationer |
+| [Beslutslogg](docs/beslutslogg.md) | Viktiga beslut och varför |
+| [Sprintar](docs/sprintar/) | Planning, standups, review och retro per sprint |
+| [Individuella reflektioner](docs/reflektioner/) | En per person, lämnas in vecka 8 |
+| [Projektförslag](docs/projektforslag.md) | Bakgrund, roller, MoSCoW och risker |
+| [User stories](docs/user-stories.md) | Ordnad backlog med acceptanskriterier, prioritet och storlek |
+| [Frontendplan](docs/frontend-plan.md) | Vyer per roll, mappstruktur och plan per sprint |
+| [Uppstart](docs/uppstart.md) | Hur repot sattes upp |
+
+## Board
+
+[Felanmälan i GitHub Projects](https://github.com/orgs/Tre-Musketradar/projects)

@@ -1,6 +1,6 @@
 # Frontendplan för MVP — Felanmälan
 
-Utgår från [projektförslaget](projektforslag-felanmalan.md). Beskriver hur frontend (React + TypeScript) byggs upp och i vilken ordning. Backend (Spring Boot + PostgreSQL) finns i ett separat repo.
+Utgår från [projektförslaget](projektforslag.md). Beskriver hur frontend (React + TypeScript) byggs upp och i vilken ordning. Backend (Spring Boot + PostgreSQL) finns i `backend/` i samma repo.
 
 ## Mål för MVP (frontend)
 
@@ -94,7 +94,7 @@ Backend och frontend byggs parallellt. Därför:
 | Routing | React Router | Standard, enkelt att skydda routes per roll |
 | Hämta data | TanStack Query | Cache, laddning och fel utan egen kod |
 | Tester | Vitest + Testing Library | Fungerar direkt med Vite |
-| Stil | Vanlig CSS / CSS Modules | Inget extra att lära sig; kan bytas senare |
+| Stil | Tailwind CSS | Beslutat i [beslutsloggen](beslutslogg.md) |
 
 Beslutet dokumenteras i beslutsloggen (VG).
 
@@ -102,7 +102,7 @@ Beslutet dokumenteras i beslutsloggen (VG).
 
 | Sprint | Frontend |
 |--------|----------|
-| 0 | Mockups för alla vyer i `docs/mockups/`, mappstruktur, routing, layout, typer, mock-API |
+| 0 | Mockups för alla vyer i `docs/bilder/`, mappstruktur, routing, layout, typer, mock-API |
 | 1 | Inloggningssida, AuthContext med JWT, routes per roll, CRUD för fastigheter och lägenheter |
 | 2 | Formulär för felanmälan med validering, ärendelista per roll, detaljvy |
 | 3 | Tilldela tekniker, statusknappar, tidslinje för historiken |
@@ -117,7 +117,7 @@ Beslutet dokumenteras i beslutsloggen (VG).
 - [ ] Skapa mappstrukturen och typerna
 - [ ] Layout med navigering som ändras efter roll
 - [ ] Mock-API med testdata för de tre rollerna
-- [ ] Fyll i och godkänn [Definition of Done](../dod/definition-of-done.md)
+- [ ] Fyll i och godkänn [Definition of Done](definition-of-done.md)
 
 ## Öppna frågor att besluta med backend
 
@@ -130,4 +130,4 @@ Beslutet dokumenteras i beslutsloggen (VG).
 
 ## Notering om grenar
 
-Projektförslagets risktabell säger "uppdatera från `main` dagligen". I det här repot skapas och uppdateras feature-grenar från `staging` (se [CONTRIBUTING.md](../CONTRIBUTING.md)).
+Projektförslagets risktabell säger "uppdatera från `main` dagligen". I det här repot skapas och uppdateras feature-grenar från `staging` (se [CONTRIBUTING.md](CONTRIBUTING.md)).

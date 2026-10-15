@@ -32,7 +32,7 @@ Första versionen av backloggen för Felanmälan. Ska gås igenom av hela teamet
 | 17 | Story | Ändra och ta bort fastigheter och lägenheter | Should | M | Fastigheter |
 | 18 | Story | Bifoga bild | Should | L | Kommunikation |
 
-Won't-listan finns i [projektförslaget](projektforslag-felanmalan.md#inte-nu-wont).
+Won't-listan finns i [projektförslaget](projektforslag.md#inte-nu-wont).
 
 ## Undersökningar och tekniska uppgifter
 

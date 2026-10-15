@@ -43,8 +43,5 @@ coverage
 !*.sv.md
 !*.en.md
 
-# Interna gruppdokument (delas utanför GitHub)
-docs/gruppkontrakt.md
-
 # Lokalt material för att slutföra arbetet (versioneras inte)
 docs/resurser/
