@@ -31,8 +31,11 @@ Första versionen av backloggen för Felanmälan. Ska gås igenom av hela teamet
 | 16 | Story | Översikt för förvaltaren | Should | M | Översikt |
 | 17 | Story | Ändra och ta bort fastigheter och lägenheter | Should | M | Fastigheter |
 | 18 | Story | Bifoga bild | Should | L | Kommunikation |
+| 19 | Story | Prioritet med SLA | Could | M | Ärendeflöde |
+| 20 | Story | E-postnotis vid statusändring | Could | M | Kommunikation |
+| 21 | Story | Statistik: snittid till åtgärd | Could | S | Översikt |
 
-Won't-listan finns i [projektförslaget](projektforslag.md#inte-nu-wont).
+Det som medvetet är bortvalt står under [Won't](#wont-inte-nu) längst ner.
 
 ## Undersökningar och tekniska uppgifter
 
@@ -203,6 +206,48 @@ Won't-listan finns i [projektförslaget](projektforslag.md#inte-nu-wont).
 - [ ] Jag kan bifoga en bild (JPG eller PNG) när jag skapar ärendet.
 - [ ] För stora filer (över 5 MB) eller fel filtyp ger ett felmeddelande.
 - [ ] Bilden visas på ärendet för teknikern och förvaltaren.
+
+## Could (om tid finns)
+
+### 19. Prioritet med SLA — M
+
+> Som förvaltare vill jag sätta prioritet på ett ärende så att akuta fel, som en vattenläcka, åtgärdas först.
+
+- [ ] Jag kan sätta prioritet Akut, Hög, Normal eller Låg på ett ärende. Nya ärenden får Normal.
+- [ ] Varje prioritet har en tidsgräns (t.ex. Akut inom 4 timmar).
+- [ ] Ärenden som passerat tidsgränsen markeras tydligt i listan.
+- [ ] Hyresgäster och tekniker kan se prioriteten men inte ändra den.
+
+### 20. E-postnotis vid statusändring — M
+
+> Som hyresgäst vill jag få ett mejl när status på mitt ärende ändras så att jag inte behöver logga in för att se hur det går.
+
+- [ ] När status ändras skickas ett mejl till hyresgästen som skapade ärendet.
+- [ ] Mejlet innehåller ärendets nummer, den nya statusen och en länk till ärendet.
+- [ ] Om mejlet inte kan skickas sparas statusändringen ändå.
+
+### 21. Statistik: snittid till åtgärd — S
+
+> Som förvaltare vill jag se hur lång tid det i snitt tar att åtgärda ett ärende så att jag kan följa upp teknikernas arbete.
+
+- [ ] Översikten visar snittiden från "Ny" till "Åtgärdad" för de senaste 30 dagarna.
+- [ ] Snittiden kan visas per kategori.
+- [ ] Om det inte finns några åtgärdade ärenden visas ett meddelande i stället för en siffra.
+
+Bygger på historiken i story 12 och översikten i story 16.
+
+## Won't (inte nu)
+
+Medvetet bortvalt i det här projektet. Skrivs inte som stories och får ingen storlek, eftersom de inte ska byggas. Kommer en av dem upp igen tas den upp med hela teamet och skrivs in i [beslutsloggen](beslutslogg.md).
+
+| Funktion | Varför inte nu |
+|----------|----------------|
+| Mobilapp | Webbappen ska i stället fungera i mobilbredd (360 px). |
+| SMS-notiser | Kostar pengar per meddelande. E-post (story 20) räcker. |
+| Chatt i realtid mellan hyresgäst och tekniker | Kräver websockets. Kommentarer (story 14) löser samma behov. |
+| Tidsbokning av besök i en kalender | Stort område för sig, inte kärnan i felanmälan. |
+| Fakturering av reparationer | Hör till ekonomisystemet, inte till felanmälan. |
+| Integration med befintliga fastighetssystem | Vi har inget riktigt system att integrera med. |
 
 ## Icke-funktionella krav
 
