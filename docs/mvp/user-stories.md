@@ -36,13 +36,13 @@ Won't-listan finns i [projektförslaget](projektforslag-felanmalan.md#inte-nu-wo
 
 ## Undersökningar och tekniska uppgifter
 
-### U1 — Inloggning med JWT (undersökning)
+### U1 — Inloggning med JWT (undersökning) (Jose)
 
 **Fråga:** Hur sätter vi upp Spring Security med JWT och roller, och hur skickar och sparar frontend token?
 **Tidsgräns:** Max en halv dag.
 **Resultat:** Ett beslut i beslutsloggen (t.ex. var token sparas och hur länge den gäller). Storyn "Logga in med roll" kan behöva delas upp.
 
-### T1 — Projektskelett
+### T1 — Projektskelett (Jose)
 
 **Uppgift:** Sätta upp React, Spring Boot och PostgreSQL så att allt startar enligt README.
 **Varför:** Alla stories i sprint 1 bygger på det.
@@ -50,7 +50,7 @@ Won't-listan finns i [projektförslaget](projektforslag-felanmalan.md#inte-nu-wo
 
 ## Must (MVP)
 
-### 1. Logga in med roll — L
+### 1. Logga in med roll — L (Jose)
 
 > Som hyresgäst, tekniker eller förvaltare vill jag logga in så att jag ser det som gäller min roll.
 
