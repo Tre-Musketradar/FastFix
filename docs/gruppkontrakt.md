@@ -60,9 +60,9 @@ Vi har läst kontraktet och är överens om det.
 
 | Namn | Datum |
 |---|---|
-| | |
-| | |
-| | |
+| Jose Muñoz | |
+| Martin Friis | |
+| Ermias Demessie | |
 
 ## Ändringar
 

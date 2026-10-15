@@ -17,8 +17,3 @@ Dokumentation för hela projektet (frontend, backend och databas).
 | [bilder/](bilder/) | Mockups och andra bilder |
 
 Se även [CONTRIBUTING.md](CONTRIBUTING.md) för grenflödet och [uppstart.md](uppstart.md) för teknikval och hur repot sattes upp.
-
-## Språk
-
-- All dokumentation skrivs på **svenska** (engelska är också tillåtet).
-- Dokument på andra språk ska ha språkkoden i filnamnet, t.ex. `anteckningar.es.md`. Sådana filer ignoreras automatiskt av git och stannar lokalt.
