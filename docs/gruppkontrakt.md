@@ -1,98 +1,58 @@
 # Gruppkontrakt
 
-<!--
-  INSTRUKTION
-  Fyll i varje avsnitt tillsammans. Ändra, ta bort eller lägg till det som passar er grupp.
-  Var konkreta: "vi svarar inom 4 timmar under arbetstid" går att följa upp, "vi kommunicerar bra" gör det inte.
-  Ta bort exemplen när ni skrivit era egna punkter.
-  Kontraktet får ändras under kursen. Ändringar tas upp på retron och alla måste vara överens.
--->
+Kontraktet får ändras under kursen. Ändringar tas upp på retron, alla måste vara överens och ändringen skrivs in i tabellen längst ner.
 
-**Grupp:**
-**Datum:**
+**Grupp:** Tre-Musketradar (Felanmälan)
+**Datum:** 2026-10-15
 
 ## Tillgänglighet
 
-<!-- Vilka tider jobbar ni? När är det okej att inte svara? Hur snabbt förväntas man svara? -->
-
-> **Exempel:**
-> - Vi jobbar vardagar kl. 9–16.
-> - Kvällar och helger är frivilligt. Ingen förväntas svara då.
-> - Under arbetstid svarar vi på meddelanden inom 2 timmar.
-
--
--
+- Vi har flexibla arbetstider: var och en planerar sina egna timmar.
+- Alla är med på kursens schemalagda pass och på våra ceremonier: daily standup, sprint planning, review och retro.
+- Vardagar svarar vi på meddelanden i Slack inom 24 timmar.
+- Helger är frivilliga. Ingen förväntas svara då.
+- Den som vet att den inte kan jobba under en period säger till i Slack i förväg.
 
 ## Kommunikation
 
-<!-- Vilken kanal används till vad? Hur ger ni feedback till varandra? -->
-
-> **Exempel:**
-> - Discord för snabba frågor och daglig kontakt.
-> - Frågor om specifik kod tas i kommentarer på pull requesten.
-> - Vi ger feedback på koden, inte på personen.
-
--
--
+- Slack används för daglig kontakt, frågor och snabba beslut.
+- Frågor om specifik kod tas som kommentarer på pull requesten.
+- Vad som görs och vem som gör det syns på boarden i GitHub Projects, inte bara i Slack.
+- Vi ger feedback på koden, inte på personen, och förklarar varför.
 
 ## Närvaro och frånvaro
 
-<!-- Hur och när meddelar man frånvaro? Vad händer om någon missar en ceremoni? -->
-
-> **Exempel:**
-> - Frånvaro meddelas i Discord senast kl. 9 samma dag.
-> - Den som missar daily standup skriver sin rad i loggen själv samma dag.
-
--
--
+- Frånvaro meddelas i Slack innan daily standup samma dag.
+- Den som missar daily standup skriver sin rad i sprintens `standup.md` samma dag.
+- Den som missar planning, review eller retro läser anteckningarna i `docs/sprintar/` och tar upp frågor i Slack.
 
 ## Arbetsfördelning
 
-<!-- Hur fördelas uppgifter? Vad gör man om man blir klar eller kör fast? -->
-
-> **Exempel:**
-> - Man tar själv en story från "Att göra" och sätter sig som ansvarig.
-> - Den som kört fast i mer än en timme ber om hjälp.
-> - Den som blir klar hjälper till med granskning innan den tar en ny story.
-
--
--
+- Stories fördelas på sprint planning. Den som börjar på en story sätter sig som ansvarig på issuen och flyttar kortet till "Pågår".
+- Var och en har ett fokusområde (se [projektförslaget](projektforslag.md#arbetsfördelning)), men tar minst en story per sprint i det andra lagret (frontend eller backend), så att alla kan förklara hela koden.
+- Scrum Master roterar varje vecka.
+- Den som kört fast i mer än en timme ber om hjälp i Slack.
+- Den som blir klar granskar öppna pull requests innan den tar en ny story.
 
 ## Beslut
 
-<!-- Hur fattar ni beslut? Vad gör ni om ni inte kommer överens? -->
-
-> **Exempel:**
-> - Mindre beslut tar den som äger frågan.
-> - Större beslut (stack, arkitektur, större ändringar i MVP) tas gemensamt och skrivs in i beslutsloggen.
-> - Om vi inte kommer överens röstar vi. Vid lika har Product Owner sista ordet om vad som byggs.
-
--
--
+- Mindre beslut tar den som äger storyn.
+- Större beslut (stack, arkitektur, ändringar i MVP:n eller databasschemat) tas gemensamt och skrivs in i [beslutsloggen](beslutslogg.md).
+- Om vi inte kommer överens röstar vi. Vi är tre, så det blir alltid en majoritet.
 
 ## Kod och kvalitet
 
-<!-- Fylls på efter pass 3. Hur snabbt granskas PR:er? Får man merga sin egen kod? -->
-
-> **Exempel:**
-> - Pull requests granskas inom 24 timmar.
-> - Ingen mergar sin egen pull request.
-
--
--
+- Pull requests som öppnas före kl. 12 granskas samma dag. Senare pull requests granskas nästa vardag före kl. 12.
+- Ingen mergar sin egen pull request utan att minst en annan i teamet har godkänt den.
+- All kod går via en gren och en pull request till `staging`. Ingen pushar direkt till `staging` eller `main` (se [CONTRIBUTING.md](CONTRIBUTING.md)).
+- En story är klar först när den uppfyller [Definition of Done](definition-of-done.md).
+- Dokumentation skrivs på svenska, commit-meddelanden och pull requests på engelska.
 
 ## Om någon inte följer kontraktet
 
-<!-- Bestäm en trappa: vad händer, i vilken ordning? -->
-
-> **Exempel:**
-> 1. Vi tar upp det direkt med personen.
-> 2. Om det fortsätter tar vi upp det på retron.
-> 3. Om det fortfarande inte löser sig tar vi upp det med läraren.
-
-1.
-2.
-3.
+1. Vi tar upp det direkt med personen.
+2. Om det fortsätter tar vi upp det på retron.
+3. Om det fortfarande inte löser sig tar vi upp det med läraren.
 
 ## Underskrifter
 
@@ -103,12 +63,9 @@ Vi har läst kontraktet och är överens om det.
 | | |
 | | |
 | | |
-| | |
 
 ## Ändringar
 
-<!-- Fyll i när kontraktet ändras. -->
-
 | Datum | Ändring | Varför |
 |---|---|---|
-| | | |
+| 2026-10-15 | Första versionen | — |

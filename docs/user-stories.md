@@ -1,6 +1,6 @@
-# Backlog: user stories (utkast)
+# Backlog: user stories
 
-Första versionen av backloggen för Felanmälan. Ska gås igenom av hela teamet innan korten läggs in i GitHub Projects.
+Backloggen för Felanmälan. Varje rad finns som en issue och ligger på [boarden](https://github.com/orgs/Tre-Musketradar/projects/3), där prioritet, storlek och sprint sätts. Ändras en story här ska issuen uppdateras också.
 
 - Listan är **ordnad**: det som står först görs först.
 - **Prioritet** enligt MoSCoW. Must = MVP.
@@ -9,32 +9,32 @@ Första versionen av backloggen för Felanmälan. Ska gås igenom av hela teamet
 
 ## Översikt
 
-| # | Typ | Kort | Prioritet | Storlek | Epic |
-|---|-----|------|-----------|---------|------|
-| U1 | Undersökning | Inloggning med JWT | — | max ½ dag | Inloggning |
-| T1 | Teknisk | Projektskelett | Must | M | — |
-| 1 | Story | Logga in med roll | Must | L | Inloggning |
-| 2 | Story | Lägga till fastighet | Must | M | Fastigheter |
-| 3 | Story | Lägga till lägenheter | Must | M | Fastigheter |
-| 4 | Story | Lägga till hyresgäst | Must | M | Fastigheter |
-| 5 | Story | Skapa felanmälan | Must | M | Ärenden |
-| 6 | Story | Ange huvudnyckel | Must | S | Ärenden |
-| 7 | Story | Se mina ärenden (hyresgäst) | Must | M | Ärenden |
-| 8 | Story | Se alla öppna ärenden (förvaltare) | Must | S | Ärendeflöde |
-| 9 | Story | Tilldela tekniker | Must | M | Ärendeflöde |
-| 10 | Story | Se tilldelade ärenden (tekniker) | Must | S | Ärendeflöde |
-| 11 | Story | Ändra status | Must | M | Ärendeflöde |
-| 12 | Story | Se ärendets historik | Must | S | Ärendeflöde |
-| 13 | Story | Stänga ärende | Must | S | Ärendeflöde |
-| 14 | Story | Kommentera ärende | Should | M | Kommunikation |
-| 15 | Story | Filtrera och söka ärenden | Should | M | Ärendeflöde |
-| 16 | Story | Översikt för förvaltaren | Should | M | Översikt |
-| 17 | Story | Ändra och ta bort fastigheter och lägenheter | Should | M | Fastigheter |
-| 18 | Story | Bifoga bild | Should | L | Kommunikation |
-| T2 | Teknisk | Deploy | Should | M | — |
-| 19 | Story | Prioritet med SLA | Could | M | Ärendeflöde |
-| 20 | Story | E-postnotis vid statusändring | Could | M | Kommunikation |
-| 21 | Story | Statistik: snittid till åtgärd | Could | S | Översikt |
+| # | Typ | Kort | Prioritet | Storlek | Epic | Issue |
+|---|-----|------|-----------|---------|------|-------|
+| U1 | Undersökning | Inloggning med JWT | — | max ½ dag | Inloggning | [#9](https://github.com/Tre-Musketradar/FastFix/issues/9) |
+| T1 | Teknisk | Projektskelett | Must | M | — | [#10](https://github.com/Tre-Musketradar/FastFix/issues/10) |
+| 1 | Story | Logga in med roll | Must | L | Inloggning | [#6](https://github.com/Tre-Musketradar/FastFix/issues/6) |
+| 2 | Story | Lägga till fastighet | Must | M | Fastigheter | [#11](https://github.com/Tre-Musketradar/FastFix/issues/11) |
+| 3 | Story | Lägga till lägenheter | Must | M | Fastigheter | [#12](https://github.com/Tre-Musketradar/FastFix/issues/12) |
+| 4 | Story | Lägga till hyresgäst | Must | M | Fastigheter | [#13](https://github.com/Tre-Musketradar/FastFix/issues/13) |
+| 5 | Story | Skapa felanmälan | Must | M | Ärenden | [#14](https://github.com/Tre-Musketradar/FastFix/issues/14) |
+| 6 | Story | Ange huvudnyckel | Must | S | Ärenden | [#15](https://github.com/Tre-Musketradar/FastFix/issues/15) |
+| 7 | Story | Se mina ärenden (hyresgäst) | Must | M | Ärenden | [#16](https://github.com/Tre-Musketradar/FastFix/issues/16) |
+| 8 | Story | Se alla öppna ärenden (förvaltare) | Must | S | Ärendeflöde | [#17](https://github.com/Tre-Musketradar/FastFix/issues/17) |
+| 9 | Story | Tilldela tekniker | Must | M | Ärendeflöde | [#18](https://github.com/Tre-Musketradar/FastFix/issues/18) |
+| 10 | Story | Se tilldelade ärenden (tekniker) | Must | S | Ärendeflöde | [#19](https://github.com/Tre-Musketradar/FastFix/issues/19) |
+| 11 | Story | Ändra status | Must | M | Ärendeflöde | [#20](https://github.com/Tre-Musketradar/FastFix/issues/20) |
+| 12 | Story | Se ärendets historik | Must | S | Ärendeflöde | [#21](https://github.com/Tre-Musketradar/FastFix/issues/21) |
+| 13 | Story | Stänga ärende | Must | S | Ärendeflöde | [#22](https://github.com/Tre-Musketradar/FastFix/issues/22) |
+| 14 | Story | Kommentera ärende | Should | M | Kommunikation | [#23](https://github.com/Tre-Musketradar/FastFix/issues/23) |
+| 15 | Story | Filtrera och söka ärenden | Should | M | Ärendeflöde | [#24](https://github.com/Tre-Musketradar/FastFix/issues/24) |
+| 16 | Story | Översikt för förvaltaren | Should | M | Översikt | [#25](https://github.com/Tre-Musketradar/FastFix/issues/25) |
+| 17 | Story | Ändra och ta bort fastigheter och lägenheter | Should | M | Fastigheter | [#26](https://github.com/Tre-Musketradar/FastFix/issues/26) |
+| 18 | Story | Bifoga bild | Should | L | Kommunikation | [#27](https://github.com/Tre-Musketradar/FastFix/issues/27) |
+| T2 | Teknisk | Deploy | Should | M | — | [#28](https://github.com/Tre-Musketradar/FastFix/issues/28) |
+| 19 | Story | Prioritet med SLA | Could | M | Ärendeflöde | [#29](https://github.com/Tre-Musketradar/FastFix/issues/29) |
+| 20 | Story | E-postnotis vid statusändring | Could | M | Kommunikation | [#30](https://github.com/Tre-Musketradar/FastFix/issues/30) |
+| 21 | Story | Statistik: snittid till åtgärd | Could | S | Översikt | [#31](https://github.com/Tre-Musketradar/FastFix/issues/31) |
 
 Det som medvetet är bortvalt står under [Won't](#wont-inte-nu) längst ner.
 

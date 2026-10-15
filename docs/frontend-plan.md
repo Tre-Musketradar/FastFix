@@ -112,16 +112,16 @@ Beslutet dokumenteras i beslutsloggen (VG).
 ## Första steg (Sprint 0)
 
 - [ ] Rita mockups för inloggning, ärendelista, ny felanmälan, ärendedetalj och fastigheter
-- [ ] Komma överens med backend om enums och API-format (se nedan)
+- [x] Komma överens med backend om enums (API-format återstår, se nedan)
 - [ ] Installera React Router och TanStack Query
 - [ ] Skapa mappstrukturen och typerna
 - [ ] Layout med navigering som ändras efter roll
 - [ ] Mock-API med testdata för de tre rollerna
-- [ ] Fyll i och godkänn [Definition of Done](definition-of-done.md)
+- [x] Fyll i [Definition of Done](definition-of-done.md)
 
 ## Öppna frågor att besluta med backend
 
-1. **Enums:** exakta värden för roll, status, kategori och prioritet.
+1. ~~**Enums:** exakta värden för roll, status, kategori och prioritet.~~ Beslutat: se [databasschemat](databasschema.md#enums).
 2. **API-kontrakt:** ska backend publicera OpenAPI/Swagger så att typerna kan genereras?
 3. **JWT:** var sparas token (minne, `localStorage` eller httpOnly-cookie)? Hur länge gäller den?
 4. **Användare:** registrerar sig hyresgäster själva eller skapas de av förvaltaren?
