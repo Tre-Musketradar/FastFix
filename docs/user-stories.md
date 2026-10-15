@@ -31,6 +31,7 @@ Första versionen av backloggen för Felanmälan. Ska gås igenom av hela teamet
 | 16 | Story | Översikt för förvaltaren | Should | M | Översikt |
 | 17 | Story | Ändra och ta bort fastigheter och lägenheter | Should | M | Fastigheter |
 | 18 | Story | Bifoga bild | Should | L | Kommunikation |
+| T2 | Teknisk | Deploy | Should | M | — |
 | 19 | Story | Prioritet med SLA | Could | M | Ärendeflöde |
 | 20 | Story | E-postnotis vid statusändring | Could | M | Kommunikation |
 | 21 | Story | Statistik: snittid till åtgärd | Could | S | Översikt |
@@ -50,6 +51,18 @@ Det som medvetet är bortvalt står under [Won't](#wont-inte-nu) längst ner.
 **Uppgift:** Sätta upp React, Spring Boot och PostgreSQL så att allt startar enligt README.
 **Varför:** Alla stories i sprint 1 bygger på det.
 **Klart när:** Alla i teamet kan klona repot och starta appen enligt README.
+
+### T2 — Deploy
+
+**Uppgift:** Publicera appen på internet: databasen i en gratis molndatabas (t.ex. Neon eller Supabase), backend och frontend på en gratis hosting (t.ex. Render).
+**Varför:** Reviewn i sprint 5 ska visa hela systemet live, och läraren ska kunna testa appen utan att starta den själv.
+**Klart när:**
+- Appen går att nå via en publik adress och man kan logga in med alla tre rollerna.
+- Flyway skapar tabellerna i molndatabasen.
+- Lösenord och `JWT_SECRET` ligger som miljövariabler hos hostingtjänsten, inte i repot.
+- README beskriver var appen finns och hur man deployar en ny version.
+
+Valet av tjänster skrivs in i [beslutsloggen](beslutslogg.md). Automatisk deploy när `main` uppdateras (CD) är Could och görs bara om tid finns.
 
 ## Must (MVP)
 
