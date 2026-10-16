@@ -38,6 +38,8 @@ Routes och kod skrivs på engelska, all text i gränssnittet på svenska.
 
 Lägenhet hämtas från den inloggade hyresgästen. Prioritet sätts av förvaltaren (Kan-funktion med SLA).
 
+Alla formulär byggs med React Hook Form och valideras med ett Zod-schema (se [beslutslogg #6](beslutslogg.md)).
+
 ## Statusflöde i gränssnittet
 
 ```
