@@ -1,6 +1,6 @@
 # Frontendplan för MVP — Felanmälan
 
-Utgår från [projektförslaget](projektforslag-felanmalan.md). Beskriver hur frontend (React + TypeScript) byggs upp och i vilken ordning. Backend (Spring Boot + PostgreSQL) finns i ett separat repo.
+Utgår från [projektförslaget](projektforslag.md). Beskriver hur frontend (React + TypeScript) byggs upp och i vilken ordning. Backend (Spring Boot + PostgreSQL) finns i `backend/` i samma repo.
 
 ## Mål för MVP (frontend)
 
@@ -37,6 +37,8 @@ Routes och kod skrivs på engelska, all text i gränssnittet på svenska.
 | Huvudnyckel får användas | Ja/Nej | Obligatorisk, inget förval |
 
 Lägenhet hämtas från den inloggade hyresgästen. Prioritet sätts av förvaltaren (Kan-funktion med SLA).
+
+Alla formulär byggs med React Hook Form och valideras med ett Zod-schema (se [beslutslogg #6](beslutslogg.md)).
 
 ## Statusflöde i gränssnittet
 
@@ -94,7 +96,7 @@ Backend och frontend byggs parallellt. Därför:
 | Routing | React Router | Standard, enkelt att skydda routes per roll |
 | Hämta data | TanStack Query | Cache, laddning och fel utan egen kod |
 | Tester | Vitest + Testing Library | Fungerar direkt med Vite |
-| Stil | Vanlig CSS / CSS Modules | Inget extra att lära sig; kan bytas senare |
+| Stil | Tailwind CSS | Beslutat i [beslutsloggen](beslutslogg.md) |
 
 Beslutet dokumenteras i beslutsloggen (VG).
 
@@ -102,7 +104,7 @@ Beslutet dokumenteras i beslutsloggen (VG).
 
 | Sprint | Frontend |
 |--------|----------|
-| 0 | Mockups för alla vyer i `docs/mockups/`, mappstruktur, routing, layout, typer, mock-API |
+| 0 | Mockups för alla vyer i `docs/bilder/`, mappstruktur, routing, layout, typer, mock-API |
 | 1 | Inloggningssida, AuthContext med JWT, routes per roll, CRUD för fastigheter och lägenheter |
 | 2 | Formulär för felanmälan med validering, ärendelista per roll, detaljvy |
 | 3 | Tilldela tekniker, statusknappar, tidslinje för historiken |
@@ -112,16 +114,16 @@ Beslutet dokumenteras i beslutsloggen (VG).
 ## Första steg (Sprint 0)
 
 - [ ] Rita mockups för inloggning, ärendelista, ny felanmälan, ärendedetalj och fastigheter
-- [ ] Komma överens med backend om enums och API-format (se nedan)
+- [x] Komma överens med backend om enums (API-format återstår, se nedan)
 - [ ] Installera React Router och TanStack Query
 - [ ] Skapa mappstrukturen och typerna
 - [ ] Layout med navigering som ändras efter roll
 - [ ] Mock-API med testdata för de tre rollerna
-- [ ] Fyll i och godkänn [Definition of Done](../dod/definition-of-done.md)
+- [x] Fyll i [Definition of Done](definition-of-done.md)
 
 ## Öppna frågor att besluta med backend
 
-1. **Enums:** exakta värden för roll, status, kategori och prioritet.
+1. ~~**Enums:** exakta värden för roll, status, kategori och prioritet.~~ Beslutat: se [databasschemat](databasschema.md#enums).
 2. **API-kontrakt:** ska backend publicera OpenAPI/Swagger så att typerna kan genereras?
 3. **JWT:** var sparas token (minne, `localStorage` eller httpOnly-cookie)? Hur länge gäller den?
 4. **Användare:** registrerar sig hyresgäster själva eller skapas de av förvaltaren?
@@ -130,4 +132,4 @@ Beslutet dokumenteras i beslutsloggen (VG).
 
 ## Notering om grenar
 
-Projektförslagets risktabell säger "uppdatera från `main` dagligen". I det här repot skapas och uppdateras feature-grenar från `staging` (se [CONTRIBUTING.md](../CONTRIBUTING.md)).
+Projektförslagets risktabell säger "uppdatera från `main` dagligen". I det här repot skapas och uppdateras feature-grenar från `staging` (se [CONTRIBUTING.md](CONTRIBUTING.md)).

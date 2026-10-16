@@ -1,6 +1,6 @@
-# Backlog: user stories (utkast)
+# Backlog: user stories
 
-Första versionen av backloggen för Felanmälan. Ska gås igenom av hela teamet innan korten läggs in i GitHub Projects.
+Backloggen för Felanmälan. Varje rad finns som en issue och ligger på [boarden](https://github.com/orgs/Tre-Musketradar/projects/3), där prioritet, storlek och sprint sätts. Ändras en story här ska issuen uppdateras också.
 
 - Listan är **ordnad**: det som står först görs först.
 - **Prioritet** enligt MoSCoW. Must = MVP.
@@ -9,48 +9,64 @@ Första versionen av backloggen för Felanmälan. Ska gås igenom av hela teamet
 
 ## Översikt
 
-| # | Typ | Kort | Prioritet | Storlek | Epic |
-|---|-----|------|-----------|---------|------|
-| U1 | Undersökning | Inloggning med JWT | — | max ½ dag | Inloggning |
-| T1 | Teknisk | Projektskelett | Must | M | — |
-| 1 | Story | Logga in med roll | Must | L | Inloggning |
-| 2 | Story | Lägga till fastighet | Must | M | Fastigheter |
-| 3 | Story | Lägga till lägenheter | Must | M | Fastigheter |
-| 4 | Story | Lägga till hyresgäst | Must | M | Fastigheter |
-| 5 | Story | Skapa felanmälan | Must | M | Ärenden |
-| 6 | Story | Ange huvudnyckel | Must | S | Ärenden |
-| 7 | Story | Se mina ärenden (hyresgäst) | Must | M | Ärenden |
-| 8 | Story | Se alla öppna ärenden (förvaltare) | Must | S | Ärendeflöde |
-| 9 | Story | Tilldela tekniker | Must | M | Ärendeflöde |
-| 10 | Story | Se tilldelade ärenden (tekniker) | Must | S | Ärendeflöde |
-| 11 | Story | Ändra status | Must | M | Ärendeflöde |
-| 12 | Story | Se ärendets historik | Must | S | Ärendeflöde |
-| 13 | Story | Stänga ärende | Must | S | Ärendeflöde |
-| 14 | Story | Kommentera ärende | Should | M | Kommunikation |
-| 15 | Story | Filtrera och söka ärenden | Should | M | Ärendeflöde |
-| 16 | Story | Översikt för förvaltaren | Should | M | Översikt |
-| 17 | Story | Ändra och ta bort fastigheter och lägenheter | Should | M | Fastigheter |
-| 18 | Story | Bifoga bild | Should | L | Kommunikation |
+| # | Typ | Kort | Prioritet | Storlek | Epic | Issue |
+|---|-----|------|-----------|---------|------|-------|
+| U1 | Undersökning | Inloggning med JWT | — | max ½ dag | Inloggning | [#9](https://github.com/Tre-Musketradar/FastFix/issues/9) |
+| T1 | Teknisk | Projektskelett | Must | M | — | [#10](https://github.com/Tre-Musketradar/FastFix/issues/10) |
+| 1 | Story | Logga in med roll | Must | L | Inloggning | [#6](https://github.com/Tre-Musketradar/FastFix/issues/6) |
+| 2 | Story | Lägga till fastighet | Must | M | Fastigheter | [#11](https://github.com/Tre-Musketradar/FastFix/issues/11) |
+| 3 | Story | Lägga till lägenheter | Must | M | Fastigheter | [#12](https://github.com/Tre-Musketradar/FastFix/issues/12) |
+| 4 | Story | Lägga till hyresgäst | Must | M | Fastigheter | [#13](https://github.com/Tre-Musketradar/FastFix/issues/13) |
+| 5 | Story | Skapa felanmälan | Must | M | Ärenden | [#14](https://github.com/Tre-Musketradar/FastFix/issues/14) |
+| 6 | Story | Ange huvudnyckel | Must | S | Ärenden | [#15](https://github.com/Tre-Musketradar/FastFix/issues/15) |
+| 7 | Story | Se mina ärenden (hyresgäst) | Must | M | Ärenden | [#16](https://github.com/Tre-Musketradar/FastFix/issues/16) |
+| 8 | Story | Se alla öppna ärenden (förvaltare) | Must | S | Ärendeflöde | [#17](https://github.com/Tre-Musketradar/FastFix/issues/17) |
+| 9 | Story | Tilldela tekniker | Must | M | Ärendeflöde | [#18](https://github.com/Tre-Musketradar/FastFix/issues/18) |
+| 10 | Story | Se tilldelade ärenden (tekniker) | Must | S | Ärendeflöde | [#19](https://github.com/Tre-Musketradar/FastFix/issues/19) |
+| 11 | Story | Ändra status | Must | M | Ärendeflöde | [#20](https://github.com/Tre-Musketradar/FastFix/issues/20) |
+| 12 | Story | Se ärendets historik | Must | S | Ärendeflöde | [#21](https://github.com/Tre-Musketradar/FastFix/issues/21) |
+| 13 | Story | Stänga ärende | Must | S | Ärendeflöde | [#22](https://github.com/Tre-Musketradar/FastFix/issues/22) |
+| 14 | Story | Kommentera ärende | Should | M | Kommunikation | [#23](https://github.com/Tre-Musketradar/FastFix/issues/23) |
+| 15 | Story | Filtrera och söka ärenden | Should | M | Ärendeflöde | [#24](https://github.com/Tre-Musketradar/FastFix/issues/24) |
+| 16 | Story | Översikt för förvaltaren | Should | M | Översikt | [#25](https://github.com/Tre-Musketradar/FastFix/issues/25) |
+| 17 | Story | Ändra och ta bort fastigheter och lägenheter | Should | M | Fastigheter | [#26](https://github.com/Tre-Musketradar/FastFix/issues/26) |
+| 18 | Story | Bifoga bild | Should | L | Kommunikation | [#27](https://github.com/Tre-Musketradar/FastFix/issues/27) |
+| T2 | Teknisk | Deploy | Should | M | — | [#28](https://github.com/Tre-Musketradar/FastFix/issues/28) |
+| 19 | Story | Prioritet med SLA | Could | M | Ärendeflöde | [#29](https://github.com/Tre-Musketradar/FastFix/issues/29) |
+| 20 | Story | E-postnotis vid statusändring | Could | M | Kommunikation | [#30](https://github.com/Tre-Musketradar/FastFix/issues/30) |
+| 21 | Story | Statistik: snittid till åtgärd | Could | S | Översikt | [#31](https://github.com/Tre-Musketradar/FastFix/issues/31) |
 
-Won't-listan finns i [projektförslaget](projektforslag-felanmalan.md#inte-nu-wont).
+Det som medvetet är bortvalt står under [Won't](#wont-inte-nu) längst ner.
 
 ## Undersökningar och tekniska uppgifter
 
-### U1 — Inloggning med JWT (undersökning)
+### U1 — Inloggning med JWT (undersökning) (Jose)
 
 **Fråga:** Hur sätter vi upp Spring Security med JWT och roller, och hur skickar och sparar frontend token?
 **Tidsgräns:** Max en halv dag.
 **Resultat:** Ett beslut i beslutsloggen (t.ex. var token sparas och hur länge den gäller). Storyn "Logga in med roll" kan behöva delas upp.
 
-### T1 — Projektskelett
+### T1 — Projektskelett (Jose)
 
 **Uppgift:** Sätta upp React, Spring Boot och PostgreSQL så att allt startar enligt README.
 **Varför:** Alla stories i sprint 1 bygger på det.
 **Klart när:** Alla i teamet kan klona repot och starta appen enligt README.
 
+### T2 — Deploy
+
+**Uppgift:** Publicera appen på internet: databasen i en gratis molndatabas (t.ex. Neon eller Supabase), backend och frontend på en gratis hosting (t.ex. Render).
+**Varför:** Reviewn i sprint 5 ska visa hela systemet live, och läraren ska kunna testa appen utan att starta den själv.
+**Klart när:**
+- Appen går att nå via en publik adress och man kan logga in med alla tre rollerna.
+- Flyway skapar tabellerna i molndatabasen.
+- Lösenord och `JWT_SECRET` ligger som miljövariabler hos hostingtjänsten, inte i repot.
+- README beskriver var appen finns och hur man deployar en ny version.
+
+Valet av tjänster skrivs in i [beslutsloggen](beslutslogg.md). Automatisk deploy när `main` uppdateras (CD) är Could och görs bara om tid finns.
+
 ## Must (MVP)
 
-### 1. Logga in med roll — L
+### 1. Logga in med roll — L (Jose)
 
 > Som hyresgäst, tekniker eller förvaltare vill jag logga in så att jag ser det som gäller min roll.
 
@@ -203,6 +219,48 @@ Won't-listan finns i [projektförslaget](projektforslag-felanmalan.md#inte-nu-wo
 - [ ] Jag kan bifoga en bild (JPG eller PNG) när jag skapar ärendet.
 - [ ] För stora filer (över 5 MB) eller fel filtyp ger ett felmeddelande.
 - [ ] Bilden visas på ärendet för teknikern och förvaltaren.
+
+## Could (om tid finns)
+
+### 19. Prioritet med SLA — M
+
+> Som förvaltare vill jag sätta prioritet på ett ärende så att akuta fel, som en vattenläcka, åtgärdas först.
+
+- [ ] Jag kan sätta prioritet Akut, Hög, Normal eller Låg på ett ärende. Nya ärenden får Normal.
+- [ ] Varje prioritet har en tidsgräns (t.ex. Akut inom 4 timmar).
+- [ ] Ärenden som passerat tidsgränsen markeras tydligt i listan.
+- [ ] Hyresgäster och tekniker kan se prioriteten men inte ändra den.
+
+### 20. E-postnotis vid statusändring — M
+
+> Som hyresgäst vill jag få ett mejl när status på mitt ärende ändras så att jag inte behöver logga in för att se hur det går.
+
+- [ ] När status ändras skickas ett mejl till hyresgästen som skapade ärendet.
+- [ ] Mejlet innehåller ärendets nummer, den nya statusen och en länk till ärendet.
+- [ ] Om mejlet inte kan skickas sparas statusändringen ändå.
+
+### 21. Statistik: snittid till åtgärd — S
+
+> Som förvaltare vill jag se hur lång tid det i snitt tar att åtgärda ett ärende så att jag kan följa upp teknikernas arbete.
+
+- [ ] Översikten visar snittiden från "Ny" till "Åtgärdad" för de senaste 30 dagarna.
+- [ ] Snittiden kan visas per kategori.
+- [ ] Om det inte finns några åtgärdade ärenden visas ett meddelande i stället för en siffra.
+
+Bygger på historiken i story 12 och översikten i story 16.
+
+## Won't (inte nu)
+
+Medvetet bortvalt i det här projektet. Skrivs inte som stories och får ingen storlek, eftersom de inte ska byggas. Kommer en av dem upp igen tas den upp med hela teamet och skrivs in i [beslutsloggen](beslutslogg.md).
+
+| Funktion | Varför inte nu |
+|----------|----------------|
+| Mobilapp | Webbappen ska i stället fungera i mobilbredd (360 px). |
+| SMS-notiser | Kostar pengar per meddelande. E-post (story 20) räcker. |
+| Chatt i realtid mellan hyresgäst och tekniker | Kräver websockets. Kommentarer (story 14) löser samma behov. |
+| Tidsbokning av besök i en kalender | Stort område för sig, inte kärnan i felanmälan. |
+| Fakturering av reparationer | Hör till ekonomisystemet, inte till felanmälan. |
+| Integration med befintliga fastighetssystem | Vi har inget riktigt system att integrera med. |
 
 ## Icke-funktionella krav
 

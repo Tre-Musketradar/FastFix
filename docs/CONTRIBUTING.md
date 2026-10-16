@@ -18,6 +18,17 @@ feature/<namn>  ──PR──▶  staging  ──PR──▶  main
 4. CI avvisar alla PR:er mot `main` som inte kommer från `staging`.
 5. Dokumentation skrivs på svenska. Commit-meddelanden och PR:er skrivs på engelska.
 
+## Från issue till Klart
+
+1. Ta en issue från "Att göra" på [boarden](https://github.com/orgs/Tre-Musketradar/projects/3), sätt dig som ansvarig och flytta kortet till "Pågår".
+2. Skapa en gren från `staging`, gärna med issuenumret i namnet: `feature/6-logga-in`.
+3. Öppna en PR mot `staging` med PR-mallen. Skriv `Closes #6` så stängs issuen när PR:en mergas. Flytta kortet till "Granskas".
+4. Gå igenom Definition of Done i PR-mallen innan du ber om granskning.
+5. Granskaren godkänner med **Files changed → Review changes → Approve**. En vanlig kommentar räknas inte som godkännande.
+6. När PR:en mergas flyttas kortet till "Klart" automatiskt.
+
+Nya stories och buggar skapas med issuemallarna "User story" och "Bugg".
+
 ## Kommandon
 
 ```bash

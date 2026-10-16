@@ -1,6 +1,6 @@
-# Definition of Done (utkast)
+# Definition of Done
 
-Ska gås igenom och godkännas av hela teamet i Sprint 0. Listan hålls kort med flit och utökas i retron när det behövs.
+Gäller för alla stories. Det som gäller för en specifik story står i dess acceptanskriterier. Listan gås igenom på varje retro.
 
 En story är klar när:
 
@@ -12,8 +12,8 @@ En story är klar när:
 6. README eller `docs/` är uppdaterad om ändringen påverkar hur man startar eller använder projektet.
 7. Kortet på boarden är flyttat till "Klart".
 
-## Ändringslogg
+## Versioner
 
-| Sprint | Ändring | Varför |
-|--------|---------|--------|
-| 0 | Första versionen | — |
+| Version | Datum | Ändring | Varför (från vilken retro?) |
+|---|---|---|---|
+| 1 | 2026-10-15 | Första versionen | — |
