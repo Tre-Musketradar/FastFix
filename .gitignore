@@ -1,0 +1,47 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+node_modules.nosync
+dist
+target
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# AI-verktyg / lokala anteckningar (versioneras inte)
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+docs/CLAUDE.md
+.claude/
+
+# Miljö
+.env
+.env.*
+!.env.example
+coverage
+
+# Dokument på andra språk än svenska/engelska (namnges *.<språkkod>.md)
+*.??.md
+!*.sv.md
+!*.en.md
+
+# Lokalt material för att slutföra arbetet (versioneras inte)
+docs/resurser/
