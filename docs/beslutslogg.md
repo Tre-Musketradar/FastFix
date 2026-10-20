@@ -82,7 +82,7 @@ Föreslås inte: Lombok (DTO:er skrivs som Java 21-`record`, och vi slipper stä
 
 **Konsekvenser:**
 - Frontend: `npm test` (Vitest, letar bara i `src/`) körs i CI. `npm run format` formaterar med Prettier (utan semikolon, enkla citattecken, sorterade Tailwind-klasser).
-- Backend: `spring-boot-starter-oauth2-resource-server` är installerat, men det är U1 som bestämmer hur JWT ska kontrolleras. Väljer U1 `jjwt` tar vi bort det. Swagger UI finns på `/swagger-ui.html` och `/actuator/health` på port 8080, men båda svarar 401 tills säkerheten är inställd i U1.
+- Backend: `spring-boot-starter-oauth2-resource-server` är installerat, men det är U1 som bestämmer hur JWT ska kontrolleras. Väljer U1 `jjwt` tar vi bort det. `/actuator/health` är öppen redan nu (Spring Boot släpper igenom den som standard). Swagger UI finns på `/swagger-ui.html` men svarar 401 tills säkerheten är inställd i U1.
 - Testcontainers kräver att Docker är igång när integrationstesterna körs.
 - Docker Compose startar också Adminer på http://localhost:8081.
 - Den som drar ändringarna måste köra `docker compose up --build -V`, annars hittar frontend i Docker inte de nya biblioteken.
