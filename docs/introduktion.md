@@ -167,3 +167,9 @@ Alla beslut, med alternativ och motivering, finns i [beslutsloggen](beslutslogg.
 | **Endpoint** | En adress i API:t, till exempel `POST /api/tickets` |
 | **JWT** | En token som visar vem du är och vilken roll du har, och som skickas med varje anrop |
 | **Migration** | En SQL-fil som Flyway kör för att skapa eller ändra tabeller |
+
+## Ändringar
+
+| Datum | Ändring |
+|---|---|
+| 2026-10-20 | Första versionen |

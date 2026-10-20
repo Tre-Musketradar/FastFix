@@ -139,3 +139,9 @@ Måste vara bestämt innan story 1 börjar. Beslutet skrivs in i beslutsloggen s
 - **Scrum Master** roterar varje vecka. Ny ordning med fem personer?
 - **Första uppgift:** en liten PR (till exempel sitt namn i README och gruppkontraktet) och en granskning, precis som läxan kräver av alla.
 - **README:** lägg till dem i tabellen "Teamet".
+
+## Ändringar
+
+| Datum | Ändring |
+|---|---|
+| 2026-10-20 | Första versionen |
