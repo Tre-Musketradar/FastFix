@@ -60,9 +60,9 @@ Vi har läst kontraktet och är överens om det.
 
 | Namn | Datum |
 |---|---|
-| Jose Muñoz | |
-| Martin Friis | |
-| Ermias Demessie | |
+| Jose Muñoz | 2026-10-16 |
+| Martin Friis | 2026-10-16 |
+| Ermias Demessie | 2026-10-16 |
 
 ## Ändringar
 
