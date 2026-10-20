@@ -42,6 +42,3 @@ coverage
 *.??.md
 !*.sv.md
 !*.en.md
-
-# Lokalt material för att slutföra arbetet (versioneras inte)
-docs/resurser/
