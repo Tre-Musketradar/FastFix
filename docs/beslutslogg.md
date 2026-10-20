@@ -49,6 +49,10 @@ Kopiera den här för varje nytt beslut:
 | `clsx` | Villkorliga Tailwind-klasser, till exempel i `StatusBadge` | Strängar med `?:` | Senare | Ja |
 | `prettier` + `prettier-plugin-tailwindcss` | Samma formatering för alla, sorterade Tailwind-klasser | Formatering diskuteras i PR:er | Ja | Ja |
 | `openapi-typescript` | TypeScript-typer genereras från backendens OpenAPI | Typerna skrivs för hand och kan hamna i otakt med backend | Senare | Senare (stöder inte TypeScript 6 än) |
+| `react-error-boundary` | Fångar fel och ger handgjord respons | Fel some inte fångas orsakar stopp i programmet | Senare | |
+| `react-spinners` | Animationer som körs medan något laddar | Programmet ser tråkigare ut utan dom | Senare | |
+| `react-native-restart` | Behöver inte manuellt spara ändringar | Manuell sparning och omstart blir nödvändigt | Senare | |
+
 
 Föreslås inte: `axios` (en liten `fetch`-funktion som lägger till `Authorization` räcker), Redux/Zustand (React Query och en `AuthContext` räcker), `date-fns`/`dayjs` (`Intl.DateTimeFormat('sv-SE')` räcker), shadcn/ui eller Radix (bara om vi vill ha färdiga dialoger och val-listor).
 
