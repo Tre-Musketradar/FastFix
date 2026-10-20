@@ -10,3 +10,9 @@ spring:
 
 app:
   jwt-secret: ${JWT_SECRET:endast-for-lokal-utveckling-minst-32-tecken}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health   # bara health, används för health check vid deploy (T2)

@@ -115,7 +115,7 @@ Beslutet dokumenteras i beslutsloggen (VG).
 
 - [ ] Rita mockups för inloggning, ärendelista, ny felanmälan, ärendedetalj och fastigheter
 - [x] Komma överens med backend om enums (API-format återstår, se nedan)
-- [ ] Installera React Router och TanStack Query
+- [x] Installera React Router och TanStack Query (och resten av biblioteken i [beslutsloggen #7](beslutslogg.md))
 - [ ] Skapa mappstrukturen och typerna
 - [ ] Layout med navigering som ändras efter roll
 - [ ] Mock-API med testdata för de tre rollerna
