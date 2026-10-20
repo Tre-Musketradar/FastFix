@@ -30,25 +30,25 @@ Kopiera den här för varje nytt beslut:
 ## #7 Bibliotek för frontend, backend och databas
 
 **Datum:** 2026-10-16
-**Status:** Förslag, diskuteras på gruppmötet 2026-10-16
+**Status:** Gäller
 
-**Bakgrund:** Innan Sprint 1 behöver vi bestämma vilka bibliotek vi använder, så att alla bygger på samma sätt och vi inte lägger till samma sak på olika sätt i olika stories. Listan nedan är ett förslag. Fyll i kolumnen **Beslut** på mötet (Ja / Nej / Senare) och flytta sedan det vi väljer bort till "Varför" längst ner.
+**Bakgrund:** Innan Sprint 1 behöver vi bestämma vilka bibliotek vi använder, så att alla bygger på samma sätt och vi inte lägger till samma sak på olika sätt i olika stories. Kolumnen **Förslag** är det ursprungliga förslaget, kolumnen **Beslut** är vad gruppen kom överens om.
 
-Förslag: **Ja** = lägg till i Sprint 1, **Senare** = lägg till när en story behöver det, **Nej** = behövs inte.
+**Ja** = installerat, **Senare** = läggs till när det går, **Nej** = används inte.
 
 ### Frontend
 
 | Bibliotek | Vad det löser | Utan det | Förslag | Beslut |
 |---|---|---|---|---|
-| `react-router` (v7) | Routes enligt frontendplanen (`/login`, `/tickets/:id` …) och skyddade routes per roll | Ingen navigering mellan vyer | Ja | |
-| `@tanstack/react-query` | Hämtar data från API:t: laddning, fel, cache och ny hämtning efter till exempel statusbyte | `useEffect` + `useState` i varje vy | Ja | |
-| `vitest` + `@testing-library/react` + `jsdom` | Komponenttester, fungerar direkt med Vite | Inga automatiska tester i frontend | Ja | |
-| `msw` | Låtsas-API i tester och under utveckling innan backend är klar | Frontend måste vänta på backend | Senare | |
-| `lucide-react` | Ikoner (status, kategorier, meny) | Egna SVG-filer | Senare | |
-| `sonner` | Notiser som "Felanmälan skickad" | Egen komponent | Senare | |
-| `clsx` | Villkorliga Tailwind-klasser, till exempel i `StatusBadge` | Strängar med `?:` | Senare | |
-| `prettier` + `prettier-plugin-tailwindcss` | Samma formatering för alla, sorterade Tailwind-klasser | Formatering diskuteras i PR:er | Ja | |
-| `openapi-typescript` | TypeScript-typer genereras från backendens OpenAPI | Typerna skrivs för hand och kan hamna i otakt med backend | Senare | |
+| `react-router` (v8) | Routes enligt frontendplanen (`/login`, `/tickets/:id` …) och skyddade routes per roll | Ingen navigering mellan vyer | Ja | Ja |
+| `@tanstack/react-query` | Hämtar data från API:t: laddning, fel, cache och ny hämtning efter till exempel statusbyte | `useEffect` + `useState` i varje vy | Ja | Ja |
+| `vitest` + `@testing-library/react` + `jsdom` | Komponenttester, fungerar direkt med Vite | Inga automatiska tester i frontend | Ja | Ja |
+| `msw` | Låtsas-API i tester och under utveckling innan backend är klar | Frontend måste vänta på backend | Senare | Ja |
+| `lucide-react` | Ikoner (status, kategorier, meny) | Egna SVG-filer | Senare | Ja |
+| `sonner` | Notiser som "Felanmälan skickad" | Egen komponent | Senare | Ja |
+| `clsx` | Villkorliga Tailwind-klasser, till exempel i `StatusBadge` | Strängar med `?:` | Senare | Ja |
+| `prettier` + `prettier-plugin-tailwindcss` | Samma formatering för alla, sorterade Tailwind-klasser | Formatering diskuteras i PR:er | Ja | Ja |
+| `openapi-typescript` | TypeScript-typer genereras från backendens OpenAPI | Typerna skrivs för hand och kan hamna i otakt med backend | Senare | Senare (stöder inte TypeScript 6 än) |
 | `react-error-boundary` | Fångar fel och ger handgjord respons | Fel some inte fångas orsakar stopp i programmet | Senare | |
 | `react-spinners` | Animationer som körs medan något laddar | Programmet ser tråkigare ut utan dom | Senare | |
 | `react-native-restart` | Behöver inte manuellt spara ändringar | Manuell sparning och omstart blir nödvändigt | Senare | |
@@ -60,11 +60,11 @@ Föreslås inte: `axios` (en liten `fetch`-funktion som lägger till `Authorizat
 
 | Bibliotek | Vad det löser | Utan det | Förslag | Beslut |
 |---|---|---|---|---|
-| `spring-boot-starter-oauth2-resource-server` | Kontrollerar JWT. Väljs i U1, alternativet är `jjwt` och ett eget filter | Vi skriver JWT-kontrollen själva | Ja (beror på U1) | |
-| `springdoc-openapi-starter-webmvc-ui` (3.x för Spring Boot 4) | Swagger UI: dokumentation av API:t och ett enkelt sätt att testa endpoints. Behövs för `openapi-typescript` | API:t dokumenteras för hand | Ja | |
-| Testcontainers (`spring-boot-testcontainers` + `testcontainers-postgresql`) | Integrationstester mot en riktig PostgreSQL. H2 fungerar inte eftersom schemat använder PostgreSQL-enums | Inga integrationstester mot databasen | Ja | |
-| `spring-boot-starter-actuator` | `/actuator/health` för health check vid deploy (T2) och i Docker Compose. Bara `health` exponeras | Ingen health check | Senare (T2) | |
-| ArchUnit | Tester som kontrollerar lagren controller → service → repository | Lagren kontrolleras bara i code review | Nej | |
+| `spring-boot-starter-oauth2-resource-server` | Kontrollerar JWT. Väljs i U1, alternativet är `jjwt` och ett eget filter | Vi skriver JWT-kontrollen själva | Ja (beror på U1) | Ja |
+| `springdoc-openapi-starter-webmvc-ui` (3.x för Spring Boot 4) | Swagger UI: dokumentation av API:t och ett enkelt sätt att testa endpoints. Behövs för `openapi-typescript` | API:t dokumenteras för hand | Ja | Ja |
+| Testcontainers (`spring-boot-testcontainers` + `testcontainers-postgresql`) | Integrationstester mot en riktig PostgreSQL. H2 fungerar inte eftersom schemat använder PostgreSQL-enums | Inga integrationstester mot databasen | Ja | Ja |
+| `spring-boot-starter-actuator` | `/actuator/health` för health check vid deploy (T2) och i Docker Compose. Bara `health` exponeras | Ingen health check | Senare (T2) | Ja |
+| ArchUnit | Tester som kontrollerar lagren controller → service → repository | Lagren kontrolleras bara i code review | Nej | Nej |
 
 Föreslås inte: Lombok (DTO:er skrivs som Java 21-`record`, och vi slipper ställa in Lombok i allas IDE), MapStruct (med få DTO:er är en egen `toDto()` tydligare).
 
@@ -72,15 +72,24 @@ Föreslås inte: Lombok (DTO:er skrivs som Java 21-`record`, och vi slipper stä
 
 | Verktyg | Vad det löser | Förslag | Beslut |
 |---|---|---|---|
-| Flyway `V2__seed.sql` (inget nytt beroende) | Testdata: en användare per roll, en fastighet med lägenheter | Ja | |
-| `@JdbcTypeCode(SqlTypes.NAMED_ENUM)` i entiteterna (inget nytt beroende) | Hibernate sparar PostgreSQL-enums rätt. Utan det försöker Hibernate spara `varchar` och PostgreSQL säger nej | Ja | |
-| Adminer eller pgAdmin i `docker-compose.yml` (bara utveckling) | Se databasen i webbläsaren utan att installera något | Senare | |
+| Flyway `V2__seed.sql` (inget nytt beroende) | Testdata: en användare per roll, en fastighet med lägenheter | Ja | Ja |
+| `@JdbcTypeCode(SqlTypes.NAMED_ENUM)` i entiteterna (inget nytt beroende) | Hibernate sparar PostgreSQL-enums rätt. Utan det försöker Hibernate spara `varchar` och PostgreSQL säger nej | Ja | Ja |
+| Adminer eller pgAdmin i `docker-compose.yml` (bara utveckling) | Se databasen i webbläsaren utan att installera något | Senare | Ja |
 
-**Beslut:** Fylls i efter mötet.
+**Beslut:** Hela gruppen godkände förslaget, med en ändring: allt som föreslogs som Ja eller Senare installeras direkt, i stället för i den story som först behöver det. ArchUnit används inte. `openapi-typescript` väntar tills det stöder TypeScript 6 (vi använder 6.0, biblioteket kräver 5.x). Formulärbiblioteken från #6 (`react-hook-form`, `zod`, `@hookform/resolvers`) installerades samtidigt.
 
-**Varför:** Fylls i efter mötet: vad vi valde, och varför vi valde bort det som fick Nej.
+**Varför:**
+- **Allt på en gång:** när biblioteken redan finns behöver ingen lägga till dem mitt i en story, och vi slipper att två grenar ändrar `package.json` och `pom.xml` samtidigt och får konflikter. Alla uppdaterar en gång (se "Uppdatera efter `git pull`" i README).
+- **Mot ArchUnit:** projektet är litet, och lagren kontrolleras i code review. Testerna skulle ta tid att skriva utan att ge mycket.
+- **`openapi-typescript` senare:** det går inte att installera utan att tvinga fram en äldre TypeScript-version. Tills vidare skriver vi typerna för hand i `src/types/`.
+- **`@hookform/resolvers` 5.x i stället för 6.0:** 6.0 har ett fel i sina beroenden som gör att `npm install` misslyckas. 5.x stöder Zod 4.
 
-**Konsekvenser:** Fylls i efter mötet. Det vi säger Ja till läggs till i `package.json` eller `pom.xml` i den story som först behöver det, inte allt på en gång.
+**Konsekvenser:**
+- Frontend: `npm test` (Vitest, letar bara i `src/`) körs i CI. `npm run format` formaterar med Prettier (utan semikolon, enkla citattecken, sorterade Tailwind-klasser).
+- Backend: `spring-boot-starter-oauth2-resource-server` är installerat, men det är U1 som bestämmer hur JWT ska kontrolleras. Väljer U1 `jjwt` tar vi bort det. `/actuator/health` är öppen redan nu (Spring Boot släpper igenom den som standard). Swagger UI finns på `/swagger-ui.html` men svarar 401 tills säkerheten är inställd i U1.
+- Testcontainers kräver att Docker är igång när integrationstesterna körs.
+- Docker Compose startar också Adminer på http://localhost:8081.
+- Den som drar ändringarna måste köra `docker compose up --build -V`, annars hittar frontend i Docker inte de nya biblioteken.
 
 ## #6 React Hook Form och Zod för formulär
 
