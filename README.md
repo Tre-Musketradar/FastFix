@@ -106,6 +106,7 @@ Mer information i [CONTRIBUTING.md](docs/CONTRIBUTING.md) och [uppstart.md](docs
 |----------|----------|
 | [Introduktion](docs/introduktion.md) | **Börja här om du är ny:** vad vi bygger, hur vi jobbar, teknik och beslut |
 | [Att diskutera](docs/att-diskutera.md) | Förslag som gruppen ska ta ställning till |
+| [Dokumentregister](docs/dokumentregister.md) | Alla dokument, med datum då de lades till |
 | [Gruppkontrakt](docs/gruppkontrakt.md) | Hur vi samarbetar |
 | [Definition of Done](docs/definition-of-done.md) | När en story räknas som klar |
 | [MVP](docs/mvp.md) | Vad som ingår i första versionen |
