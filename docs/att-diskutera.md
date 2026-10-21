@@ -1,10 +1,12 @@
 # Att diskutera på gruppmötet
 
-Förslag som gruppen behöver ta ställning till inför läxan till pass 4 (onsdag 2026-10-21) och sprint planning måndag 2026-10-26. Inget här gäller förrän vi är överens. Det vi bestämmer flyttas sedan till rätt dokument (gruppkontraktet, beslutsloggen eller CONTRIBUTING), och punkten stryks här.
+Förslag som gruppen behöver ta ställning till inför sprint planning måndag 2026-10-26, då Sprint 1 börjar. Inget här gäller förrän vi är överens. Det vi bestämmer flyttas sedan till rätt dokument (gruppkontraktet, beslutsloggen eller CONTRIBUTING), och punkten stryks här.
 
-## 1. Läxan till pass 4: vad saknas?
+## 1. Läxorna: vad saknas?
 
-Från [`resurser/Laxa/00-läxa_2.md`](resurser/Laxa/00-läxa_2.md):
+### Läxan till pass 4 ([`00-läxa_2.md`](resurser/Laxa/00-läxa_2.md))
+
+Allt här ska vara klart innan Sprint 1 börjar.
 
 | Uppgift | Status | Vad som saknas |
 |---|---|---|
@@ -16,6 +18,19 @@ Från [`resurser/Laxa/00-läxa_2.md`](resurser/Laxa/00-läxa_2.md):
 | "Kod och kvalitet" i gruppkontraktet | ⚠️ Delvis | Se punkt 2 nedan |
 | Minst ett nytt beslut i beslutsloggen | ✅ Klart (#6, #7) | Läraren föreslår också merge-strategi och grennamn, se punkt 3 |
 | Databasschemat klart (senast måndag) | ✅ Klart | |
+
+### Läxan till måndag 2026-10-26 ([`00-läxa_3.md`](resurser/Laxa/00-läxa_3.md))
+
+Läs först [`01-sprintrytmen.md`](resurser/01-sprintrytmen.md), [`02-sprint-planning.md`](resurser/02-sprint-planning.md) och [`03-infor-review.md`](resurser/03-infor-review.md). Läs sedan [`04-git-rutiner.md`](resurser/04-git-rutiner.md) och [`05-konflikter-forebygga-och-losa.md`](resurser/05-konflikter-forebygga-och-losa.md) ordentligt. Ha [`06-nar-det-gar-fel.md`](resurser/06-nar-det-gar-fel.md) som uppslag.
+
+| Uppgift | Status | Vad som saknas |
+|---|---|---|
+| Allt från läxan till pass 4 är klart | ⚠️ | Se tabellen ovan |
+| Alla kan starta projektet enligt README | ⚠️ | Läxan säger `git switch main && git pull`, men `main` ligger 9 commits efter `staging` (biblioteken, kursmaterialet, gruppkontraktet). Se punkt 9 |
+| De översta korten i backloggen är redo | ✅ Klart | Alla stories har acceptanskriterier och storlek, ingen är XL |
+| Första storyn att bygga tillsammans är vald | ❌ | Se punkt 6 |
+| Product Owner och Scrum Master för Sprint 1 | ❌ | Se punkt 10 |
+| Gruppkontraktet säger när vi har standup och vem som loggar | ❌ | Se punkt 11 |
 
 ## 2. Gruppkontraktet: "Kod och kvalitet"
 
@@ -118,7 +133,11 @@ Ermias lade till tre bibliotek i tabellen i beslut #7, men kolumnen "Beslut" är
 
 Läraren föreslår att bygga den första vertikala storyn **tillsammans**, antingen alla vid samma skärm (mobbprogrammering) eller i par. Då blir den mallen för hur alla andra stories byggs: hur en komponent ser ut, hur vi anropar API:t, hur en endpoint ser ut, hur vi hanterar fel.
 
-**Förslag:** bygg story 1 (Logga in med roll) tillsammans under de första dagarna i Sprint 1.
+Läxan till måndag kräver att vi väljer storyn. Den ska gå genom alla lager men inte vara för stor.
+
+**Förslag:** story 1 (Logga in med roll), eftersom alla andra stories behöver inloggning och den sätter mönstret för både frontend och backend. Den är L, så vi kan dela upp den (se punkt 2) eller bygga den i två par: ett par på backend (endpoint, JWT, testanvändare) och ett på frontend (inloggningssida, AuthContext, skyddade sidor).
+
+**Alternativ:** story 2 (Lägga till fastighet), M. Mindre, men då behöver vi en tillfällig lösning för inloggningen.
 
 ## 7. Inloggning (U1): tre öppna frågor
 
@@ -140,8 +159,77 @@ Måste vara bestämt innan story 1 börjar. Beslutet skrivs in i beslutsloggen s
 - **Första uppgift:** en liten PR (till exempel sitt namn i README och gruppkontraktet) och en granskning, precis som läxan kräver av alla.
 - **README:** lägg till dem i tabellen "Teamet".
 
+## 9. Hur kommer koden till `main`?
+
+Lärarens material utgår från att alla jobbar mot `main`. Vi jobbar mot `staging` och för över till `main` med en PR `staging → main`. Två saker följer av det:
+
+- **Läxan:** alla ska kunna köra `git switch main && git pull` och starta projektet. Då måste `staging` föras över till `main` före måndag.
+- **Reviewn:** demot visar det som finns i `main`. Det som bara finns i `staging` räknas inte som klart.
+
+**Förslag:** en PR `staging → main` varje fredag (och när det behövs inför reviewn), när `staging` fungerar. Scrum Master ser till att den görs. Demot testas från en uppdaterad `main` senast söndag kväll.
+
+## 10. Roller i Sprint 1
+
+| Roll | Ansvar |
+|---|---|
+| **Product Owner** | Ser till att backloggen är prioriterad och att de översta korten är redo. Leder sprint planning. Svarar på frågor om vad en story betyder. |
+| **Scrum Master** | Håller tiden på måndagens möten (review ca 20 min, retro 15–20 min, planning 30–45 min). Leder standup och loggar den. Leder retron. Ser till att hinder tas om hand. |
+
+Alla, även PO och SM, bygger, granskar och testar.
+
+**Att bestämma:** vem som är PO och vem som är SM i Sprint 1. Gruppkontraktet säger att Scrum Master roterar varje vecka. Ska PO också rotera? Läraren tycker att det är bra att prova olika roller, det ger mer att skriva om i reflektionen.
+
+## 11. Daily standup
+
+Läxan kräver att gruppkontraktet säger **när** vi har standup och att **Scrum Master loggar den**.
+
+Enligt läraren: max 15 minuter, samma tid varje dag tisdag–fredag. Var och en säger vad hen gjorde igår, vad hen ska göra idag och om något hindrar. **Säg också vilka filer eller delar av koden du ska ändra**, så att vi inte krockar. Bara Scrum Master skriver i `standup.md`, annars blir det en konflikt i filen nästan varje dag.
+
+**Förslag till gruppkontraktet** (avsnittet "Närvaro och frånvaro"):
+
+> - Daily standup hålls tisdag–fredag kl. ___ i ___ (Slack-huddle / på plats), max 15 minuter.
+> - Scrum Master loggar standupen i sprintens `standup.md` direkt efter mötet. Ingen annan skriver i filen.
+> - Den som inte kan vara med skriver sin rad (igår, idag, hinder) i Slack före standupen, så tar Scrum Master med den i loggen.
+
+Den sista punkten ersätter "Den som missar daily standup skriver sin rad i sprintens `standup.md` samma dag", som krockar med att bara Scrum Master skriver i filen.
+
+**Att bestämma:** tid och plats.
+
+## 12. Sprint planning måndag: förslag
+
+Läraren säger: ta hellre in för lite än för mycket i Sprint 1, och ha ungefär dubbelt så mycket redo som vi tror att vi hinner.
+
+**Förslag på sprintmål:**
+
+> En användare kan logga in med sin roll, och förvaltaren kan lägga till fastigheter och lägenheter som sparas i databasen.
+
+**Förslag på kort**, i ordning:
+
+| Kort | Storlek | Kommentar |
+|---|---|---|
+| U1 Inloggning med JWT (#9) | max ½ dag | Före story 1 |
+| 1 Logga in med roll (#6) | L | Byggs tillsammans, se punkt 6. Rör `SecurityConfig`, Flyway `V2` (testanvändare), routern |
+| 2 Lägga till fastighet (#11) | M | Efter story 1 |
+| 3 Lägga till lägenheter (#12) | M | Efter story 2, samma del av koden |
+| 4 Lägga till hyresgäst (#13) | M | Reserv. Rör tabellen `users`, samma som story 1 |
+| 5 Skapa felanmälan (#14) | M | Reserv |
+
+Lärarens fråga för varje kort: **vilka filer rör det?** Kort som rör samma tabell eller samma knutpunkt (routern, `SecurityConfig`) görs inte samtidigt.
+
+## 13. Fler rutiner från lärarens material
+
+Från [`04-git-rutiner.md`](resurser/04-git-rutiner.md) och [`05-konflikter-forebygga-och-losa.md`](resurser/05-konflikter-forebygga-och-losa.md). **Förslag:** skriv in dem i CONTRIBUTING.
+
+- **Databasschemat ändras av en person i taget.** Säg till på standupen. Efter varje merge som ändrar schemat: nollställ databasen lokalt (`docker compose down -v` och starta igen) och kontrollera att alla migrationer går igenom.
+- **Två migrationer med samma nummer** (till exempel två `V3__...`): den som mergar sist döper om sin.
+- **Konflikter löses lokalt**, inte i GitHubs webbredigerare, så att man kan testa appen innan man pushar.
+- **Trasig `staging` eller `main`:** säg till direkt. Att laga den går före allt annat. Svåra fel ångras med **Revert** på den mergade PR:en.
+- **Varje måndag efter planning:** alla hämtar senaste `staging`, sprintmappen skapas via en PR, gamla grenar tas bort och öppna PR:er från förra sprinten granskas eller stängs.
+- **Kör en gång:** `git config --global pull.rebase false`, så att `git pull` inte frågar hur grenarna ska slås ihop.
+
 ## Ändringar
 
 | Datum | Ändring |
 |---|---|
 | 2026-10-20 | Första versionen |
+| 2026-10-21 | La till läxan till måndag (`00-läxa_3.md`) och punkt 9–13: `staging → main`, roller, daily standup, förslag till sprint planning och rutiner från lärarens nya material. Uppdaterade punkt 6 |

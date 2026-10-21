@@ -2,7 +2,7 @@
 
 <!--
   INSTRUKTION
-  Håll standupen muntligt, max 15 minuter. Logga sedan kort här, en rad per person.
+  Håll standupen muntligt, max 15 minuter. Scrum Master loggar sedan kort här, en rad per person. Ingen annan skriver i filen.
   Det ska ta två minuter att fylla i. Stödord räcker.
   Lägg till ett nytt avsnitt för varje dag, nyaste dagen längst ner.
   Hinder löses inte på standupen. Skriv vem som hjälper till, och ta det efteråt.
