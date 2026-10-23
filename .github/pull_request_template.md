@@ -9,9 +9,9 @@ Closes #<!-- issuenummer, t.ex. Closes #4. Då stängs issuen och kortet flyttas
 <!--
   Steg för granskaren. Utgå från acceptanskriterierna.
   Exempel:
-  1. Starta appen och gå till ett hushåll.
-  2. Lägg till en syssla utan namn: ett felmeddelande ska visas.
-  3. Lägg till en syssla med namn: den ska synas direkt i listan.
+  1. Starta appen med `docker compose up --build` och logga in som hyresgäst.
+  2. Skicka en felanmälan utan beskrivning: ett felmeddelande ska visas.
+  3. Skicka en felanmälan med beskrivning: den ska synas direkt i listan med status Ny.
 -->
 
 1.
@@ -20,15 +20,18 @@ Closes #<!-- issuenummer, t.ex. Closes #4. Då stängs issuen och kortet flyttas
 ## Definition of Done
 
 <!--
-  Den här listan ska spegla er docs/definition-of-done.md.
-  Uppdatera den här mallen när ni ändrar er DoD.
+  Samma punkter, i samma ordning, som i docs/definition-of-done.md.
+  Ändras DoD ska den här listan ändras i samma PR.
+  Punkt 3 och 7 kan bara bockas av av granskaren eller efter mergen.
 -->
 
-- [ ] Alla acceptanskriterier är uppfyllda och testade för hand
-- [ ] PR:en går mot `staging` och CI är grönt
-- [ ] Applikationen startar och körs utan fel (`docker compose up --build`)
-- [ ] Inga `console.log`, utkommenterad kod eller TODO kvar
-- [ ] README eller `docs/` är uppdaterad om det behövs
+- [ ] 1. Alla acceptanskriterier är uppfyllda och testade för hand
+- [ ] 2. PR:en går mot `staging` och CI är grönt
+- [ ] 3. Granskad och godkänd av minst en annan i teamet (Review changes → Approve)
+- [ ] 4. Applikationen startar och körs utan fel (`docker compose up --build`)
+- [ ] 5. Inga `console.log`, utkommenterad kod eller TODO kvar i ändringen
+- [ ] 6. README eller `docs/` är uppdaterad om ändringen påverkar hur man startar eller använder projektet
+- [ ] 7. Kortet på boarden flyttas till "Klart" efter mergen (sker automatiskt med `Closes #`)
 
 ## Till granskaren
 
