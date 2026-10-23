@@ -39,7 +39,7 @@ Alla Markdown-dokument i repot, med datum då de lades till. Varje nytt dokument
 
 | Tillagd | Dokument | Innehåll |
 |---|---|---|
-| 2026-10-15 | [pull_request_template.md](../.github/pull_request_template.md) | PR-mallen med DoD-checklistan |
+| 2026-10-15 | [pull_request_template.md](../.github/pull_request_template.md) | PR-mallen: vad PR:en gör, hur man testar den och DoD-checklistan (samma sju punkter som `definition-of-done.md`) |
 | 2026-10-15 | [ISSUE_TEMPLATE/user-story.md](../.github/ISSUE_TEMPLATE/user-story.md) | Issuemall för en ny user story |
 | 2026-10-15 | [ISSUE_TEMPLATE/bugg.md](../.github/ISSUE_TEMPLATE/bugg.md) | Issuemall för en bugg |
 
@@ -89,3 +89,4 @@ Läxorna i den ordning vi fick dem, och materialet som hör till varje läxa. Al
 | Datum | Ändring |
 |---|---|
 | 2026-10-21 | Första versionen, med alla dokument som fanns i `staging` |
+| 2026-10-23 | Uppdaterade beskrivningen av PR-mallen |

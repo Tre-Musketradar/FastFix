@@ -11,7 +11,7 @@ Allt här ska vara klart innan Sprint 1 börjar.
 | Uppgift | Status | Vad som saknas |
 |---|---|---|
 | `main` är skyddad | ✅ Klart | |
-| PR-mallen stämmer med DoD | ❌ | Mallen saknar DoD-punkt 3 (granskad och godkänd) och 7 (kortet i Klart) |
+| PR-mallen stämmer med DoD | ✅ Klart | Alla sju DoD-punkter finns i mallen, i samma ordning (2026-10-23) |
 | Projektskelettet startar hos alla | ⚠️ Delvis | Läxan kräver en **testendpoint**: frontend anropar backend, och backend läser från databasen. Nu svarar backend 401 på allt |
 | Alla har öppnat en PR | ⚠️ | Martin har inte öppnat någon PR än |
 | Alla har granskat en annans PR | ✅ Klart | |
@@ -26,7 +26,7 @@ Läs först [`01-sprintrytmen.md`](resurser/01-sprintrytmen.md), [`02-sprint-pla
 | Uppgift | Status | Vad som saknas |
 |---|---|---|
 | Allt från läxan till pass 4 är klart | ⚠️ | Se tabellen ovan |
-| Alla kan starta projektet enligt README | ⚠️ | Läxan säger `git switch main && git pull`, men `main` ligger 9 commits efter `staging` (biblioteken, kursmaterialet, gruppkontraktet). Se punkt 9 |
+| Alla kan starta projektet enligt README | ⚠️ | Läxan säger `git switch main && git pull`, men `main` ligger efter `staging` (biblioteken, kursmaterialet, gruppkontraktet). Release-PR `staging → main` öppnad 2026-10-23. Se punkt 9 |
 | De översta korten i backloggen är redo | ✅ Klart | Alla stories har acceptanskriterier och storlek, ingen är XL |
 | Första storyn att bygga tillsammans är vald | ❌ | Se punkt 6 |
 | Product Owner och Scrum Master för Sprint 1 | ❌ | Se punkt 10 |
@@ -233,3 +233,4 @@ Från [`04-git-rutiner.md`](resurser/04-git-rutiner.md) och [`05-konflikter-fore
 |---|---|
 | 2026-10-20 | Första versionen |
 | 2026-10-21 | La till läxan till måndag (`00-läxa_3.md`) och punkt 9–13: `staging → main`, roller, daily standup, förslag till sprint planning och rutiner från lärarens nya material. Uppdaterade punkt 6 |
+| 2026-10-23 | PR-mallen stämmer nu med DoD. Release `staging → main` öppnad |
