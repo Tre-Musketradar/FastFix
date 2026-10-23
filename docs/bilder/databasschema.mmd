@@ -1,0 +1,65 @@
+erDiagram
+    USERS ||--o{ PROPERTIES : "äger"
+    PROPERTIES ||--o{ APARTMENTS : "har"
+    USERS |o--o| APARTMENTS : "bor i"
+    APARTMENTS ||--o{ TICKETS : "har"
+    USERS ||--o{ TICKETS : "skapar / tilldelas"
+    TICKETS ||--o{ STATUS_HISTORY : "loggar"
+    TICKETS ||--o{ COMMENTS : "har"
+    TICKETS ||--o{ ATTACHMENTS : "har"
+
+    USERS {
+        bigint id PK
+        varchar name
+        varchar email UK
+        varchar password_hash
+        user_role role
+    }
+    PROPERTIES {
+        bigint id PK
+        varchar name
+        varchar address
+        bigint owner_id FK
+    }
+    APARTMENTS {
+        bigint id PK
+        bigint property_id FK
+        varchar number "unik per fastighet"
+        int floor
+        bigint tenant_id FK,UK "NULL = ledig"
+    }
+    TICKETS {
+        bigint id PK
+        bigint apartment_id FK
+        bigint created_by FK
+        bigint assigned_to FK "NULL tills tilldelad"
+        ticket_category category
+        varchar room "ny i V2"
+        text description
+        boolean master_key_allowed
+        ticket_priority priority "default NORMAL"
+        ticket_status status "default NEW"
+        timestamptz created_at
+        timestamptz closed_at
+    }
+    STATUS_HISTORY {
+        bigint id PK
+        bigint ticket_id FK
+        ticket_status old_status "NULL vid skapande"
+        ticket_status new_status
+        bigint changed_by FK
+        timestamptz changed_at
+    }
+    COMMENTS {
+        bigint id PK
+        bigint ticket_id FK
+        bigint author_id FK
+        text body
+        timestamptz created_at
+    }
+    ATTACHMENTS {
+        bigint id PK
+        bigint ticket_id FK
+        varchar file_url
+        timestamptz uploaded_at
+    }

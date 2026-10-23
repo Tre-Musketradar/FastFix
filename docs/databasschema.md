@@ -71,6 +71,8 @@ erDiagram
     }
 ```
 
+Samma diagram som bild, med fler detaljer (unika kolumner, standardvärden och kommentarer): [`bilder/databasschema.png`](bilder/databasschema.png). Källan finns i [`bilder/databasschema.mmd`](bilder/databasschema.mmd). Bilden har också kolumnen `room` i `tickets`, markerad "ny i V2". Den finns inte i `V1__init.sql` än, och det är inte bestämt om rummet ska vara fritt textfält eller en fast lista (öppen fråga 6 i [frontendplanen](frontend-plan.md)).
+
 ## Tabeller
 
 | Tabell | Innehåll |
@@ -93,3 +95,9 @@ Värdena är samma i databasen, backend och frontend ([frontendplanen](frontend-
 | `ticket_status` | `NEW`, `ASSIGNED`, `IN_PROGRESS`, `WAITING`, `RESOLVED`, `CLOSED` |
 | `ticket_category` | `PLUMBING`, `ELECTRICAL`, `APPLIANCES`, `VENTILATION`, `LOCKS_DOORS`, `OTHER` |
 | `ticket_priority` | `URGENT`, `HIGH`, `NORMAL`, `LOW` |
+
+## Ändringar
+
+| Datum | Ändring |
+|---|---|
+| 2026-10-21 | La till diagrammet som bild (`bilder/databasschema.png` och `.mmd`) |

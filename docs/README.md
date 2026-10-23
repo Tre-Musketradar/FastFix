@@ -4,6 +4,9 @@ Dokumentation för hela projektet (frontend, backend och databas).
 
 | Fil / mapp | Innehåll |
 |------|----------|
+| [dokumentregister.md](dokumentregister.md) | **Alla dokument**, med datum då de lades till |
+| [introduktion.md](introduktion.md) | För nya i gruppen: vad vi bygger, hur vi jobbar, teknik och beslut |
+| [att-diskutera.md](att-diskutera.md) | Förslag som gruppen ska ta ställning till |
 | [gruppkontrakt.md](gruppkontrakt.md) | Hur vi samarbetar |
 | [mvp.md](mvp.md) | Vad som ingår i första versionen |
 | [definition-of-done.md](definition-of-done.md) | När en story räknas som klar |
@@ -17,3 +20,9 @@ Dokumentation för hela projektet (frontend, backend och databas).
 | [bilder/](bilder/) | Mockups och andra bilder |
 
 Se även [CONTRIBUTING.md](CONTRIBUTING.md) för grenflödet och [uppstart.md](uppstart.md) för teknikval och hur repot sattes upp.
+
+## Ändringar
+
+| Datum | Ändring |
+|---|---|
+| 2026-10-21 | La till dokumentregister, introduktion och att diskutera i tabellen |

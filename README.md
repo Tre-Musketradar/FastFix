@@ -51,8 +51,21 @@ docker compose up --build
 | Frontend | http://localhost:5173 |
 | Backend (API) | http://localhost:8080/api |
 | PostgreSQL | `localhost:5432` |
+| Swagger UI | http://localhost:8080/swagger-ui.html (öppen när inloggningen är klar, U1) |
+| Adminer (se databasen) | http://localhost:8081 (system PostgreSQL, uppgifter från `.env`) |
 
 Stoppa med `Ctrl+C`. Nollställ databasen med `docker compose down -v`.
+
+### Uppdatera efter `git pull`
+
+När någon har lagt till ett bibliotek räcker det att köra det här (kopiera och klistra in från projektets rotmapp):
+
+```bash
+git checkout staging && git pull
+docker compose up --build -V
+```
+
+`-V` behövs: utan den återanvänder Docker den gamla `node_modules` och frontend hittar inte de nya biblioteken. Kör också `cd frontend && npm ci` om du kör Vite lokalt eller vill att editorn ska hitta typerna. IntelliJ hämtar backendens bibliotek själv (eller klicka på "Reload Maven Project").
 
 ### Jobba med en del i taget
 
@@ -68,7 +81,7 @@ cd frontend && npm install && npm run dev
 ### Kontroller före PR
 
 ```bash
-cd frontend && npm run lint && npm run typecheck && npm run build
+cd frontend && npm run lint && npm run typecheck && npm test && npm run build
 cd backend && ./mvnw verify
 ```
 
@@ -91,6 +104,9 @@ Mer information i [CONTRIBUTING.md](docs/CONTRIBUTING.md) och [uppstart.md](docs
 
 | Dokument | Innehåll |
 |----------|----------|
+| [Introduktion](docs/introduktion.md) | **Börja här om du är ny:** vad vi bygger, hur vi jobbar, teknik och beslut |
+| [Att diskutera](docs/att-diskutera.md) | Förslag som gruppen ska ta ställning till |
+| [Dokumentregister](docs/dokumentregister.md) | Alla dokument, med datum då de lades till |
 | [Gruppkontrakt](docs/gruppkontrakt.md) | Hur vi samarbetar |
 | [Definition of Done](docs/definition-of-done.md) | När en story räknas som klar |
 | [MVP](docs/mvp.md) | Vad som ingår i första versionen |
