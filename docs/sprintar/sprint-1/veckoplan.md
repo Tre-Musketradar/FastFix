@@ -6,7 +6,9 @@ Sprint 1 pågår måndag 2026-10-26 till söndag 2026-11-01. Vi har lite erfaren
 |---|---|
 | Product Owner (PO) | Jose Muñoz |
 | Scrum Master (SM) | Ermias Demessie |
-| Utvecklare | Alla tre, även PO och SM |
+| Utvecklare | Alla, även PO och SM |
+
+**Kanske två till:** Benjamin och Leo bestämmer måndag 2026-10-26, efter ett möte med läraren, om de går med i gruppen. Planeringen har plats för dem (se nedan).
 
 ## Före mötet (senast söndag 2026-10-25)
 
@@ -35,6 +37,18 @@ Efter mötet:
 - PO sätter fältet **Sprint** till "Sprint 1" på de valda korten och flyttar dem till **Att göra**. Korten som inte togs in ligger kvar i Backlog.
 - PO gör en PR med den ifyllda `planning.md`.
 - Vi börjar bygga #6 tillsammans.
+
+## Om Benjamin och Leo går med
+
+Samma dag, med hjälp av någon i gruppen:
+
+- [ ] Bjuds in till organisationen **Tre-Musketradar** på GitHub (Ermias är admin) och till Slack.
+- [ ] Läser [introduktionen](../../introduktion.md). Där står vad vi bygger, hur vi jobbar och vilken teknik vi använder.
+- [ ] Startar projektet enligt [README](../../../README.md). Startsidan ska visa "Backend: ok".
+- [ ] Skriver under [gruppkontraktet](../../gruppkontrakt.md) i en egen gren och PR. Det blir deras första PR, och så övar de flödet.
+- [ ] Läggs till i `planning.md` (kapacitet och kort) och i teamtabellen i README.
+
+I sprint 1 tar de ett kort tillsammans eller i par med någon av oss, gärna #12 eller #13. Rollerna PO och SM ändras inte den här sprinten.
 
 ## Veckan
 
