@@ -12,7 +12,7 @@ Allt här ska vara klart innan Sprint 1 börjar.
 |---|---|---|
 | `main` är skyddad | ✅ Klart | |
 | PR-mallen stämmer med DoD | ✅ Klart | Alla sju DoD-punkter finns i mallen, i samma ordning (2026-10-23) |
-| Projektskelettet startar hos alla | ⚠️ Delvis | Läxan kräver en **testendpoint**: frontend anropar backend, och backend läser från databasen. Nu svarar backend 401 på allt |
+| Projektskelettet startar hos alla | ✅ Klart | Testendpoint `GET /api/ping`: startsidan anropar backend, som läser från databasen (2026-10-24). Alla behöver fortfarande testa att starta projektet hos sig |
 | Alla har öppnat en PR | ⚠️ | Martin har inte öppnat någon PR än |
 | Alla har granskat en annans PR | ✅ Klart | |
 | "Kod och kvalitet" i gruppkontraktet | ⚠️ Delvis | Se punkt 2 nedan |
@@ -234,3 +234,4 @@ Från [`04-git-rutiner.md`](resurser/04-git-rutiner.md) och [`05-konflikter-fore
 | 2026-10-20 | Första versionen |
 | 2026-10-21 | La till läxan till måndag (`00-läxa_3.md`) och punkt 9–13: `staging → main`, roller, daily standup, förslag till sprint planning och rutiner från lärarens nya material. Uppdaterade punkt 6 |
 | 2026-10-23 | PR-mallen stämmer nu med DoD. Release `staging → main` öppnad |
+| 2026-10-24 | Testendpointen finns (`/api/ping`) |
