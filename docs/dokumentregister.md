@@ -34,6 +34,11 @@ Alla Markdown-dokument i repot, med datum då de lades till. Varje nytt dokument
 | 2026-10-15 | [sprintar/sprint-mall/review.md](sprintar/sprint-mall/review.md) | Mall: förberedelse och feedback från sprint review |
 | 2026-10-15 | [sprintar/sprint-mall/retro.md](sprintar/sprint-mall/retro.md) | Mall: retrospektiv |
 | 2026-10-15 | [reflektioner/MALL.md](reflektioner/MALL.md) | Mall för den individuella reflektionen (lämnas in vecka 8) |
+| 2026-10-24 | [sprintar/sprint-1/veckoplan.md](sprintar/sprint-1/veckoplan.md) | Sprint 1 steg för steg: roller (PO Jose, SM Ermias), måndagens dagordning, veckan dag för dag och vad PO, SM och alla gör |
+| 2026-10-24 | [sprintar/sprint-1/planning.md](sprintar/sprint-1/planning.md) | Förslag till sprint planning 2026-10-26: sprintmål, kort med ansvariga, vilka filer korten rör, risker |
+| 2026-10-24 | [sprintar/sprint-1/standup.md](sprintar/sprint-1/standup.md) | Scrum Masters logg, tisdag 2026-10-27 till fredag 2026-10-30 |
+| 2026-10-24 | [sprintar/sprint-1/review.md](sprintar/sprint-1/review.md) | Review 2026-11-02 (del 1 klar senast söndag 2026-11-01) |
+| 2026-10-24 | [sprintar/sprint-1/retro.md](sprintar/sprint-1/retro.md) | Retro 2026-11-02, leds av Ermias |
 
 ## GitHub-mallar
 
@@ -90,3 +95,4 @@ Läxorna i den ordning vi fick dem, och materialet som hör till varje läxa. Al
 |---|---|
 | 2026-10-21 | Första versionen, med alla dokument som fanns i `staging` |
 | 2026-10-23 | Uppdaterade beskrivningen av PR-mallen |
+| 2026-10-24 | La till filerna för sprint 1 |
