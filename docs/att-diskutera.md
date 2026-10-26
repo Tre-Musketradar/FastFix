@@ -151,13 +151,7 @@ Måste vara bestämt innan story 1 börjar. Beslutet skrivs in i beslutsloggen s
 
 ## 8. Om två nya personer börjar i gruppen
 
-- **Introduktion:** de läser [introduktionen](introduktion.md) och startar projektet enligt README.
-- **Åtkomst:** inbjudan till organisationen Tre-Musketradar och boarden.
-- **Gruppkontraktet:** de läser det och skriver under. Avsnittet om beslut säger "vi är tre, så det blir alltid en majoritet" och behöver skrivas om. Vad gäller om det blir lika vid en omröstning, till exempel när någon är borta?
-- **Fokusområden:** projektförslaget har tre (användare och säkerhet, ärenden i API:t, frontend). Hur fördelar vi med fem?
-- **Scrum Master** roterar varje vecka. Ny ordning med fem personer?
-- **Första uppgift:** en liten PR (till exempel sitt namn i README och gruppkontraktet) och en granskning, precis som läxan kräver av alla.
-- **README:** lägg till dem i tabellen "Teamet".
+Stryks. De två går inte med i gruppen (besked 2026-10-26). Vi fortsätter som tre.
 
 ## 9. Hur kommer koden till `main`?
 
@@ -235,3 +229,4 @@ Från [`04-git-rutiner.md`](resurser/04-git-rutiner.md) och [`05-konflikter-fore
 | 2026-10-21 | La till läxan till måndag (`00-läxa_3.md`) och punkt 9–13: `staging → main`, roller, daily standup, förslag till sprint planning och rutiner från lärarens nya material. Uppdaterade punkt 6 |
 | 2026-10-23 | PR-mallen stämmer nu med DoD. Release `staging → main` öppnad |
 | 2026-10-24 | Testendpointen finns (`/api/ping`) |
+| 2026-10-26 | Punkt 8 stryks: de två nya går inte med i gruppen |

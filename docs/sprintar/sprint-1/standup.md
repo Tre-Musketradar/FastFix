@@ -9,8 +9,6 @@
 -->
 
 **Scrum Master:** Ermias Demessie
-<!-- Raderna för Benjamin och Leo tas bort om de inte går med. -->
-
 **Tid och plats:** <!-- Bestäms på mötet 2026-10-26 och skrivs in i gruppkontraktet. -->
 
 ## Tisdag 2026-10-27
@@ -20,8 +18,6 @@
 | Jose | | | | |
 | Martin | | | | |
 | Ermias | | | | |
-| Benjamin | | | | |
-| Leo | | | | |
 
 ## Onsdag 2026-10-28
 
@@ -30,8 +26,6 @@
 | Jose | | | | |
 | Martin | | | | |
 | Ermias | | | | |
-| Benjamin | | | | |
-| Leo | | | | |
 
 ## Torsdag 2026-10-29
 
@@ -40,8 +34,6 @@
 | Jose | | | | |
 | Martin | | | | |
 | Ermias | | | | |
-| Benjamin | | | | |
-| Leo | | | | |
 
 ## Fredag 2026-10-30
 
@@ -50,5 +42,3 @@
 | Jose | | | | |
 | Martin | | | | |
 | Ermias | | | | |
-| Benjamin | | | | |
-| Leo | | | | |
