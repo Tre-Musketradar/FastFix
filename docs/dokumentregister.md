@@ -20,7 +20,7 @@ Alla Markdown-dokument i repot, med datum då de lades till. Varje nytt dokument
 | 2026-10-15 | [frontend-plan.md](frontend-plan.md) | Vyer per roll, mappstruktur, typer och plan per sprint för frontend |
 | 2026-10-15 | [CONTRIBUTING.md](CONTRIBUTING.md) | Grenflödet, regler för PR:er och vägen från issue till Klart |
 | 2026-10-15 | [uppstart.md](uppstart.md) | Hur repot sattes upp: teknikval, organisation, grenskydd och CI |
-| 2026-10-20 | [introduktion.md](introduktion.md) | För nya i gruppen: vad vi bygger, hur vi jobbar, tekniken och besluten i korthet |
+| 2026-10-20 | [introduktion.md](introduktion.md) | Projektet i korthet: vad vi bygger, hur vi jobbar, tekniken och besluten. Från början skriven för nya medlemmar, sedan 2026-10-26 en sammanfattning |
 | 2026-10-20 | [att-diskutera.md](att-diskutera.md) | Förslag som gruppen ska ta ställning till och vad som saknas för läxorna |
 | 2026-10-21 | [dokumentregister.md](dokumentregister.md) | Det här dokumentet |
 
@@ -96,3 +96,4 @@ Läxorna i den ordning vi fick dem, och materialet som hör till varje läxa. Al
 | 2026-10-21 | Första versionen, med alla dokument som fanns i `staging` |
 | 2026-10-23 | Uppdaterade beskrivningen av PR-mallen |
 | 2026-10-24 | La till filerna för sprint 1 |
+| 2026-10-26 | Ny beskrivning av `introduktion.md` |
