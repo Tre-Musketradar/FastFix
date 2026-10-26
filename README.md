@@ -59,6 +59,19 @@ docker compose up --build
 
 Stoppa med `Ctrl+C`. Nollställ databasen med `docker compose down -v`.
 
+### Behöver jag installera Java (JDK)?
+
+Projektet använder **JDK 21** överallt: `backend/pom.xml` (`<java.version>21</java.version>`), Docker (`eclipse-temurin-21`) och CI (`java-version: 21`).
+
+- **Startar du bara projektet med `docker compose up --build`?** Då behöver du ingen JDK på datorn. Docker har sin egen.
+- **Ska du koda backend i IDE:n eller köra `./mvnw` direkt?** Då behöver du JDK 21. Använd Eclipse Temurin 21, samma som Docker och CI.
+  - Mac: `brew install --cask temurin@21`
+  - Windows: installationsprogrammet från https://adoptium.net (version 21 LTS)
+  - IntelliJ: *File → Project Structure → SDK → Download JDK → version 21, Eclipse Temurin*
+- **Kontrollera:** `java -version` ska visa `21.x`.
+
+Har du en annan version installerad, t.ex. 17 eller 25, välj 21 för det här projektet. Med 17 går det inte att bygga. I IntelliJ väljer du SDK per projekt, så du behöver inte avinstallera något.
+
 ### Uppdatera efter `git pull`
 
 När någon har lagt till ett bibliotek räcker det att köra det här (kopiera och klistra in från projektets rotmapp):
