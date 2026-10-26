@@ -103,6 +103,8 @@ Alla användare har lösenordet `test1234`. En per roll att logga in med:
 
 Innehåll: 16 användare (2 förvaltare, 3 tekniker och 11 hyresgäster, varav en utan lägenhet), 3 fastigheter, 13 lägenheter (3 lediga), 16 ärenden i alla statusar, kategorier och prioriteter, statushistorik för varje ärende och 11 kommentarer. Se dem i Adminer (http://localhost:8081).
 
+Mer om Docker, databasen och inloggningen: [instruktionsboken](docs/databas-och-docker.md).
+
 Filen körs inte automatiskt och är bara till för utveckling. Ändras databasschemat (en ny Flyway-migration) ska `db/testdata.sql` uppdateras i samma PR.
 
 ### Jobba med en del i taget
@@ -143,6 +145,7 @@ Mer information i [CONTRIBUTING.md](docs/CONTRIBUTING.md) och [uppstart.md](docs
 | Dokument | Innehåll |
 |----------|----------|
 | [Introduktion](docs/introduktion.md) | **Börja här om du är ny:** vad vi bygger, hur vi jobbar, teknik och beslut |
+| [Databas och Docker](docs/databas-och-docker.md) | Instruktionsbok: Docker, databasen, testdata och inloggning |
 | [Att diskutera](docs/att-diskutera.md) | Förslag som gruppen ska ta ställning till |
 | [Dokumentregister](docs/dokumentregister.md) | Alla dokument, med datum då de lades till |
 | [Gruppkontrakt](docs/gruppkontrakt.md) | Hur vi samarbetar |
