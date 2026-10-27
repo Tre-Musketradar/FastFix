@@ -83,6 +83,30 @@ docker compose up --build -V
 
 `-V` behövs: utan den återanvänder Docker den gamla `node_modules` och frontend hittar inte de nya biblioteken. Kör också `cd frontend && npm ci` om du kör Vite lokalt eller vill att editorn ska hitta typerna. IntelliJ hämtar backendens bibliotek själv (eller klicka på "Reload Maven Project").
 
+### Testdata
+
+[`db/testdata.sql`](db/testdata.sql) fyller databasen med påhittade men realistiska data, så att man kan testa vyerna utan att skapa allt för hand. Kör det när databasen är igång (från projektets rotmapp):
+
+```bash
+docker compose exec db sh -c 'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -f /db/testdata.sql'
+```
+
+**Varning:** filen tömmer alla tabeller först. Det du har skapat själv försvinner. Kör den igen när du vill börja om från samma data.
+
+Alla användare har lösenordet `test1234`. En per roll att logga in med:
+
+| E-post | Roll | Namn |
+|---|---|---|
+| `forvaltare@felanmalan.se` | Förvaltare (MANAGER) | Maria Lindqvist |
+| `tekniker@felanmalan.se` | Tekniker (TECHNICIAN) | Ali Hassan |
+| `hyresgast@felanmalan.se` | Hyresgäst (TENANT) | Anna Karlsson, Solrosen lgh 1001 |
+
+Innehåll: 16 användare (2 förvaltare, 3 tekniker och 11 hyresgäster, varav en utan lägenhet), 3 fastigheter, 13 lägenheter (3 lediga), 16 ärenden i alla statusar, kategorier och prioriteter, statushistorik för varje ärende och 11 kommentarer. Se dem i Adminer (http://localhost:8081).
+
+Mer om Docker, databasen och inloggningen: [instruktionsboken](docs/databas-och-docker.md).
+
+Filen körs inte automatiskt och är bara till för utveckling. Ändras databasschemat (en ny Flyway-migration) ska `db/testdata.sql` uppdateras i samma PR.
+
 ### Jobba med en del i taget
 
 ```bash

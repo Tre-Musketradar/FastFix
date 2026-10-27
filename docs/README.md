@@ -4,6 +4,7 @@ Dokumentation för hela projektet (frontend, backend och databas).
 
 | Fil / mapp | Innehåll |
 |------|----------|
+| [databas-och-docker.md](databas-och-docker.md) | Instruktionsbok: Docker, hur databasen fungerar, testdata och inloggning |
 | [dokumentregister.md](dokumentregister.md) | **Alla dokument**, med datum då de lades till |
 | [introduktion.md](introduktion.md) | Projektet i korthet: vad vi bygger, hur vi jobbar, teknik och beslut |
 | [att-diskutera.md](att-diskutera.md) | Förslag som gruppen ska ta ställning till |
