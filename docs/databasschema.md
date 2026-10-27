@@ -96,8 +96,13 @@ Värdena är samma i databasen, backend och frontend ([frontendplanen](frontend-
 | `ticket_category` | `PLUMBING`, `ELECTRICAL`, `APPLIANCES`, `VENTILATION`, `LOCKS_DOORS`, `OTHER` |
 | `ticket_priority` | `URGENT`, `HIGH`, `NORMAL`, `LOW` |
 
+## Testdata
+
+[`db/testdata.sql`](../db/testdata.sql) fyller alla tabeller med testdata som följer schemat: användare i alla roller, fastigheter, lägenheter, ärenden i alla statusar med statushistorik och kommentarer. Hur man läser in den står i README, avsnittet "Testdata". Ändras schemat ska filen uppdateras i samma PR.
+
 ## Ändringar
 
 | Datum | Ändring |
 |---|---|
 | 2026-10-21 | La till diagrammet som bild (`bilder/databasschema.png` och `.mmd`) |
+| 2026-10-26 | La till avsnittet Testdata (`db/testdata.sql`) |
