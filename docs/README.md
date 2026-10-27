@@ -6,7 +6,7 @@ Dokumentation för hela projektet (frontend, backend och databas).
 |------|----------|
 | [databas-och-docker.md](databas-och-docker.md) | Instruktionsbok: Docker, hur databasen fungerar, testdata och inloggning |
 | [dokumentregister.md](dokumentregister.md) | **Alla dokument**, med datum då de lades till |
-| [introduktion.md](introduktion.md) | För nya i gruppen: vad vi bygger, hur vi jobbar, teknik och beslut |
+| [introduktion.md](introduktion.md) | Projektet i korthet: vad vi bygger, hur vi jobbar, teknik och beslut |
 | [att-diskutera.md](att-diskutera.md) | Förslag som gruppen ska ta ställning till |
 | [gruppkontrakt.md](gruppkontrakt.md) | Hur vi samarbetar |
 | [mvp.md](mvp.md) | Vad som ingår i första versionen |
@@ -27,4 +27,4 @@ Se även [CONTRIBUTING.md](CONTRIBUTING.md) för grenflödet och [uppstart.md](u
 | Datum | Ändring |
 |---|---|
 | 2026-10-21 | La till dokumentregister, introduktion och att diskutera i tabellen |
-| 2026-10-26 | La till databas-och-docker i tabellen |
+| 2026-10-26 | Ny beskrivning av `introduktion.md` |

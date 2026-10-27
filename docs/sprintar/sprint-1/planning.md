@@ -21,8 +21,6 @@
 - Jose:
 - Martin:
 - Ermias:
-- Benjamin (om hen går med efter mötet med läraren):
-- Leo (om hen går med efter mötet med läraren):
 
 ## Från förra retron
 
@@ -39,8 +37,6 @@ Korten är redo: de har acceptanskriterier och storlek (se [user stories](../../
 | #11 | 2 Lägga till fastighet | M | Martin | Efter #6: en fastighet behöver en förvaltare (`properties.owner_id`). Rör `properties` |
 | #12 | 3 Lägga till lägenheter | M | | Efter #11, samma del av koden. Rör `apartments` |
 | #13 | 4 Lägga till hyresgäst | M | | Reserv. Efter #6 och #12. Rör `users` och `apartments.tenant_id` |
-
-Benjamin och Leo kan gå med måndag 2026-10-26, efter mötet med läraren. Går de med tar de hellre ett kort tillsammans eller i par med någon av oss (t.ex. #12 eller #13) än var sitt nytt kort. Den första dagen går till att komma igång (se [veckoplanen](veckoplan.md)).
 
 **Reserv om allt ovan blir klart:** #14 Skapa felanmälan (M).
 

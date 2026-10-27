@@ -144,8 +144,7 @@ Mer information i [CONTRIBUTING.md](docs/CONTRIBUTING.md) och [uppstart.md](docs
 
 | Dokument | Innehåll |
 |----------|----------|
-| [Introduktion](docs/introduktion.md) | **Börja här om du är ny:** vad vi bygger, hur vi jobbar, teknik och beslut |
-| [Databas och Docker](docs/databas-och-docker.md) | Instruktionsbok: Docker, databasen, testdata och inloggning |
+| [Projektet i korthet](docs/introduktion.md) | Sammanfattning: vad vi bygger, hur vi jobbar, teknik och beslut |
 | [Att diskutera](docs/att-diskutera.md) | Förslag som gruppen ska ta ställning till |
 | [Dokumentregister](docs/dokumentregister.md) | Alla dokument, med datum då de lades till |
 | [Gruppkontrakt](docs/gruppkontrakt.md) | Hur vi samarbetar |
