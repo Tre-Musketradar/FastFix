@@ -56,6 +56,31 @@ Ny → Tilldelad → Pågår ⇄ Väntar → Åtgärdad → Stängd
 
 Gränssnittet visar bara de knappar som rollen får använda. Backend måste ändå kontrollera behörigheten.
 
+## Wireframes och mockups
+
+Bilderna ligger i [`bilder/mockups/`](bilder/mockups/). **Wireframes** visar struktur och flöde, i grått. **Mockups** visar hur appen ska se ut. Mobilvyerna är 390 px breda, förvaltarens vy är för datorn. Datan kommer från [`db/testdata.sql`](../db/testdata.sql).
+
+| Vy | Wireframe | Mockup |
+|---|---|---|
+| Logga in | ![](bilder/mockups/wireframe-1-logga-in.png) | ![](bilder/mockups/mockup-1-logga-in.png) |
+| Mina ärenden (hyresgäst) | ![](bilder/mockups/wireframe-2-mina-arenden.png) | ![](bilder/mockups/mockup-2-mina-arenden.png) |
+| Ny felanmälan | ![](bilder/mockups/wireframe-3-ny-felanmalan.png) | ![](bilder/mockups/mockup-3-ny-felanmalan.png) |
+| Ärende och historik | | ![](bilder/mockups/mockup-4-arende-och-historik.png) |
+
+**Öppna ärenden (förvaltare)**
+
+![Wireframe: öppna ärenden](bilder/mockups/wireframe-4-oppna-arenden-forvaltare.png)
+
+![Mockup: öppna ärenden](bilder/mockups/mockup-5-oppna-arenden-forvaltare.png)
+
+Statusfärger i mockuperna: Ny blå, Tilldelad lila, Pågår orange, Väntar gul, Åtgärdad grön, Stängd grå. Ljus bakgrund och mörk text, så att de går att läsa och skiljer sig åt i ljushet, inte bara i färg.
+
+Att tänka på:
+
+- Fältet **Rum** finns i formuläret (story 5) men inte i databasen än. Se öppen fråga 6.
+- Historiken visar "Väntar på material". Om orsaken ska vara ett eget fält är öppen fråga 5.
+- Fastigheter och lägenheter (story 2 och 3) har ingen mockup än.
+
 ## Mappstruktur
 
 ```
@@ -113,7 +138,8 @@ Beslutet dokumenteras i beslutsloggen (VG).
 
 ## Första steg (Sprint 0)
 
-- [ ] Rita mockups för inloggning, ärendelista, ny felanmälan, ärendedetalj och fastigheter
+- [x] Rita mockups för inloggning, ärendelista, ny felanmälan och ärendedetalj (se [Wireframes och mockups](#wireframes-och-mockups))
+- [ ] Rita mockup för fastigheter och lägenheter
 - [x] Komma överens med backend om enums (API-format återstår, se nedan)
 - [x] Installera React Router och TanStack Query (och resten av biblioteken i [beslutsloggen #7](beslutslogg.md))
 - [ ] Skapa mappstrukturen och typerna
@@ -133,3 +159,9 @@ Beslutet dokumenteras i beslutsloggen (VG).
 ## Notering om grenar
 
 Projektförslagets risktabell säger "uppdatera från `main` dagligen". I det här repot skapas och uppdateras feature-grenar från `staging` (se [CONTRIBUTING.md](CONTRIBUTING.md)).
+
+## Ändringar
+
+| Datum | Ändring |
+|---|---|
+| 2026-10-27 | La till wireframes och mockups (`bilder/mockups/`) |
