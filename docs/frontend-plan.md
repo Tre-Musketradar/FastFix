@@ -85,13 +85,20 @@ Fastighetens sida med lägenheterna och formuläret för en ny lägenhet. Bilden
 
 ![Mockup: lägenheter i en fastighet](bilder/mockups/mockup-7-lagenheter-i-fastighet.png)
 
+**Hyresgäster (förvaltare, story 4)**
+
+Alla hyresgäster i förvaltarens fastigheter och formuläret för en ny hyresgäst. Bilden visar felmeddelandet när e-postadressen redan används. Lägenheter som redan har en hyresgäst är gråa och går inte att välja.
+
+![Mockup: hyresgäster](bilder/mockups/mockup-8-hyresgaster.png)
+
 Statusfärger i mockuperna: Ny blå, Tilldelad lila, Pågår orange, Väntar gul, Åtgärdad grön, Stängd grå. Ljus bakgrund och mörk text, så att de går att läsa och skiljer sig åt i ljushet, inte bara i färg.
 
 Att tänka på:
 
 - Fältet **Rum** finns i formuläret (story 5) men inte i databasen än. Se öppen fråga 6.
 - Historiken visar "Väntar på material". Om orsaken ska vara ett eget fält är öppen fråga 5.
-- Fastigheter och lägenheter har bara mockup, ingen wireframe.
+- Fastigheter, lägenheter och hyresgäster har bara mockup, ingen wireframe.
+- Hur hyresgästen får sitt lösenord är inte bestämt (öppet beslut 3 i U1). Mockupen för hyresgäster visar därför inget lösenordsfält.
 
 ## Mappstruktur
 
@@ -177,4 +184,4 @@ Projektförslagets risktabell säger "uppdatera från `main` dagligen". I det h�
 | Datum | Ändring |
 |---|---|
 | 2026-10-27 | La till wireframes och mockups (`bilder/mockups/`) |
-| 2026-10-28 | La till mockups för fastigheter och lägenheter |
+| 2026-10-28 | La till mockups för fastigheter, lägenheter och hyresgäster |
