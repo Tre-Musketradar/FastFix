@@ -58,7 +58,7 @@ Gränssnittet visar bara de knappar som rollen får använda. Backend måste än
 
 ## Wireframes och mockups
 
-Det här är **utkast** som gruppen ska rösta om. De ligger i [`bilder/mockups/utkast/`](bilder/mockups/utkast/). När gruppen har bestämt sig läggs de slutliga versionerna i [`bilder/mockups/slutliga/`](bilder/mockups/slutliga/), och då visar det här avsnittet dem i stället.
+Det här är **utkast** som gruppen ska rösta om. De ligger i [`bilder/mockups/utkast/`](bilder/mockups/utkast/). När gruppen har bestämt sig läggs de slutliga versionerna i [`bilder/mockups/slutliga/`](bilder/mockups/slutliga/), och då visar det här avsnittet dem i stället. Omröstningen och resultatet står i [omrostning-mockups.md](omrostning-mockups.md).
 
  **Wireframes** visar struktur och flöde, i grått. **Mockups** visar hur appen ska se ut. Mobilvyerna är 390 px breda, förvaltarens vy är för datorn. Datan kommer från [`db/testdata.sql`](../db/testdata.sql).
 
@@ -194,3 +194,4 @@ Projektförslagets risktabell säger "uppdatera från `main` dagligen". I det h�
 | 2026-10-27 | La till wireframes och mockups (`bilder/mockups/`) |
 | 2026-10-28 | La till mockups för fastigheter, lägenheter och hyresgäster, och wireframes för samma vyer och för ärendet med historik |
 | 2026-10-28 | Bilderna är utkast för omröstning och ligger i `bilder/mockups/utkast/`. Ny mapp `bilder/mockups/slutliga/` för de slutliga |
+| 2026-10-28 | Länk till omröstningen |
