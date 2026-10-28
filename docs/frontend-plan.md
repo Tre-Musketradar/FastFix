@@ -77,11 +77,15 @@ Bilderna ligger i [`bilder/mockups/`](bilder/mockups/). **Wireframes** visar str
 
 Listan över förvaltarens fastigheter och formuläret för en ny fastighet. Bilden visar felmeddelandet när adressen saknas.
 
+![Wireframe: fastigheter](bilder/mockups/wireframe-5-fastigheter.png)
+
 ![Mockup: fastigheter](bilder/mockups/mockup-6-fastigheter.png)
 
 **Lägenheter i en fastighet (förvaltare, story 3 och 4)**
 
 Fastighetens sida med lägenheterna och formuläret för en ny lägenhet. Bilden visar felmeddelandet när numret redan finns i fastigheten. En ledig lägenhet har knappen "Lägg till hyresgäst" (story 4).
+
+![Wireframe: lägenheter i en fastighet](bilder/mockups/wireframe-6-lagenheter-i-fastighet.png)
 
 ![Mockup: lägenheter i en fastighet](bilder/mockups/mockup-7-lagenheter-i-fastighet.png)
 
@@ -97,7 +101,7 @@ Att tänka på:
 
 - Fältet **Rum** finns i formuläret (story 5) men inte i databasen än. Se öppen fråga 6.
 - Historiken visar "Väntar på material". Om orsaken ska vara ett eget fält är öppen fråga 5.
-- Fastigheter, lägenheter och hyresgäster har bara mockup, ingen wireframe.
+- Hyresgäster har bara mockup, ingen wireframe.
 - Hur hyresgästen får sitt lösenord är inte bestämt (öppet beslut 3 i U1). Mockupen för hyresgäster visar därför inget lösenordsfält.
 
 ## Mappstruktur
@@ -184,4 +188,4 @@ Projektförslagets risktabell säger "uppdatera från `main` dagligen". I det h�
 | Datum | Ändring |
 |---|---|
 | 2026-10-27 | La till wireframes och mockups (`bilder/mockups/`) |
-| 2026-10-28 | La till mockups för fastigheter, lägenheter och hyresgäster |
+| 2026-10-28 | La till mockups för fastigheter, lägenheter och hyresgäster, och wireframes för fastigheter och lägenheter |
