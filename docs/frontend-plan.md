@@ -65,7 +65,7 @@ Bilderna ligger i [`bilder/mockups/`](bilder/mockups/). **Wireframes** visar str
 | Logga in | ![](bilder/mockups/wireframe-1-logga-in.png) | ![](bilder/mockups/mockup-1-logga-in.png) |
 | Mina ärenden (hyresgäst) | ![](bilder/mockups/wireframe-2-mina-arenden.png) | ![](bilder/mockups/mockup-2-mina-arenden.png) |
 | Ny felanmälan | ![](bilder/mockups/wireframe-3-ny-felanmalan.png) | ![](bilder/mockups/mockup-3-ny-felanmalan.png) |
-| Ärende och historik | | ![](bilder/mockups/mockup-4-arende-och-historik.png) |
+| Ärende och historik | ![](bilder/mockups/wireframe-8-arende-och-historik.png) | ![](bilder/mockups/mockup-4-arende-och-historik.png) |
 
 **Öppna ärenden (förvaltare)**
 
@@ -189,4 +189,4 @@ Projektförslagets risktabell säger "uppdatera från `main` dagligen". I det h�
 | Datum | Ändring |
 |---|---|
 | 2026-10-27 | La till wireframes och mockups (`bilder/mockups/`) |
-| 2026-10-28 | La till mockups för fastigheter, lägenheter och hyresgäster, och wireframes för samma vyer |
+| 2026-10-28 | La till mockups för fastigheter, lägenheter och hyresgäster, och wireframes för samma vyer och för ärendet med historik |
