@@ -24,6 +24,7 @@ Alla Markdown-dokument i repot, med datum då de lades till. Varje nytt dokument
 | 2026-10-20 | [att-diskutera.md](att-diskutera.md) | Förslag som gruppen ska ta ställning till och vad som saknas för läxorna |
 | 2026-10-21 | [dokumentregister.md](dokumentregister.md) | Det här dokumentet |
 | 2026-10-26 | [databas-och-docker.md](databas-och-docker.md) | Instruktionsbok: Docker i vardagen, hur databasen och Flyway fungerar, testdatan, inloggning per roll och tre sätt att titta i databasen |
+| 2026-10-28 | [bilder/mockups/slutliga/README.md](bilder/mockups/slutliga/README.md) | Mappen för de slutliga wireframes och mockups, och hur ett utkast blir slutligt efter gruppens omröstning |
 
 ## Sprintar och reflektioner
 
@@ -98,3 +99,4 @@ Läxorna i den ordning vi fick dem, och materialet som hör till varje läxa. Al
 | 2026-10-23 | Uppdaterade beskrivningen av PR-mallen |
 | 2026-10-24 | La till filerna för sprint 1 |
 | 2026-10-26 | La till `databas-och-docker.md` |
+| 2026-10-28 | La till `bilder/mockups/slutliga/README.md` |
