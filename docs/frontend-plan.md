@@ -73,13 +73,25 @@ Bilderna ligger i [`bilder/mockups/`](bilder/mockups/). **Wireframes** visar str
 
 ![Mockup: öppna ärenden](bilder/mockups/mockup-5-oppna-arenden-forvaltare.png)
 
+**Fastigheter (förvaltare, story 2)**
+
+Listan över förvaltarens fastigheter och formuläret för en ny fastighet. Bilden visar felmeddelandet när adressen saknas.
+
+![Mockup: fastigheter](bilder/mockups/mockup-6-fastigheter.png)
+
+**Lägenheter i en fastighet (förvaltare, story 3 och 4)**
+
+Fastighetens sida med lägenheterna och formuläret för en ny lägenhet. Bilden visar felmeddelandet när numret redan finns i fastigheten. En ledig lägenhet har knappen "Lägg till hyresgäst" (story 4).
+
+![Mockup: lägenheter i en fastighet](bilder/mockups/mockup-7-lagenheter-i-fastighet.png)
+
 Statusfärger i mockuperna: Ny blå, Tilldelad lila, Pågår orange, Väntar gul, Åtgärdad grön, Stängd grå. Ljus bakgrund och mörk text, så att de går att läsa och skiljer sig åt i ljushet, inte bara i färg.
 
 Att tänka på:
 
 - Fältet **Rum** finns i formuläret (story 5) men inte i databasen än. Se öppen fråga 6.
 - Historiken visar "Väntar på material". Om orsaken ska vara ett eget fält är öppen fråga 5.
-- Fastigheter och lägenheter (story 2 och 3) har ingen mockup än.
+- Fastigheter och lägenheter har bara mockup, ingen wireframe.
 
 ## Mappstruktur
 
@@ -139,7 +151,7 @@ Beslutet dokumenteras i beslutsloggen (VG).
 ## Första steg (Sprint 0)
 
 - [x] Rita mockups för inloggning, ärendelista, ny felanmälan och ärendedetalj (se [Wireframes och mockups](#wireframes-och-mockups))
-- [ ] Rita mockup för fastigheter och lägenheter
+- [x] Rita mockup för fastigheter och lägenheter
 - [x] Komma överens med backend om enums (API-format återstår, se nedan)
 - [x] Installera React Router och TanStack Query (och resten av biblioteken i [beslutsloggen #7](beslutslogg.md))
 - [ ] Skapa mappstrukturen och typerna
@@ -165,3 +177,4 @@ Projektförslagets risktabell säger "uppdatera från `main` dagligen". I det h�
 | Datum | Ändring |
 |---|---|
 | 2026-10-27 | La till wireframes och mockups (`bilder/mockups/`) |
+| 2026-10-28 | La till mockups för fastigheter och lägenheter |
