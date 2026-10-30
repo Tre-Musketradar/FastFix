@@ -27,6 +27,32 @@ Kopiera den här för varje nytt beslut:
 
 ---
 
+## #9 Mappar efter funktion
+
+**Datum:** 2026-10-30
+**Status:** Gäller
+
+**Bakgrund:** Alla stories är vertikala och går genom frontend, backend och databas. När alla bygger hela funktioner rör alla hela kodbasen, och då blir det fler konflikter i Git. Vi behövde bestämma hur koden delas upp i mappar innan story 1 sätter mönstret för resten.
+
+**Alternativ:**
+- Efter lager: `components/`, `api/`, `pages/` i frontend och `controller/`, `service/`, `repository/` i backend.
+- Efter roll: `tenant/`, `technician/`, `manager/` och `shared/`.
+- Efter funktion: en mapp per funktion (`auth`, `properties`, `tenants`, `tickets`, `dashboard`) och `shared/` för det gemensamma.
+
+**Beslut:** Efter funktion, i både frontend (`src/features/<funktion>/`) och backend (`se.felanmalan.<funktion>`). Funktionerna följer epicerna. Skillnaderna mellan rollerna ligger i funktionens mapp. Detaljerna står i [projektstruktur.md](projektstruktur.md).
+
+**Varför:**
+- Läraren rekommenderar det ([07-projektstruktur-och-konflikter](resurser/07-projektstruktur-och-konflikter.md)): en story rör nästan bara sin egen mapp, så två stories krockar sällan.
+- **Efter lager:** varje story rör alla mappar, och filer som `api.ts` blir knutpunkter som alla ändrar.
+- **Efter roll:** ärenden används av alla tre rollerna, så det mesta skulle hamna i `shared/` eller kopieras. I backend tillhör en entitet som `Ticket` ingen enskild roll.
+
+**Konsekvenser:**
+- `PingStatus` flyttades till `features/ping/`, och paketen i backend har en `package-info.java` som beskriver dem.
+- Knutpunkterna (`App.tsx`, `SecurityConfig`, migrationerna, `shared/`) hålls små, helst en rad per ändring. Migrationer görs av en person i taget.
+- Det som börjar i en funktion och sedan behövs i fler flyttas till `shared/` i en egen PR.
+
+---
+
 ## #7 Bibliotek för frontend, backend och databas
 
 **Datum:** 2026-10-16
@@ -207,3 +233,9 @@ Föreslås inte: Lombok (DTO:er skrivs som Java 21-`record`, och vi slipper stä
 **Varför:** Appen har tre roller med olika behörigheter, och Spring Security har starkt stöd för roller. Vi vill också öva på Java i backend och React i frontend.
 
 **Konsekvenser:** Spring Security med JWT tar tid att sätta upp. Det hanteras med undersökningen U1 (max en halv dag) innan storyn "Logga in med roll".
+
+## Ändringar
+
+| Datum | Ändring |
+|---|---|
+| 2026-10-30 | La till #9 Mappar efter funktion |
