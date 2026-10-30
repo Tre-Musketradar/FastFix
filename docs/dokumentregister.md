@@ -40,6 +40,7 @@ Alla Markdown-dokument i repot, med datum då de lades till. Varje nytt dokument
 | 2026-10-24 | [sprintar/sprint-1/standup.md](sprintar/sprint-1/standup.md) | Scrum Masters logg, tisdag 2026-10-27 till fredag 2026-10-30 |
 | 2026-10-24 | [sprintar/sprint-1/review.md](sprintar/sprint-1/review.md) | Review 2026-11-02 (del 1 klar senast söndag 2026-11-01) |
 | 2026-10-24 | [sprintar/sprint-1/retro.md](sprintar/sprint-1/retro.md) | Retro 2026-11-02, leds av Ermias |
+| 2026-10-30 | [sprintar/sprint-1/plan-story-1.md](sprintar/sprint-1/plan-story-1.md) | Plan för story 1 Logga in med roll: besluten från U1, API-kontraktet, sju små PR:er (fyra backend, tre frontend) med tester, ordning, test för hand och risker. Jose gör storyn |
 
 ## GitHub-mallar
 
@@ -98,3 +99,4 @@ Läxorna i den ordning vi fick dem, och materialet som hör till varje läxa. Al
 | 2026-10-23 | Uppdaterade beskrivningen av PR-mallen |
 | 2026-10-24 | La till filerna för sprint 1 |
 | 2026-10-26 | La till `databas-och-docker.md` |
+| 2026-10-30 | La till `sprintar/sprint-1/plan-story-1.md` |
