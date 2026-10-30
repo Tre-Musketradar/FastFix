@@ -4,7 +4,7 @@
 **Issues:** U1 [#9](https://github.com/Tre-Musketradar/FastFix/issues/9) (undersökningen) och story 1 [#6](https://github.com/Tre-Musketradar/FastFix/issues/6)
 **Beslut:** [#8 i beslutsloggen](../../beslutslogg.md#8-inloggning-med-jwt)
 
-Den här planen delar upp story 1 i små uppgifter som vi kan göra parallellt eller i par. Vi bygger storyn tillsammans eftersom alla andra stories bygger på den.
+Den här planen delar upp story 1 i små uppgifter. U1 och story 1 är Joses: Jose gör alla uppgifterna själv, och Martin och Ermias granskar PR:erna. Alla andra stories bygger på inloggningen, så kontraktet och ordningen nedan är viktiga för hela gruppen.
 
 ## Vad storyn ska klara
 
@@ -68,47 +68,46 @@ Vi bestämmer kontraktet först. Då kan frontend börja direkt med `msw` (låts
 
 ## Uppgifter
 
-Ansvariga är ett förslag. Vi bestämmer dem på standupen.
+Jose gör alla uppgifterna.
 
 ### Backend
 
-| # | Uppgift | Förslag | Klart när |
-|---|---|---|---|
-| B1 | `V2__seed.sql`: tre användare (`forvaltare@`, `tekniker@`, `hyresgast@felanmalan.se`, lösenord `test1234`), fastigheten Solrosen och lägenhet 1001 med hyresgästen. Samma namn och BCrypt-hash som i `db/testdata.sql` | Jose | `docker compose up` på en tom databas ger tre användare |
-| B2 | `User`-entitet (roll som PostgreSQL-enum, se beslut #7) och `UserRepository.findByEmail` | Jose | Test: hittar användaren från V2 |
-| B3 | `SecurityConfig`: `PasswordEncoder` (BCrypt), `JwtEncoder` och `JwtDecoder` med `JWT_SECRET`, rollen från claimet `role` blir `ROLE_…`, stateless, CSRF av (vi använder inga cookies). Öppna: `/api/auth/login`, `/api/ping`, `/actuator/health`, Swagger | Jose + Ermias | Utan token: 401. Med token: 200 |
-| B4 | `AuthService` + `AuthController`: `POST /api/auth/login` och `GET /api/auth/me` enligt kontraktet | Ermias | Testerna nedan går igenom |
-| B5 | Tester (`@SpringBootTest` + MockMvc): rätt inloggning ger token med rätt roll; fel lösenord och okänd e-post ger samma 401-svar; `/me` utan token ger 401, med token 200 | Ermias | `./mvnw verify` grönt |
+| # | Uppgift | Klart när |
+|---|---|---|
+| B1 | `V2__seed.sql`: tre användare (`forvaltare@`, `tekniker@`, `hyresgast@felanmalan.se`, lösenord `test1234`), fastigheten Solrosen och lägenhet 1001 med hyresgästen. Samma namn och BCrypt-hash som i `db/testdata.sql` | `docker compose up` på en tom databas ger tre användare |
+| B2 | `User`-entitet (roll som PostgreSQL-enum, se beslut #7) och `UserRepository.findByEmail` | Test: hittar användaren från V2 |
+| B3 | `SecurityConfig`: `PasswordEncoder` (BCrypt), `JwtEncoder` och `JwtDecoder` med `JWT_SECRET`, rollen från claimet `role` blir `ROLE_…`, stateless, CSRF av (vi använder inga cookies). Öppna: `/api/auth/login`, `/api/ping`, `/actuator/health`, Swagger | Utan token: 401. Med token: 200 |
+| B4 | `AuthService` + `AuthController`: `POST /api/auth/login` och `GET /api/auth/me` enligt kontraktet | Testerna nedan går igenom |
+| B5 | Tester (`@SpringBootTest` + MockMvc): rätt inloggning ger token med rätt roll; fel lösenord och okänd e-post ger samma 401-svar; `/me` utan token ger 401, med token 200 | `./mvnw verify` grönt |
 
 ### Frontend
 
-| # | Uppgift | Förslag | Klart när |
-|---|---|---|---|
-| F1 | `src/types/` (`User`, `Role`) och `src/api/client.ts`: en liten `fetch`-funktion som lägger till `Authorization` och loggar ut vid 401 | Martin | Används av alla anrop |
-| F2 | `src/auth/AuthContext.tsx`: `user`, `login()`, `logout()`. Läser token från `localStorage` när appen startar och frågar `/api/auth/me` | Martin | Inloggad efter omladdning (kriterium 4) |
-| F3 | `LoginPage` på `/login` enligt [mockupen](../../bilder/mockups/utkast/mockup-1-logga-in.png): React Hook Form + Zod (beslut #6), felmeddelandet "Fel e-post eller lösenord" | Martin | Kriterium 1 och 3 |
-| F4 | React Router: `RequireAuth` (skickar till `/login` om man inte är inloggad), en enkel `Layout` med namnet och knappen Logga ut, och en startsida per roll på `/tickets` (bara rubrik tills sprint 2: "Mina ärenden", "Mina uppdrag", "Öppna ärenden"). Ersätter Vite-startsidan i `App.tsx`. `PingStatus` får ligga kvar på inloggningssidan | Jose | Kriterium 2 och 5 |
-| F5 | Tester (Vitest + Testing Library + `msw`): felmeddelande vid fel lösenord; rätt startsida efter inloggning; skyddad sida skickar till `/login`; inloggad efter "omladdning" (token finns i `localStorage`); utloggning tar bort token | Martin + Jose | `npm test` grönt |
+| # | Uppgift | Klart när |
+|---|---|---|
+| F1 | `src/types/` (`User`, `Role`) och `src/api/client.ts`: en liten `fetch`-funktion som lägger till `Authorization` och loggar ut vid 401 | Används av alla anrop |
+| F2 | `src/auth/AuthContext.tsx`: `user`, `login()`, `logout()`. Läser token från `localStorage` när appen startar och frågar `/api/auth/me` | Inloggad efter omladdning (kriterium 4) |
+| F3 | `LoginPage` på `/login` enligt [mockupen](../../bilder/mockups/utkast/mockup-1-logga-in.png): React Hook Form + Zod (beslut #6), felmeddelandet "Fel e-post eller lösenord" | Kriterium 1 och 3 |
+| F4 | React Router: `RequireAuth` (skickar till `/login` om man inte är inloggad), en enkel `Layout` med namnet och knappen Logga ut, och en startsida per roll på `/tickets` (bara rubrik tills sprint 2: "Mina ärenden", "Mina uppdrag", "Öppna ärenden"). Ersätter Vite-startsidan i `App.tsx`. `PingStatus` får ligga kvar på inloggningssidan | Kriterium 2 och 5 |
+| F5 | Tester (Vitest + Testing Library + `msw`): felmeddelande vid fel lösenord; rätt startsida efter inloggning; skyddad sida skickar till `/login`; inloggad efter "omladdning" (token finns i `localStorage`); utloggning tar bort token | `npm test` grönt |
 
 ### Övrigt
 
-| # | Uppgift | Förslag |
-|---|---|---|
-| Ö1 | Beslut #8 i beslutsloggen (görs i samma PR som den här planen, stänger U1 #9) | Jose |
-| Ö2 | `db/testdata.sql` börjar med `TRUNCATE`, så den fungerar även efter V2. Kontrollera att den fortfarande går att köra | Ermias |
-| Ö3 | README och `databas-och-docker.md`: att de tre inloggningarna nu finns direkt efter `docker compose up` | Jose |
+| # | Uppgift |
+|---|---|
+| Ö1 | Beslut #8 i beslutsloggen (görs i samma PR som den här planen, stänger U1 #9) |
+| Ö2 | `db/testdata.sql` börjar med `TRUNCATE`, så den fungerar även efter V2. Kontrollera att den fortfarande går att köra |
+| Ö3 | README och `databas-och-docker.md`: att de tre inloggningarna nu finns direkt efter `docker compose up` |
 
 ## Ordning
 
 ```
-1. Kontraktet (ovan) ─┬─▶ B1 → B2 → B3 → B4 → B5 ──┐
-                      │                            ├─▶ 3. Testa ihop utan msw ─▶ PR:ar ─▶ Klart
-                      └─▶ F1 → F2 → F3 → F4 → F5 ──┘
+1. Kontraktet (ovan) ─▶ 2. B1 → B2 → B3 → B4 → B5 ─▶ PR 1 ─▶ 3. F1 → F2 → F3 → F4 → F5 ─▶ 4. Testa ihop ─▶ PR 2 ─▶ Klart
 ```
 
-1. **Kontraktet** är bestämt i den här planen. Ändras det säger vi till på standupen.
-2. **Backend och frontend parallellt.** Frontend använder `msw` tills backend är klar.
-3. **Testa ihop:** stäng av `msw`, starta allt med `docker compose up --build` och logga in med alla tre rollerna.
+1. **Kontraktet** är bestämt i den här planen. Ändras det säger Jose till på standupen, eftersom de andra storyerna använder det.
+2. **Backend först.** PR 1 kan granskas medan frontend byggs.
+3. **Frontend.** Testerna använder `msw`, så de går att köra utan backend.
+4. **Testa ihop:** starta allt med `docker compose up --build` och logga in med alla tre rollerna.
 
 ## Grenar och PR:er
 
@@ -121,7 +120,7 @@ Två PR:er mot `staging`, så att de blir lagom stora att granska:
 
 Den gamla grenen `4-logga-in-med-roll-l` används inte (den har bara en gammal commit som redan finns i `staging`) och kan tas bort.
 
-Som vanligt: en annan person granskar och godkänner (Review changes → Approve), och CI ska vara grönt. Se [Definition of Done](../../definition-of-done.md).
+Som vanligt: Martin eller Ermias granskar och godkänner (Review changes → Approve), och CI ska vara grönt. Se [Definition of Done](../../definition-of-done.md).
 
 ## Testa för hand (till PR 2 och reviewn)
 
@@ -134,9 +133,9 @@ Som vanligt: en annan person granskar och godkänner (Review changes → Approve
 
 ## Risker
 
-- **Ingen av oss har gjort det förut.** Därför den här planen och par-programmering på B3, som är den svåraste delen. Fastnar någon mer än en timme: säg till direkt i Slack.
+- **Jose gör storyn ensam och har inte gjort JWT i Spring förut.** Därför den här planen. B3 är den svåraste delen. Fastnar Jose mer än en timme frågar hen i Slack.
 - **Sprinten tar slut.** Sprint 1 slutar söndag 2026-11-01. Blir storyn inte klar visar vi det som är klart på reviewn och tar med resten till sprint 2 på planningen 2026-11-02.
 - **Testanvändarna i V2 har ett känt lösenord.** Innan deploy (T2) måste de tas bort eller få nya lösenord.
 - **Token i `localStorage`** kan läsas av skadlig JavaScript (XSS). React skyddar mot det mesta, och vi använder aldrig `dangerouslySetInnerHTML`.
 - **Utloggning är bara i frontend.** En token som har kopierats gäller tills den går ut (8 timmar). Det räcker för det här projektet.
-- **#11 Lägga till fastighet (Martin) väntar på den här storyn.** Martin kan börja med frontend för #11 mot `msw` när F1–F2 är klara.
+- **#11 Lägga till fastighet (Martin) väntar på den här storyn.** Martin kan börja med #11 mot `msw` och kontraktet ovan, och koppla på inloggningen när PR 2 är mergad.
