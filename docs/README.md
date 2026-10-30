@@ -16,6 +16,7 @@ Dokumentation för hela projektet (frontend, backend och databas).
 | [projektforslag.md](projektforslag.md) | Projektförslaget: bakgrund, roller, MoSCoW och risker |
 | [user-stories.md](user-stories.md) | Ordnad backlog med acceptanskriterier, prioritet och storlek |
 | [frontend-plan.md](frontend-plan.md) | Vyer per roll, mappstruktur och plan per sprint |
+| [projektstruktur.md](projektstruktur.md) | Var koden ligger: en mapp per funktion i frontend och backend, knutpunkter och namn |
 | [sprintar/](sprintar/) | Planning, standups, review och retro per sprint |
 | [reflektioner/](reflektioner/) | Individuella reflektioner, en per person |
 | [bilder/](bilder/) | Mockups och andra bilder |
@@ -28,3 +29,4 @@ Se även [CONTRIBUTING.md](CONTRIBUTING.md) för grenflödet och [uppstart.md](u
 |---|---|
 | 2026-10-21 | La till dokumentregister, introduktion och att diskutera i tabellen |
 | 2026-10-26 | Ny beskrivning av `introduktion.md` |
+| 2026-10-30 | La till `projektstruktur.md` |

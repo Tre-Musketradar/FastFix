@@ -58,16 +58,19 @@ Gränssnittet visar bara de knappar som rollen får använda. Backend måste än
 
 ## Mappstruktur
 
+Koden delas upp efter funktion, inte efter lager eller roll ([beslut #9](beslutslogg.md#9-mappar-efter-funktion)). Hela strukturen, knutpunkterna och namnen står i [projektstruktur.md](projektstruktur.md).
+
 ```
 src/
-  api/          # HTTP-klient, endpoints per resurs, mock-data
-  auth/         # AuthContext, inloggning, skydd av routes per roll
-  components/   # Delade komponenter: StatusBadge, Layout, Formulärfält
   features/
-    tickets/    # Lista, formulär, detalj, historik
-    properties/ # Fastigheter och lägenheter
-  types/        # Delade typer (User, Ticket, Property …)
-  App.tsx       # Routes
+    auth/        # AuthContext, inloggning, skydd av routes per roll
+    properties/  # Fastigheter och lägenheter
+    tenants/     # Hyresgäster
+    tickets/     # Listor per roll, formulär, detalj, historik
+    dashboard/   # Översikt
+    ping/        # Testendpointen
+  shared/        # apiClient, Layout, StatusBadge, delade typer
+  App.tsx        # Routes, en rad per sida
 ```
 
 ## Typer (första utkast, följer databasschemat)
@@ -85,7 +88,7 @@ Värdena måste stämma exakt med backendens enums (se öppna frågor).
 
 Backend och frontend byggs parallellt. Därför:
 
-- All kommunikation går via `src/api/`. Komponenter anropar aldrig `fetch` direkt.
+- All kommunikation går via `shared/apiClient.ts` och funktionens `<funktion>Api.ts`. Komponenter anropar aldrig `fetch` direkt.
 - Varje endpoint har först en mock-version med testdata (en användare per roll, några fastigheter och ärenden).
 - När backend-endpointen är klar byts mocken mot det riktiga anropet. En miljövariabel (`VITE_USE_MOCKS`) styr vilket som används.
 
@@ -133,3 +136,9 @@ Beslutet dokumenteras i beslutsloggen (VG).
 ## Notering om grenar
 
 Projektförslagets risktabell säger "uppdatera från `main` dagligen". I det här repot skapas och uppdateras feature-grenar från `staging` (se [CONTRIBUTING.md](CONTRIBUTING.md)).
+
+## Ändringar
+
+| Datum | Ändring |
+|---|---|
+| 2026-10-30 | Mappstrukturen efter funktion (beslut #9, [projektstruktur.md](projektstruktur.md)) |
