@@ -70,16 +70,16 @@ Vi bestämmer kontraktet först. Då kan frontend börja direkt med `msw` (låts
 
 ## PR:erna
 
-Varje PR har en egen gren från `staging`, egna tester och en checklista i [Definition of Done](../../definition-of-done.md). Alla utom den sista skriver `Part of #6` i PR-texten, så att issuen inte stängs för tidigt.
+Varje PR har en egen gren från `staging`, egna tester och en checklista i [Definition of Done](../../definition-of-done.md). Filerna läggs i mapparna för funktionen enligt [projektstruktur.md](../../projektstruktur.md) (beslut #9): inloggningen i `features/auth/` i frontend och i paketen `auth` och `user` i backend. Alla utom den sista skriver `Part of #6` i PR-texten, så att issuen inte stängs för tidigt.
 
 ### Backend
 
 | PR | Gren | Innehåll | Tester och klart när |
 |---|---|---|---|
 | 1 | `feature/6-testanvandare` | `V2__seed.sql`: tre användare (`forvaltare@`, `tekniker@`, `hyresgast@felanmalan.se`, lösenord `test1234`), fastigheten Solrosen och lägenhet 1001 med hyresgästen. Samma namn och BCrypt-hash som i `db/testdata.sql`. Kontrollera att `testdata.sql` fortfarande går att köra (den börjar med `TRUNCATE`). README och `databas-och-docker.md`: inloggningarna finns direkt efter `docker compose up` | `docker compose up` på en tom databas ger tre användare. `./mvnw verify` grönt (Flyway kör V2 i testerna) |
-| 2 | `feature/6-user-entitet` | `User`-entitet med rollen som PostgreSQL-enum (beslut #7) och `UserRepository.findByEmail` | Test: hittar hyresgästen från V2, ger tomt svar för en okänd e-post |
-| 3 | `feature/6-jwt-sakerhet` | `SecurityConfig`: `PasswordEncoder` (BCrypt), `JwtEncoder` och `JwtDecoder` med `JWT_SECRET` (HS256, 8 timmar), rollen från claimet `role` blir `ROLE_…`, stateless, CSRF av (vi använder inga cookies). Öppna: `/api/auth/login`, `/api/ping`, `/actuator/health`, Swagger. `GET /api/auth/me` | Test: `/api/auth/me` utan token ger 401, med en token som testet skapar 200 och rätt användare. `/api/ping` är fortfarande öppen |
-| 4 | `feature/6-login-endpoint` | `AuthService` + `POST /api/auth/login` enligt kontraktet | Test: rätt inloggning ger en token med rätt roll; fel lösenord och okänd e-post ger samma 401-svar |
+| 2 | `feature/6-user-entitet` | `user/`: `User`-entitet med rollen som PostgreSQL-enum (beslut #7) och `UserRepository.findByEmail` | Test: hittar hyresgästen från V2, ger tomt svar för en okänd e-post |
+| 3 | `feature/6-jwt-sakerhet` | `config/SecurityConfig`: `PasswordEncoder` (BCrypt), `JwtEncoder` och `JwtDecoder` med `JWT_SECRET` (HS256, 8 timmar), rollen från claimet `role` blir `ROLE_…`, stateless, CSRF av (vi använder inga cookies). Öppna: `/api/auth/login`, `/api/ping`, `/actuator/health`, Swagger. `auth/`: skapa token och `GET /api/auth/me` | Test: `/api/auth/me` utan token ger 401, med en token som testet skapar 200 och rätt användare. `/api/ping` är fortfarande öppen |
+| 4 | `feature/6-login-endpoint` | `auth/`: `AuthService` + `POST /api/auth/login` enligt kontraktet | Test: rätt inloggning ger en token med rätt roll; fel lösenord och okänd e-post ger samma 401-svar |
 
 PR 3 är den svåraste. Blir den större än 10–15 minuters granskning delas den: först `JwtEncoder`/`JwtDecoder` och `SecurityConfig`, sedan `/api/auth/me`.
 
@@ -87,9 +87,9 @@ PR 3 är den svåraste. Blir den större än 10–15 minuters granskning delas d
 
 | PR | Gren | Innehåll | Tester och klart när |
 |---|---|---|---|
-| 5 | `feature/6-auth-context` | `src/types/` (`User`, `Role`), `src/api/client.ts` (en liten `fetch`-funktion som lägger till `Authorization` och tar bort token vid 401), `src/auth/AuthContext.tsx` (`user`, `login()`, `logout()`, läser token från `localStorage` vid start och frågar `/api/auth/me`), `msw`-handlers enligt kontraktet | Test: `login()` sparar token; med token i `localStorage` blir man inloggad vid start (kriterium 4); `logout()` tar bort token |
-| 6 | `feature/6-login-sida` | `LoginPage` på `/login` enligt [mockupen](../../bilder/mockups/utkast/mockup-1-logga-in.png): React Hook Form + Zod (beslut #6), felmeddelandet "Fel e-post eller lösenord". `PingStatus` får ligga kvar på sidan | Test: tomma fält ger valideringsfel; fel lösenord ger felmeddelandet (kriterium 1 och 3) |
-| 7 | `feature/6-skyddade-sidor` | React Router: `RequireAuth` (skickar till `/login` om man inte är inloggad), en enkel `Layout` med namnet och knappen Logga ut, och en startsida per roll på `/tickets` (bara rubrik tills sprint 2: "Mina ärenden", "Mina uppdrag", "Öppna ärenden"). Ersätter Vite-startsidan i `App.tsx` | Test: rätt startsida efter inloggning; skyddad sida skickar till `/login`; utloggning (kriterium 2 och 5). Testet för hand nedan. **`Closes #6`** |
+| 5 | `feature/6-auth-context` | `shared/types.ts` (`User`, `Role`), `shared/apiClient.ts` (en liten `fetch`-funktion som lägger till `Authorization` och tar bort token vid 401), `features/auth/AuthContext.tsx` (`user`, `login()`, `logout()`, läser token från `localStorage` vid start och frågar `/api/auth/me`), `features/auth/authApi.ts` och `msw`-handlers enligt kontraktet (`features/auth/authHandlers.ts`) | Test: `login()` sparar token; med token i `localStorage` blir man inloggad vid start (kriterium 4); `logout()` tar bort token |
+| 6 | `feature/6-login-sida` | `features/auth/LoginPage.tsx` på `/login` enligt [mockupen](../../bilder/mockups/utkast/mockup-1-logga-in.png): React Hook Form + Zod (beslut #6), felmeddelandet "Fel e-post eller lösenord". `PingStatus` får ligga kvar på sidan | Test: tomma fält ger valideringsfel; fel lösenord ger felmeddelandet (kriterium 1 och 3) |
+| 7 | `feature/6-skyddade-sidor` | React Router: `features/auth/RequireAuth.tsx` (skickar till `/login` om man inte är inloggad), en enkel `shared/Layout.tsx` med namnet och knappen Logga ut, och en startsida per roll på `/tickets` i `features/tickets/` (bara rubrik tills sprint 2: "Mina ärenden", "Mina uppdrag", "Öppna ärenden"). Ersätter Vite-startsidan i `App.tsx`, en rad per route | Test: rätt startsida efter inloggning; skyddad sida skickar till `/login`; utloggning (kriterium 2 och 5). Testet för hand nedan. **`Closes #6`** |
 
 ## Ordning
 
