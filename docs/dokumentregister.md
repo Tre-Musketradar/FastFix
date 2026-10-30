@@ -16,7 +16,7 @@ Alla Markdown-dokument i repot, med datum då de lades till. Varje nytt dokument
 | 2026-10-15 | [gruppkontrakt.md](gruppkontrakt.md) | Hur vi samarbetar: tillgänglighet, kommunikation, frånvaro, beslut, kod och kvalitet. Signerat 2026-10-16 |
 | 2026-10-15 | [definition-of-done.md](definition-of-done.md) | Vad som krävs för att en story ska räknas som klar |
 | 2026-10-15 | [databasschema.md](databasschema.md) | Tabeller, relationer och enums (ER-diagram i Mermaid) |
-| 2026-10-15 | [beslutslogg.md](beslutslogg.md) | Större beslut med alternativ och motivering (#1–#7) |
+| 2026-10-15 | [beslutslogg.md](beslutslogg.md) | Större beslut med alternativ och motivering (#1–#8) |
 | 2026-10-15 | [frontend-plan.md](frontend-plan.md) | Vyer per roll, mappstruktur, typer och plan per sprint för frontend |
 | 2026-10-15 | [CONTRIBUTING.md](CONTRIBUTING.md) | Grenflödet, regler för PR:er och vägen från issue till Klart |
 | 2026-10-15 | [uppstart.md](uppstart.md) | Hur repot sattes upp: teknikval, organisation, grenskydd och CI |
@@ -40,6 +40,7 @@ Alla Markdown-dokument i repot, med datum då de lades till. Varje nytt dokument
 | 2026-10-24 | [sprintar/sprint-1/standup.md](sprintar/sprint-1/standup.md) | Scrum Masters logg, tisdag 2026-10-27 till fredag 2026-10-30 |
 | 2026-10-24 | [sprintar/sprint-1/review.md](sprintar/sprint-1/review.md) | Review 2026-11-02 (del 1 klar senast söndag 2026-11-01) |
 | 2026-10-24 | [sprintar/sprint-1/retro.md](sprintar/sprint-1/retro.md) | Retro 2026-11-02, leds av Ermias |
+| 2026-10-30 | [sprintar/sprint-1/plan-story-1.md](sprintar/sprint-1/plan-story-1.md) | Plan för story 1 Logga in med roll: besluten från U1, API-kontraktet, uppgifter för backend och frontend med förslag på ansvariga, ordning, grenar och PR:er, test för hand och risker |
 
 ## GitHub-mallar
 
@@ -98,3 +99,4 @@ Läxorna i den ordning vi fick dem, och materialet som hör till varje läxa. Al
 | 2026-10-23 | Uppdaterade beskrivningen av PR-mallen |
 | 2026-10-24 | La till filerna för sprint 1 |
 | 2026-10-26 | La till `databas-och-docker.md` |
+| 2026-10-30 | La till `sprintar/sprint-1/plan-story-1.md`, beslutsloggen har nu #1–#8 |
