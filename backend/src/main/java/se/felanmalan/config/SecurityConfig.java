@@ -22,6 +22,8 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
+import org.springframework.security.oauth2.server.resource.web.BearerTokenResolver;
+import org.springframework.security.oauth2.server.resource.web.DefaultBearerTokenResolver;
 import org.springframework.security.web.SecurityFilterChain;
 
 import com.nimbusds.jose.jwk.source.ImmutableSecret;
@@ -49,6 +51,16 @@ public class SecurityConfig {
 			.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 			.csrf(AbstractHttpConfigurer::disable);
 		return http.build();
+	}
+
+	/**
+	 * Läser token från headern, men inte vid inloggning: en gammal eller utgången token
+	 * i webbläsaren ska inte stoppa en ny inloggning med 401.
+	 */
+	@Bean
+	BearerTokenResolver bearerTokenResolver() {
+		DefaultBearerTokenResolver resolver = new DefaultBearerTokenResolver();
+		return request -> "/api/auth/login".equals(request.getRequestURI()) ? null : resolver.resolve(request);
 	}
 
 	/** Claimet {@code role} i token blir {@code ROLE_TENANT}, {@code ROLE_TECHNICIAN} eller {@code ROLE_MANAGER}. */
