@@ -51,7 +51,7 @@ docker compose up --build
 | Frontend | http://localhost:5173 |
 | Backend (API) | http://localhost:8080/api |
 | PostgreSQL | `localhost:5432` |
-| Swagger UI | http://localhost:8080/swagger-ui.html (öppen när inloggningen är klar, U1) |
+| Swagger UI | http://localhost:8080/swagger-ui.html (öppen, kräver ingen inloggning) |
 | Adminer (se databasen) | http://localhost:8081 (system PostgreSQL, uppgifter från `.env`) |
 | Testendpoint | http://localhost:8080/api/ping (öppen, kräver ingen inloggning) |
 
