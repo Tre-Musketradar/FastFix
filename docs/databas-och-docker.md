@@ -13,7 +13,7 @@ docker compose up --build -V
 - `--build` bygger om backend och frontend med den nya koden.
 - `-V` behövs när någon har lagt till ett bibliotek. Annars hittar frontend inte de nya biblioteken.
 
-**Fungerar allt?** Startsidan http://localhost:5173 ska visa `Backend: ok · Databas: PostgreSQL 17… · Användare: …`. Står det "Backend svarar inte" har backend inte startat än. Vänta en stund och ladda om.
+**Fungerar allt?** http://localhost:5173 visar inloggningssidan, och längst ner ska det stå `Backend: ok · Databas: PostgreSQL 17… · Användare: …`. Står det "Backend svarar inte" har backend inte startat än. Vänta en stund och ladda om.
 
 ## 2. Docker i vardagen
 
@@ -84,7 +84,7 @@ Hela schemat med diagram: [databasschema.md](databasschema.md).
 docker compose exec db sh -c 'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -f /db/testdata.sql'
 ```
 
-Det ska sluta med `COMMIT`. Startsidan visar sedan `Användare: 16`.
+Det ska sluta med `COMMIT`. Inloggningssidan visar sedan `Användare: 16` längst ner.
 
 ⚠️ Filen **tömmer alla tabeller först**. Det du har skapat själv försvinner. Kör den igen när du vill börja om från samma data.
 
@@ -181,3 +181,4 @@ Kör du allt i Docker behöver du ingen JDK. Ska du köra backend eller tester i
 | Datum | Ändring |
 |---|---|
 | 2026-10-26 | Första versionen |
+| 2026-11-01 | Startsidan är nu inloggningssidan (story 1) |

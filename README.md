@@ -55,7 +55,7 @@ docker compose up --build
 | Adminer (se databasen) | http://localhost:8081 (system PostgreSQL, uppgifter från `.env`) |
 | Testendpoint | http://localhost:8080/api/ping (öppen, kräver ingen inloggning) |
 
-**Fungerar allt?** Startsidan ska visa `Backend: ok · Databas: PostgreSQL 17… · Användare: 0`. Då når frontend backend, och backend kan läsa från databasen. Står det "Backend svarar inte" har backend inte startat än: vänta en stund och ladda om sidan.
+**Fungerar allt?** http://localhost:5173 visar inloggningssidan. Längst ner ska det stå `Backend: ok · Databas: PostgreSQL 17… · Användare: 3`. Logga in med `forvaltare@felanmalan.se` / `test1234`. Står det rätt når frontend backend, och backend kan läsa från databasen. Står det "Backend svarar inte" har backend inte startat än: vänta en stund och ladda om sidan.
 
 Stoppa med `Ctrl+C`. Nollställ databasen med `docker compose down -v`.
 
