@@ -16,7 +16,7 @@ Alla Markdown-dokument i repot, med datum då de lades till. Varje nytt dokument
 | 2026-10-15 | [gruppkontrakt.md](gruppkontrakt.md) | Hur vi samarbetar: tillgänglighet, kommunikation, frånvaro, beslut, kod och kvalitet. Signerat 2026-10-16 |
 | 2026-10-15 | [definition-of-done.md](definition-of-done.md) | Vad som krävs för att en story ska räknas som klar |
 | 2026-10-15 | [databasschema.md](databasschema.md) | Tabeller, relationer och enums (ER-diagram i Mermaid) |
-| 2026-10-15 | [beslutslogg.md](beslutslogg.md) | Större beslut med alternativ och motivering (#1–#7) |
+| 2026-10-15 | [beslutslogg.md](beslutslogg.md) | Större beslut med alternativ och motivering (#1–#9) |
 | 2026-10-15 | [frontend-plan.md](frontend-plan.md) | Vyer per roll, mappstruktur, typer och plan per sprint för frontend |
 | 2026-10-15 | [CONTRIBUTING.md](CONTRIBUTING.md) | Grenflödet, regler för PR:er och vägen från issue till Klart |
 | 2026-10-15 | [uppstart.md](uppstart.md) | Hur repot sattes upp: teknikval, organisation, grenskydd och CI |
@@ -24,6 +24,7 @@ Alla Markdown-dokument i repot, med datum då de lades till. Varje nytt dokument
 | 2026-10-20 | [att-diskutera.md](att-diskutera.md) | Förslag som gruppen ska ta ställning till och vad som saknas för läxorna |
 | 2026-10-21 | [dokumentregister.md](dokumentregister.md) | Det här dokumentet |
 | 2026-10-26 | [databas-och-docker.md](databas-och-docker.md) | Instruktionsbok: Docker i vardagen, hur databasen och Flyway fungerar, testdatan, inloggning per roll och tre sätt att titta i databasen |
+| 2026-10-30 | [projektstruktur.md](projektstruktur.md) | Var koden ligger: mappar efter funktion i frontend och backend (beslut #9), vilken story hör till vilken mapp, knutpunkterna och regler för namn |
 
 ## Sprintar och reflektioner
 
@@ -98,3 +99,4 @@ Läxorna i den ordning vi fick dem, och materialet som hör till varje läxa. Al
 | 2026-10-23 | Uppdaterade beskrivningen av PR-mallen |
 | 2026-10-24 | La till filerna för sprint 1 |
 | 2026-10-26 | La till `databas-och-docker.md` |
+| 2026-10-30 | La till `projektstruktur.md`, beslutsloggen har nu #9 |
