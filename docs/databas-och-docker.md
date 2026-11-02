@@ -51,11 +51,12 @@ Databasen är PostgreSQL 17 och körs i en egen container (`db`). Datan sparas i
 
 ### Flyway skapar tabellerna
 
-Tabellerna skapas av **Flyway**, inte för hand. När backend startar kör Flyway SQL-filerna i `backend/src/main/resources/db/migration/` (`V1__init.sql`, senare `V2__...` osv.) i ordning, och var och en bara en gång. Flyway sparar vilka filer som är körda i tabellen `flyway_schema_history`. Därför har alla exakt samma tabeller.
+Tabellerna skapas av **Flyway**, inte för hand. När backend startar kör Flyway SQL-filerna i `backend/src/main/resources/db/migration/` (`V1__init.sql`, `V2__seed.sql` osv.) i ordning, och var och en bara en gång. Flyway sparar vilka filer som är körda i tabellen `flyway_schema_history`. Därför har alla exakt samma tabeller.
 
 Regler:
 
 - **Ändra schemat** genom att skapa en **ny** fil, t.ex. `V3__lagg_till_rum.sql`.
+- `V2__seed.sql` är inget schema utan tre testanvändare, en per roll (se avsnitt 5). Den krockar inte med testdatan: det som redan finns hoppas över.
 - **Ändra aldrig en migration som redan är mergad.** Då startar inte backend hos de andra.
 - Säg på standupen att du gör en migration, så att två inte tar samma nummer.
 - Ändras schemat ska [`db/testdata.sql`](../db/testdata.sql) uppdateras i samma PR.
@@ -109,7 +110,7 @@ Tiderna räknas från när filen läses in, så listorna ser alltid aktuella ut.
 
 Inloggningen kommer med story 1 (Logga in med roll). Tills dess svarar backend 401 på allt utom `/api/ping`.
 
-Alla användare i testdatan har lösenordet **`test1234`**. En per roll:
+De här tre användarna finns **direkt efter `docker compose up`**, även utan testdatan. Flyway skapar dem med `V2__seed.sql`, tillsammans med fastigheten Solrosen och hyresgästens lägenhet 1001. Lösenordet är **`test1234`**, samma som för alla i testdatan:
 
 | Roll | E-post | Namn |
 |---|---|---|
@@ -125,7 +126,9 @@ Fler att testa med, t.ex. att en förvaltare bara ser sina fastigheter eller att
 | Tekniker | `sofia.nilsson@felanmalan.se`, `erik.johansson@felanmalan.se` |
 | Hyresgäst utan lägenhet | `nils.holm@example.com` |
 
-Alla e-postadresser finns i `db/testdata.sql`.
+De finns bara när testdatan är inläst. Alla e-postadresser finns i `db/testdata.sql`.
+
+⚠️ Testanvändarna har ett lösenord som alla känner till. De ska tas bort eller få nya lösenord innan deploy (T2).
 
 ## 6. Titta i databasen: tre sätt
 
@@ -181,3 +184,4 @@ Kör du allt i Docker behöver du ingen JDK. Ska du köra backend eller tester i
 | Datum | Ändring |
 |---|---|
 | 2026-10-26 | Första versionen |
+| 2026-10-30 | Testanvändarna från `V2__seed.sql` finns direkt efter `docker compose up` (story 1) |
