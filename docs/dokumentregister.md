@@ -108,5 +108,6 @@ Läxorna i den ordning vi fick dem, och materialet som hör till varje läxa. Al
 | 2026-10-26 | La till `databas-och-docker.md` |
 | 2026-10-28 | La till `bilder/mockups/slutliga/README.md` |
 | 2026-10-28 | La till `omrostning-mockups.md` |
+| 2026-10-30 | Beslutsloggen har nu #1–#8 |
 | 2026-10-30 | La till `projektstruktur.md`, beslutsloggen har nu #9 |
 | 2026-11-02 | La till filerna för sprint 2 |
