@@ -93,7 +93,7 @@ docker compose exec db sh -c 'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -f /db/
 
 **Varning:** filen tömmer alla tabeller först. Det du har skapat själv försvinner. Kör den igen när du vill börja om från samma data.
 
-Alla användare har lösenordet `test1234`. En per roll att logga in med:
+Alla användare har lösenordet `test1234`. En per roll att logga in med (de tre finns även utan testdatan, se nedan):
 
 | E-post | Roll | Namn |
 |---|---|---|
@@ -104,6 +104,8 @@ Alla användare har lösenordet `test1234`. En per roll att logga in med:
 Innehåll: 16 användare (2 förvaltare, 3 tekniker och 11 hyresgäster, varav en utan lägenhet), 3 fastigheter, 13 lägenheter (3 lediga), 16 ärenden i alla statusar, kategorier och prioriteter, statushistorik för varje ärende och 11 kommentarer. Se dem i Adminer (http://localhost:8081).
 
 Mer om Docker, databasen och inloggningen: [instruktionsboken](docs/databas-och-docker.md).
+
+De tre användarna i tabellen skapas automatiskt av Flyway (`V2__seed.sql`) första gången backend startar, tillsammans med fastigheten Solrosen och lägenhet 1001. Testdatan lägger till resten.
 
 Filen körs inte automatiskt och är bara till för utveckling. Ändras databasschemat (en ny Flyway-migration) ska `db/testdata.sql` uppdateras i samma PR.
 
