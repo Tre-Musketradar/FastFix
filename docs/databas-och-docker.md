@@ -108,7 +108,13 @@ Tiderna räknas från när filen läses in, så listorna ser alltid aktuella ut.
 
 ## 5. Logga in i appen
 
-Inloggningen kommer med story 1 (Logga in med roll). Tills dess svarar backend 401 på allt utom `/api/ping`.
+Inloggningen byggs i story 1 (Logga in med roll). Backend är klar: `POST /api/auth/login` ger en token, och alla andra anrop utom `/api/ping`, `/actuator/health` och Swagger kräver den i headern `Authorization: Bearer <token>`. Inloggningssidan i frontend kommer senare i storyn. Tills dess kan du prova i Swagger (http://localhost:8080/swagger-ui.html) eller med curl:
+
+```bash
+curl -X POST http://localhost:8080/api/auth/login \
+  -H 'Content-Type: application/json' \
+  -d '{"email":"forvaltare@felanmalan.se","password":"test1234"}'
+```
 
 De här tre användarna finns **direkt efter `docker compose up`**, även utan testdatan. Flyway skapar dem med `V2__seed.sql`, tillsammans med fastigheten Solrosen och hyresgästens lägenhet 1001. Lösenordet är **`test1234`**, samma som för alla i testdatan:
 
@@ -185,4 +191,5 @@ Kör du allt i Docker behöver du ingen JDK. Ska du köra backend eller tester i
 |---|---|
 | 2026-10-26 | Första versionen |
 | 2026-10-30 | Testanvändarna från `V2__seed.sql` finns direkt efter `docker compose up` (story 1) |
+| 2026-11-01 | Inloggningen i backend: `POST /api/auth/login` och hur man provar den |
 | 2026-11-01 | Startsidan är nu inloggningssidan (story 1) |
