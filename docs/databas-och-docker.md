@@ -108,7 +108,7 @@ Tiderna räknas från när filen läses in, så listorna ser alltid aktuella ut.
 
 ## 5. Logga in i appen
 
-Inloggningen byggs i story 1 (Logga in med roll). Backend är klar: `POST /api/auth/login` ger en token, och alla andra anrop utom `/api/ping`, `/actuator/health` och Swagger kräver den i headern `Authorization: Bearer <token>`. Inloggningssidan i frontend kommer senare i storyn. Tills dess kan du prova i Swagger (http://localhost:8080/swagger-ui.html) eller med curl:
+Logga in på http://localhost:5173 (story 1, Logga in med roll). Bakom sidan ger `POST /api/auth/login` en token, och alla andra anrop utom `/api/ping`, `/actuator/health` och Swagger kräver den i headern `Authorization: Bearer <token>`. Du kan också prova API:t i Swagger (http://localhost:8080/swagger-ui.html) eller med curl:
 
 ```bash
 curl -X POST http://localhost:8080/api/auth/login \
@@ -192,4 +192,4 @@ Kör du allt i Docker behöver du ingen JDK. Ska du köra backend eller tester i
 | 2026-10-26 | Första versionen |
 | 2026-10-30 | Testanvändarna från `V2__seed.sql` finns direkt efter `docker compose up` (story 1) |
 | 2026-11-01 | Inloggningen i backend: `POST /api/auth/login` och hur man provar den |
-| 2026-11-01 | Startsidan är nu inloggningssidan (story 1) |
+| 2026-11-01 | Startsidan är nu inloggningssidan (story 1), och avsnitt 5 börjar med inloggningen i appen |
