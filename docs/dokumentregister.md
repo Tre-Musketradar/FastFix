@@ -24,6 +24,8 @@ Alla Markdown-dokument i repot, med datum då de lades till. Varje nytt dokument
 | 2026-10-20 | [att-diskutera.md](att-diskutera.md) | Förslag som gruppen ska ta ställning till och vad som saknas för läxorna |
 | 2026-10-21 | [dokumentregister.md](dokumentregister.md) | Det här dokumentet |
 | 2026-10-26 | [databas-och-docker.md](databas-och-docker.md) | Instruktionsbok: Docker i vardagen, hur databasen och Flyway fungerar, testdatan, inloggning per roll och tre sätt att titta i databasen |
+| 2026-10-28 | [omrostning-mockups.md](omrostning-mockups.md) | Meddelandet till gruppen om omröstningen om wireframe- och mockuputkasten, och en tabell för rösterna och besluten per vy |
+| 2026-10-28 | [bilder/mockups/slutliga/README.md](bilder/mockups/slutliga/README.md) | Mappen för de slutliga wireframes och mockups, och hur ett utkast blir slutligt efter gruppens omröstning |
 | 2026-10-30 | [projektstruktur.md](projektstruktur.md) | Var koden ligger: mappar efter funktion i frontend och backend (beslut #9), vilken story hör till vilken mapp, knutpunkterna och regler för namn |
 
 ## Sprintar och reflektioner
@@ -99,4 +101,6 @@ Läxorna i den ordning vi fick dem, och materialet som hör till varje läxa. Al
 | 2026-10-23 | Uppdaterade beskrivningen av PR-mallen |
 | 2026-10-24 | La till filerna för sprint 1 |
 | 2026-10-26 | La till `databas-och-docker.md` |
+| 2026-10-28 | La till `bilder/mockups/slutliga/README.md` |
+| 2026-10-28 | La till `omrostning-mockups.md` |
 | 2026-10-30 | La till `projektstruktur.md`, beslutsloggen har nu #9 |
