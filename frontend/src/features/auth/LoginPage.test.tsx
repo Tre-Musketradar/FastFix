@@ -10,10 +10,11 @@ import { MemoryRouter, Route, Routes } from 'react-router'
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest'
 import { tokenStorage } from '../../shared/apiClient'
 import { AuthProvider } from './AuthProvider'
+import { pingHandlers } from '../ping/pingHandlers'
 import { authHandlers } from './authHandlers'
 import { LoginPage } from './LoginPage'
 
-const server = setupServer(...authHandlers)
+const server = setupServer(...authHandlers, ...pingHandlers)
 
 beforeAll(() => server.listen({ onUnhandledFrame: 'error' }))
 afterEach(() => {

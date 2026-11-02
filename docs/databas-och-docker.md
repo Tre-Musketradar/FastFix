@@ -13,7 +13,7 @@ docker compose up --build -V
 - `--build` bygger om backend och frontend med den nya koden.
 - `-V` behövs när någon har lagt till ett bibliotek. Annars hittar frontend inte de nya biblioteken.
 
-**Fungerar allt?** Startsidan http://localhost:5173 ska visa `Backend: ok · Databas: PostgreSQL 17… · Användare: …`. Står det "Backend svarar inte" har backend inte startat än. Vänta en stund och ladda om.
+**Fungerar allt?** http://localhost:5173 visar inloggningssidan, och längst ner ska det stå `Backend: ok · Databas: PostgreSQL 17… · Användare: …`. Står det "Backend svarar inte" har backend inte startat än. Vänta en stund och ladda om.
 
 ## 2. Docker i vardagen
 
@@ -85,7 +85,7 @@ Hela schemat med diagram: [databasschema.md](databasschema.md).
 docker compose exec db sh -c 'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -f /db/testdata.sql'
 ```
 
-Det ska sluta med `COMMIT`. Startsidan visar sedan `Användare: 16`.
+Det ska sluta med `COMMIT`. Inloggningssidan visar sedan `Användare: 16` längst ner.
 
 ⚠️ Filen **tömmer alla tabeller först**. Det du har skapat själv försvinner. Kör den igen när du vill börja om från samma data.
 
@@ -108,7 +108,7 @@ Tiderna räknas från när filen läses in, så listorna ser alltid aktuella ut.
 
 ## 5. Logga in i appen
 
-Inloggningen byggs i story 1 (Logga in med roll). Backend är klar: `POST /api/auth/login` ger en token, och alla andra anrop utom `/api/ping`, `/actuator/health` och Swagger kräver den i headern `Authorization: Bearer <token>`. Inloggningssidan i frontend kommer senare i storyn. Tills dess kan du prova i Swagger (http://localhost:8080/swagger-ui.html) eller med curl:
+Logga in på http://localhost:5173 (story 1, Logga in med roll). Bakom sidan ger `POST /api/auth/login` en token, och alla andra anrop utom `/api/ping`, `/actuator/health` och Swagger kräver den i headern `Authorization: Bearer <token>`. Du kan också prova API:t i Swagger (http://localhost:8080/swagger-ui.html) eller med curl:
 
 ```bash
 curl -X POST http://localhost:8080/api/auth/login \
@@ -192,3 +192,4 @@ Kör du allt i Docker behöver du ingen JDK. Ska du köra backend eller tester i
 | 2026-10-26 | Första versionen |
 | 2026-10-30 | Testanvändarna från `V2__seed.sql` finns direkt efter `docker compose up` (story 1) |
 | 2026-11-01 | Inloggningen i backend: `POST /api/auth/login` och hur man provar den |
+| 2026-11-01 | Startsidan är nu inloggningssidan (story 1), och avsnitt 5 börjar med inloggningen i appen |

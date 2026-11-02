@@ -2,8 +2,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Wrench } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router'
+import { Navigate, useNavigate } from 'react-router'
 import { z } from 'zod'
+import { PingStatus } from '../ping/PingStatus'
 import { useAuth } from './useAuth'
 
 const schema = z.object({
@@ -17,7 +18,7 @@ const inputClass =
   'h-12 w-full rounded-xl border border-slate-300 bg-white px-4 text-base text-slate-900 outline-none focus:border-blue-700 focus:ring-2 focus:ring-blue-700/30 aria-invalid:border-red-600'
 
 export function LoginPage() {
-  const { login } = useAuth()
+  const { user, login } = useAuth()
   const navigate = useNavigate()
   const [error, setError] = useState('')
   const {
@@ -35,6 +36,9 @@ export function LoginPage() {
       setError(e instanceof Error ? e.message : 'Något gick fel')
     }
   }
+
+  // Redan inloggad: inloggningssidan behövs inte
+  if (user) return <Navigate to="/tickets" replace />
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-slate-50 px-6 pt-20 pb-10 text-slate-900">
@@ -114,6 +118,9 @@ export function LoginPage() {
         <br />
         Kontakta din förvaltare.
       </p>
+      <div className="mt-4 text-xs">
+        <PingStatus />
+      </div>
     </main>
   )
 }
