@@ -4,8 +4,8 @@ Sprint 2 pågår måndag 2026-11-02 till söndag 2026-11-08. Samma rytm som i [s
 
 | Roll | Vem |
 |---|---|
-| Product Owner (PO) | <!-- bestäms på planningen, förslag Jose Muñoz --> |
-| Scrum Master (SM) | <!-- bestäms på planningen, förslag Martin Friis (roterar varje vecka) --> |
+| Product Owner (PO) | Jose Muñoz |
+| Scrum Master (SM) | Ermias Demessie |
 | Utvecklare | Alla tre, även PO och SM |
 
 ## Måndag 2026-11-02: mötena
@@ -15,7 +15,7 @@ SM håller tiden. Totalt ungefär 1,5 timme.
 | Tid | Punkt | Leds av | Resultat |
 |---|---|---|---|
 | 20 min | Review av sprint 1 med läraren | PO | Del 2 i [sprint-1/review.md](../sprint-1/review.md): feedback och ändringar i backloggen |
-| 15–20 min | Retro av sprint 1 | SM (sprint 1: Ermias) | Ifylld [sprint-1/retro.md](../sprint-1/retro.md) med 2–3 åtgärder |
+| 15–20 min | Retro av sprint 1 | SM (Ermias) | Ifylld [sprint-1/retro.md](../sprint-1/retro.md) med 2–3 åtgärder |
 | 30–45 min | Planning av sprint 2 | PO | Ifylld [planning.md](planning.md): roller, sprintmål, kapacitet, kort, ansvariga |
 
 Efter mötet:
@@ -40,7 +40,7 @@ Efter mötet:
 Varje dag tisdag–fredag:
 
 - [ ] Leder standupen (max 15 minuter). Var och en säger: igår, idag, hinder och **vilka filer** man ska ändra.
-- [ ] Loggar den direkt efteråt i [standup.md](standup.md) i den här mappen (inte i `sprint-mall/`). Bara SM skriver i filen.
+- [ ] Loggar den direkt efteråt i [standup.md](standup.md) i den här mappen (inte i `sprint-mall/`). Bara SM (Ermias) skriver i filen.
 - [ ] Går igenom öppna PR:er: finns det någon som väntar på granskning? Vem tar den?
 - [ ] Ser till att någon tar hand om varje hinder efter standupen.
 

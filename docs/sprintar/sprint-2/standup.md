@@ -23,7 +23,7 @@
 
 ---
 
-**Scrum Master:** <!-- fylls i på planningen -->
+**Scrum Master:** Ermias Demessie
 **Tid och plats:** <!-- samma som i gruppkontraktet -->
 
 ## Tisdag 2026-11-03

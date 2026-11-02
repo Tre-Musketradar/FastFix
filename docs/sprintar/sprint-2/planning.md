@@ -7,8 +7,8 @@
 
 **Datum:** måndag 2026-11-02
 **Deltagare:** Jose Muñoz, Martin Friis, Ermias Demessie
-**Product Owner denna sprint:** <!-- förslag: Jose Muñoz (fortsätter) -->
-**Scrum Master denna sprint:** <!-- förslag: Martin Friis (Scrum Master roterar varje vecka enligt gruppkontraktet) -->
+**Product Owner denna sprint:** Jose Muñoz
+**Scrum Master denna sprint:** Ermias Demessie
 
 ## Sprintmål
 

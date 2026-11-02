@@ -13,7 +13,7 @@
 
 **Datum:** måndag 2026-11-09, direkt efter reviewn
 **Deltagare:** Jose Muñoz, Martin Friis, Ermias Demessie
-**Leds av:** <!-- Scrum Master i sprint 2 -->
+**Leds av:** Ermias Demessie (Scrum Master)
 
 ## Förra retrons åtgärder
 
