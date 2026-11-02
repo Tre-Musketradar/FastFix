@@ -15,61 +15,57 @@
 -->
 
 **Datum:** måndag 2026-11-02 (del 1 klar senast söndag 2026-11-01 kväll)
-**Deltagare:**
+**Deltagare:** Jose Muñoz, Martin Friis, Ermias Demessie
 
 ## Del 1: Förberedelse
 
 ### Sprintmål
 
-<!-- Kopiera från planning.md när sprintmålet är bestämt. -->
+> En användare kan logga in med sin roll, och förvaltaren kan lägga till fastigheter och lägenheter som sparas i databasen.
 
+(Förslaget från [planning.md](planning.md). Planeringen fylldes aldrig i, så målet bekräftades inte formellt.)
 
-
-**Uppnåddes sprintmålet?** Ja / Delvis / Nej
+**Uppnåddes sprintmålet?** Nej. Inloggningen är byggd och testad men inte mergad. Fastigheter och lägenheter är påbörjade.
 
 ### Blev klart
 
-> **Exempel:**
->
-> | Issue | Story | Visas av |
-> |---|---|---|
-> | #3 | Skapa ett hushåll | Sara |
-> | #4 | Lägga till en syssla | Lina |
-> | #7 | Visa lista med sysslor | Jonas |
+Inget kort uppfyller Definition of Done: inget är granskat och mergat i `staging`/`main`.
 
 | Issue | Story | Visas av |
 |---|---|---|
-| | | |
-| | | |
+| – | – | – |
 
 ### Blev inte klart
 
-<!-- Vad och varför? Det är inget misslyckande, men det ska förklaras. -->
-
-> **Exempel:** #9 Projektskelett blev klart, men databasen körs bara lokalt hos Amir. Vi underskattade hur lång tid Docker-uppsättningen tog.
-
 | Issue | Story | Varför inte klar | Vad händer med den? |
 |---|---|---|---|
-| | | | |
+| #9 | U1: Inloggning med JWT | Beslut #8 skrivet (PR #47), väntar på granskning | Granskas och mergas först i sprint 2 |
+| #6 | 1 Logga in med roll | Byggd i sju små PR:er (#49, #51–#56) med 25 backendtester och 24 frontendtester, CI grönt och manuellt test av alla acceptanskriterier. Ingen PR är granskad: vi planerade inte in tid för granskning, och de flesta PR:erna öppnades i slutet av veckan (2026-10-30 till 2026-11-01) | Granskas och mergas i ordning i sprint 2. Inget nytt arbete, bara granskning och små konflikter |
+| #11 | 2 Lägga till fastighet | Påbörjad (gren `feature/lägg-till-fastighet`: entitet och repository). Väntade på inloggningen, eftersom en fastighet behöver en förvaltare | Fortsätter i sprint 2 |
+| #13 | 4 Lägga till hyresgäst | Påbörjad enligt standupen, ingen kod pushad | Fortsätter i sprint 2, efter #12 |
+| #12 | 3 Lägga till lägenheter | Inte påbörjad (ingen ansvarig) | Tas in i sprint 2 |
+
+Klart men utanför storyerna: projektstrukturen (beslut #9, PR #50, godkänd), mockups för omröstning (PR #45, godkänd), testdata och instruktionsbok (PR #44, mergad).
 
 ### Demoplan
 
-<!-- I vilken ordning visar ni? Vem gör vad? Berätta det som en användares väg genom appen, inte story för story. -->
+Inget är mergat, så det finns inget att visa från `main`. Vi visar inloggningen från grenen `feature/6-skyddade-sidor` som **pågående arbete**, inte som klart:
 
-> **Exempel:**
-> 1. Sara skapar hushållet "Korridor 4B".
-> 2. Lina lägger till tre sysslor.
-> 3. Jonas visar att sysslorna finns kvar efter omladdning.
+1. Förvaltaren Maria (`forvaltare@felanmalan.se`, `test1234`) loggar in och hamnar på "Öppna ärenden" med sitt namn och sin roll i menyn.
+2. Hon laddar om sidan: hon är fortfarande inloggad. Hon loggar ut och kommer tillbaka till inloggningen.
+3. Fel lösenord ger "Fel e-post eller lösenord". Tomma fält ger ett tydligt felmeddelande.
+4. Hyresgästen Anna och teknikern Ali loggar in och får var sin startsida ("Mina ärenden", "Mina uppdrag").
+5. Utan inloggning skickas man från `/tickets` till inloggningen, och API:t svarar 401.
 
-1.
-2.
-3.
+Visas av: Jose. Antecknar feedback: <!-- bestäm på mötet -->
+
+Starta från projektroten: `git switch feature/6-skyddade-sidor && docker compose up --build -V`.
 
 ### Frågor till läraren
 
-<!-- Något ni vill ha feedback på eller är osäkra på? -->
-
--
+- Sju små PR:er för en L-story, staplade på varandra: är det rätt storlek, eller hellre färre?
+- Hur hinner vi granska när alla bygger? Ska granskning vara ett eget kort eller en fast tid varje dag?
+- Får vi visa pågående arbete från en gren på reviewn, eller ska det alltid vara `main`?
 
 ## Del 2: Efter reviewn
 
