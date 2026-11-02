@@ -16,13 +16,17 @@ Alla Markdown-dokument i repot, med datum då de lades till. Varje nytt dokument
 | 2026-10-15 | [gruppkontrakt.md](gruppkontrakt.md) | Hur vi samarbetar: tillgänglighet, kommunikation, frånvaro, beslut, kod och kvalitet. Signerat 2026-10-16 |
 | 2026-10-15 | [definition-of-done.md](definition-of-done.md) | Vad som krävs för att en story ska räknas som klar |
 | 2026-10-15 | [databasschema.md](databasschema.md) | Tabeller, relationer och enums (ER-diagram i Mermaid) |
-| 2026-10-15 | [beslutslogg.md](beslutslogg.md) | Större beslut med alternativ och motivering (#1–#7) |
+| 2026-10-15 | [beslutslogg.md](beslutslogg.md) | Större beslut med alternativ och motivering (#1–#9) |
 | 2026-10-15 | [frontend-plan.md](frontend-plan.md) | Vyer per roll, mappstruktur, typer och plan per sprint för frontend |
 | 2026-10-15 | [CONTRIBUTING.md](CONTRIBUTING.md) | Grenflödet, regler för PR:er och vägen från issue till Klart |
 | 2026-10-15 | [uppstart.md](uppstart.md) | Hur repot sattes upp: teknikval, organisation, grenskydd och CI |
-| 2026-10-20 | [introduktion.md](introduktion.md) | För nya i gruppen: vad vi bygger, hur vi jobbar, tekniken och besluten i korthet |
+| 2026-10-20 | [introduktion.md](introduktion.md) | Projektet i korthet: vad vi bygger, hur vi jobbar, tekniken och besluten. Från början skriven för nya medlemmar, sedan 2026-10-26 en sammanfattning |
 | 2026-10-20 | [att-diskutera.md](att-diskutera.md) | Förslag som gruppen ska ta ställning till och vad som saknas för läxorna |
 | 2026-10-21 | [dokumentregister.md](dokumentregister.md) | Det här dokumentet |
+| 2026-10-26 | [databas-och-docker.md](databas-och-docker.md) | Instruktionsbok: Docker i vardagen, hur databasen och Flyway fungerar, testdatan, inloggning per roll och tre sätt att titta i databasen |
+| 2026-10-28 | [omrostning-mockups.md](omrostning-mockups.md) | Meddelandet till gruppen om omröstningen om wireframe- och mockuputkasten, och en tabell för rösterna och besluten per vy |
+| 2026-10-28 | [bilder/mockups/slutliga/README.md](bilder/mockups/slutliga/README.md) | Mappen för de slutliga wireframes och mockups, och hur ett utkast blir slutligt efter gruppens omröstning |
+| 2026-10-30 | [projektstruktur.md](projektstruktur.md) | Var koden ligger: mappar efter funktion i frontend och backend (beslut #9), vilken story hör till vilken mapp, knutpunkterna och regler för namn |
 
 ## Sprintar och reflektioner
 
@@ -34,6 +38,17 @@ Alla Markdown-dokument i repot, med datum då de lades till. Varje nytt dokument
 | 2026-10-15 | [sprintar/sprint-mall/review.md](sprintar/sprint-mall/review.md) | Mall: förberedelse och feedback från sprint review |
 | 2026-10-15 | [sprintar/sprint-mall/retro.md](sprintar/sprint-mall/retro.md) | Mall: retrospektiv |
 | 2026-10-15 | [reflektioner/MALL.md](reflektioner/MALL.md) | Mall för den individuella reflektionen (lämnas in vecka 8) |
+| 2026-10-24 | [sprintar/sprint-1/veckoplan.md](sprintar/sprint-1/veckoplan.md) | Sprint 1 steg för steg: roller (PO Jose, SM Ermias), måndagens dagordning, veckan dag för dag och vad PO, SM och alla gör |
+| 2026-10-24 | [sprintar/sprint-1/planning.md](sprintar/sprint-1/planning.md) | Förslag till sprint planning 2026-10-26: sprintmål, kort med ansvariga, vilka filer korten rör, risker |
+| 2026-10-24 | [sprintar/sprint-1/standup.md](sprintar/sprint-1/standup.md) | Scrum Masters logg, tisdag 2026-10-27 till fredag 2026-10-30 |
+| 2026-10-24 | [sprintar/sprint-1/review.md](sprintar/sprint-1/review.md) | Review 2026-11-02 (del 1 klar senast söndag 2026-11-01) |
+| 2026-10-24 | [sprintar/sprint-1/retro.md](sprintar/sprint-1/retro.md) | Retro 2026-11-02, leds av Ermias |
+| 2026-10-30 | [sprintar/sprint-1/plan-story-1.md](sprintar/sprint-1/plan-story-1.md) | Plan för story 1 Logga in med roll: besluten från U1, API-kontraktet, sju små PR:er (fyra backend, tre frontend) med tester, ordning, test för hand och risker. Jose gör storyn |
+| 2026-11-02 | [sprintar/sprint-2/veckoplan.md](sprintar/sprint-2/veckoplan.md) | Sprint 2 steg för steg: måndagens möten (review, retro, planning), veckan dag för dag och en checklista för Scrum Master |
+| 2026-11-02 | [sprintar/sprint-2/planning.md](sprintar/sprint-2/planning.md) | Förslag till sprint planning 2026-11-02: sprintmål, kort med ansvariga, vilka filer korten rör, risker |
+| 2026-11-02 | [sprintar/sprint-2/standup.md](sprintar/sprint-2/standup.md) | Scrum Masters logg, tisdag 2026-11-03 till fredag 2026-11-06 |
+| 2026-11-02 | [sprintar/sprint-2/review.md](sprintar/sprint-2/review.md) | Förberedelse och feedback från sprint review 2026-11-09 |
+| 2026-11-02 | [sprintar/sprint-2/retro.md](sprintar/sprint-2/retro.md) | Retrospektiv 2026-11-09, med uppföljning av åtgärderna från sprint 1 |
 
 ## GitHub-mallar
 
@@ -90,3 +105,11 @@ Läxorna i den ordning vi fick dem, och materialet som hör till varje läxa. Al
 |---|---|
 | 2026-10-21 | Första versionen, med alla dokument som fanns i `staging` |
 | 2026-10-23 | Uppdaterade beskrivningen av PR-mallen |
+| 2026-10-24 | La till filerna för sprint 1 |
+| 2026-10-26 | La till `databas-och-docker.md` |
+| 2026-10-28 | La till `bilder/mockups/slutliga/README.md` |
+| 2026-10-28 | La till `omrostning-mockups.md` |
+| 2026-10-30 | Beslutsloggen har nu #1–#8 |
+| 2026-10-30 | La till `sprintar/sprint-1/plan-story-1.md` |
+| 2026-10-30 | La till `projektstruktur.md`, beslutsloggen har nu #9 |
+| 2026-11-02 | La till filerna för sprint 2 |

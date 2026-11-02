@@ -51,10 +51,26 @@ docker compose up --build
 | Frontend | http://localhost:5173 |
 | Backend (API) | http://localhost:8080/api |
 | PostgreSQL | `localhost:5432` |
-| Swagger UI | http://localhost:8080/swagger-ui.html (öppen när inloggningen är klar, U1) |
+| Swagger UI | http://localhost:8080/swagger-ui.html (öppen, kräver ingen inloggning) |
 | Adminer (se databasen) | http://localhost:8081 (system PostgreSQL, uppgifter från `.env`) |
+| Testendpoint | http://localhost:8080/api/ping (öppen, kräver ingen inloggning) |
+
+**Fungerar allt?** http://localhost:5173 visar inloggningssidan. Längst ner ska det stå `Backend: ok · Databas: PostgreSQL 17… · Användare: 3`. Logga in med `forvaltare@felanmalan.se` / `test1234`. Står det rätt når frontend backend, och backend kan läsa från databasen. Står det "Backend svarar inte" har backend inte startat än: vänta en stund och ladda om sidan.
 
 Stoppa med `Ctrl+C`. Nollställ databasen med `docker compose down -v`.
+
+### Behöver jag installera Java (JDK)?
+
+Projektet använder **JDK 21** överallt: `backend/pom.xml` (`<java.version>21</java.version>`), Docker (`eclipse-temurin-21`) och CI (`java-version: 21`).
+
+- **Startar du bara projektet med `docker compose up --build`?** Då behöver du ingen JDK på datorn. Docker har sin egen.
+- **Ska du koda backend i IDE:n eller köra `./mvnw` direkt?** Då behöver du JDK 21. Använd Eclipse Temurin 21, samma som Docker och CI.
+  - Mac: `brew install --cask temurin@21`
+  - Windows: installationsprogrammet från https://adoptium.net (version 21 LTS)
+  - IntelliJ: *File → Project Structure → SDK → Download JDK → version 21, Eclipse Temurin*
+- **Kontrollera:** `java -version` ska visa `21.x`.
+
+Har du en annan version installerad, t.ex. 17 eller 25, välj 21 för det här projektet. Med 17 går det inte att bygga. I IntelliJ väljer du SDK per projekt, så du behöver inte avinstallera något.
 
 ### Uppdatera efter `git pull`
 
@@ -66,6 +82,32 @@ docker compose up --build -V
 ```
 
 `-V` behövs: utan den återanvänder Docker den gamla `node_modules` och frontend hittar inte de nya biblioteken. Kör också `cd frontend && npm ci` om du kör Vite lokalt eller vill att editorn ska hitta typerna. IntelliJ hämtar backendens bibliotek själv (eller klicka på "Reload Maven Project").
+
+### Testdata
+
+[`db/testdata.sql`](db/testdata.sql) fyller databasen med påhittade men realistiska data, så att man kan testa vyerna utan att skapa allt för hand. Kör det när databasen är igång (från projektets rotmapp):
+
+```bash
+docker compose exec db sh -c 'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -f /db/testdata.sql'
+```
+
+**Varning:** filen tömmer alla tabeller först. Det du har skapat själv försvinner. Kör den igen när du vill börja om från samma data.
+
+Alla användare har lösenordet `test1234`. En per roll att logga in med (de tre finns även utan testdatan, se nedan):
+
+| E-post | Roll | Namn |
+|---|---|---|
+| `forvaltare@felanmalan.se` | Förvaltare (MANAGER) | Maria Lindqvist |
+| `tekniker@felanmalan.se` | Tekniker (TECHNICIAN) | Ali Hassan |
+| `hyresgast@felanmalan.se` | Hyresgäst (TENANT) | Anna Karlsson, Solrosen lgh 1001 |
+
+Innehåll: 16 användare (2 förvaltare, 3 tekniker och 11 hyresgäster, varav en utan lägenhet), 3 fastigheter, 13 lägenheter (3 lediga), 16 ärenden i alla statusar, kategorier och prioriteter, statushistorik för varje ärende och 11 kommentarer. Se dem i Adminer (http://localhost:8081).
+
+Mer om Docker, databasen och inloggningen: [instruktionsboken](docs/databas-och-docker.md).
+
+De tre användarna i tabellen skapas automatiskt av Flyway (`V2__seed.sql`) första gången backend startar, tillsammans med fastigheten Solrosen och lägenhet 1001. Testdatan lägger till resten.
+
+Filen körs inte automatiskt och är bara till för utveckling. Ändras databasschemat (en ny Flyway-migration) ska `db/testdata.sql` uppdateras i samma PR.
 
 ### Jobba med en del i taget
 
@@ -104,7 +146,7 @@ Mer information i [CONTRIBUTING.md](docs/CONTRIBUTING.md) och [uppstart.md](docs
 
 | Dokument | Innehåll |
 |----------|----------|
-| [Introduktion](docs/introduktion.md) | **Börja här om du är ny:** vad vi bygger, hur vi jobbar, teknik och beslut |
+| [Projektet i korthet](docs/introduktion.md) | Sammanfattning: vad vi bygger, hur vi jobbar, teknik och beslut |
 | [Att diskutera](docs/att-diskutera.md) | Förslag som gruppen ska ta ställning till |
 | [Dokumentregister](docs/dokumentregister.md) | Alla dokument, med datum då de lades till |
 | [Gruppkontrakt](docs/gruppkontrakt.md) | Hur vi samarbetar |

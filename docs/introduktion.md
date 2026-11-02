@@ -1,6 +1,6 @@
-# Introduktion till projektet
+# Projektet i korthet
 
-Den här sidan är för dig som är ny i gruppen. Den sammanfattar vad vi bygger, hur vi jobbar, vilken teknik vi använder och vilka beslut vi redan har tagit. Varje avsnitt länkar till dokumentet med alla detaljer.
+En sammanfattning av vad vi bygger, hur vi jobbar, vilken teknik vi använder och vilka beslut vi har tagit. Bra att utgå från inför review, den individuella reflektionen och den muntliga redovisningen. Varje avsnitt länkar till dokumentet med alla detaljer.
 
 ## Vad vi bygger
 
@@ -142,16 +142,12 @@ Alla beslut, med alternativ och motivering, finns i [beslutsloggen](beslutslogg.
 
 ## Var står vi nu?
 
-- **Klart:** projektskelettet (allt startar med Docker), CI, skyddade grenar, boarden med hela backloggen, Definition of Done, gruppkontraktet, databasschemat och biblioteken.
-- **Nästa:** läxan till pass 4 och sprint planning för Sprint 1 måndag 2026-10-26. Första storyn är "Logga in med roll" (#6), som bygger på undersökningen U1 (#9).
+- **Sprint 0 (vecka 1–2), klart:** projektskelettet (allt startar med Docker, testendpoint `/api/ping`), CI, skyddade grenar, boarden med hela backloggen, Definition of Done, gruppkontraktet, databasschemat och biblioteken.
+- **Sprint 1 (från måndag 2026-10-26):** utvecklingsfasen har börjat. Product Owner Jose, Scrum Master Ermias. Första storyn, "Logga in med roll" (#6), byggs tillsammans efter undersökningen U1 (#9). Se [sprint 1](sprintar/sprint-1/veckoplan.md).
 
-## Kom igång
+## Starta projektet
 
-1. Installera [Docker Desktop](https://www.docker.com/products/docker-desktop/) och Git.
-2. Be någon i gruppen bjuda in dig till organisationen **Tre-Musketradar** på GitHub.
-3. Följ "Kom igång" i [README](../README.md). Efter tre kommandon körs appen på http://localhost:5173.
-4. Läs [gruppkontraktet](gruppkontrakt.md) och skriv under med ditt namn och datum (via en PR, så övar du flödet direkt).
-5. Läs lärarens material i [`docs/resurser/`](resurser/). Börja med `05-git-som-arbetssatt.md`.
+Följ "Kom igång" i [README](../README.md). Efter några kommandon körs appen på http://localhost:5173.
 
 ## Ordlista
 
@@ -173,3 +169,4 @@ Alla beslut, med alternativ och motivering, finns i [beslutsloggen](beslutslogg.
 | Datum | Ändring |
 |---|---|
 | 2026-10-20 | Första versionen |
+| 2026-10-26 | Gjord om till en sammanfattning av projektet. Inga fler nya medlemmar (utvecklingsfasen har börjat), så delarna för nya i gruppen är borttagna. "Var står vi nu?" uppdaterad |

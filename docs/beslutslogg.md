@@ -27,6 +27,66 @@ Kopiera den här för varje nytt beslut:
 
 ---
 
+## #9 Mappar efter funktion
+
+**Datum:** 2026-10-30
+**Status:** Gäller
+
+**Bakgrund:** Alla stories är vertikala och går genom frontend, backend och databas. När alla bygger hela funktioner rör alla hela kodbasen, och då blir det fler konflikter i Git. Vi behövde bestämma hur koden delas upp i mappar innan story 1 sätter mönstret för resten.
+
+**Alternativ:**
+- Efter lager: `components/`, `api/`, `pages/` i frontend och `controller/`, `service/`, `repository/` i backend.
+- Efter roll: `tenant/`, `technician/`, `manager/` och `shared/`.
+- Efter funktion: en mapp per funktion (`auth`, `properties`, `tenants`, `tickets`, `dashboard`) och `shared/` för det gemensamma.
+
+**Beslut:** Efter funktion, i både frontend (`src/features/<funktion>/`) och backend (`se.felanmalan.<funktion>`). Funktionerna följer epicerna. Skillnaderna mellan rollerna ligger i funktionens mapp. Detaljerna står i [projektstruktur.md](projektstruktur.md).
+
+**Varför:**
+- Läraren rekommenderar det ([07-projektstruktur-och-konflikter](resurser/07-projektstruktur-och-konflikter.md)): en story rör nästan bara sin egen mapp, så två stories krockar sällan.
+- **Efter lager:** varje story rör alla mappar, och filer som `api.ts` blir knutpunkter som alla ändrar.
+- **Efter roll:** ärenden används av alla tre rollerna, så det mesta skulle hamna i `shared/` eller kopieras. I backend tillhör en entitet som `Ticket` ingen enskild roll.
+
+**Konsekvenser:**
+- `PingStatus` flyttades till `features/ping/`, och paketen i backend har en `package-info.java` som beskriver dem.
+- Knutpunkterna (`App.tsx`, `SecurityConfig`, migrationerna, `shared/`) hålls små, helst en rad per ändring. Migrationer görs av en person i taget.
+- Det som börjar i en funktion och sedan behövs i fler flyttas till `shared/` i en egen PR.
+
+---
+
+## #8 Inloggning med JWT
+
+**Datum:** 2026-10-30
+**Status:** Gäller
+
+**Bakgrund:** Undersökningen U1 (#9): hur sätter vi upp Spring Security med JWT och roller, och hur skickar och sparar frontend token? Story 1 (#6) och alla stories efter den bygger på svaret. Ingen i gruppen har byggt inloggning med JWT förut, och vi har ungefär fem veckor kvar.
+
+**Alternativ:**
+- Var frontend sparar token: `localStorage` + headern `Authorization: Bearer`, en httpOnly-cookie, eller bara i minnet.
+- Hur backend kontrollerar token: Spring OAuth2 Resource Server (redan installerat, beslut #7), eller biblioteket `jjwt` och ett eget filter.
+- Var användarna kommer ifrån: Flyway-migrationen `V2__seed.sql` med en användare per roll, bara `db/testdata.sql`, eller en endpoint för registrering.
+
+**Beslut:**
+- Token sparas i `localStorage` och skickas som `Authorization: Bearer <token>`.
+- Backend använder Spring OAuth2 Resource Server. Token signeras med HS256 och hemligheten `JWT_SECRET` (finns redan i `application.yml` och `.env`). Rollen ligger i claimet `role` och blir `ROLE_TENANT`, `ROLE_TECHNICIAN` eller `ROLE_MANAGER`.
+- Token gäller i 8 timmar. Ingen refresh token.
+- `V2__seed.sql` skapar en användare per roll (`forvaltare@`, `tekniker@`, `hyresgast@felanmalan.se`, lösenord `test1234`) och en fastighet med en lägenhet till hyresgästen.
+- Endpoints: `POST /api/auth/login` och `GET /api/auth/me`. Utloggning sker i frontend genom att token tas bort.
+
+**Varför:**
+- **`localStorage`:** enklast, och man är kvar inloggad efter omladdning (kriterium 4 i story 1) utan extra arbete. En httpOnly-cookie är säkrare mot XSS, men kräver skydd mot CSRF och cookie-inställningar genom Vites proxy och vid deploy. Bara i minnet loggar ut användaren vid varje omladdning.
+- **Resource Server:** det mesta finns färdigt i Spring (kontroll av signatur och tid, roller). Med `jjwt` skulle vi skriva och testa filtret själva, med fler ställen att göra fel på.
+- **V2:** varje ny databas (lokalt, i CI, i tester och vid deploy) har användare att logga in med, utan att någon behöver köra `testdata.sql` för hand. Registrering passar inte appen: hyresgäster läggs till av förvaltaren (story 4).
+
+**Konsekvenser:**
+- Planen för story 1 står i [sprintar/sprint-1/plan-story-1.md](sprintar/sprint-1/plan-story-1.md).
+- Alla nya endpoints kräver token om de inte uttryckligen öppnas i `SecurityConfig`. Behörighet per roll kontrolleras i backend, inte bara i gränssnittet.
+- Skadlig JavaScript skulle kunna läsa token. Vi använder aldrig `dangerouslySetInnerHTML`.
+- En token som har kopierats gäller tills den går ut, även efter utloggning.
+- Testanvändarna har ett känt lösenord. De måste tas bort eller få nya lösenord innan deploy (T2).
+- `db/testdata.sql` tömmer tabellerna först och fungerar därför även efter V2.
+
+---
+
 ## #7 Bibliotek för frontend, backend och databas
 
 **Datum:** 2026-10-16
@@ -207,3 +267,10 @@ Föreslås inte: Lombok (DTO:er skrivs som Java 21-`record`, och vi slipper stä
 **Varför:** Appen har tre roller med olika behörigheter, och Spring Security har starkt stöd för roller. Vi vill också öva på Java i backend och React i frontend.
 
 **Konsekvenser:** Spring Security med JWT tar tid att sätta upp. Det hanteras med undersökningen U1 (max en halv dag) innan storyn "Logga in med roll".
+
+## Ändringar
+
+| Datum | Ändring |
+|---|---|
+| 2026-10-30 | La till #8 Inloggning med JWT (resultatet av U1). Avsnittet Ändringar är nytt |
+| 2026-10-30 | La till #9 Mappar efter funktion |
