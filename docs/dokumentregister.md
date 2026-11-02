@@ -42,6 +42,11 @@ Alla Markdown-dokument i repot, med datum då de lades till. Varje nytt dokument
 | 2026-10-24 | [sprintar/sprint-1/standup.md](sprintar/sprint-1/standup.md) | Scrum Masters logg, tisdag 2026-10-27 till fredag 2026-10-30 |
 | 2026-10-24 | [sprintar/sprint-1/review.md](sprintar/sprint-1/review.md) | Review 2026-11-02 (del 1 klar senast söndag 2026-11-01) |
 | 2026-10-24 | [sprintar/sprint-1/retro.md](sprintar/sprint-1/retro.md) | Retro 2026-11-02, leds av Ermias |
+| 2026-11-02 | [sprintar/sprint-2/veckoplan.md](sprintar/sprint-2/veckoplan.md) | Sprint 2 steg för steg: måndagens möten (review, retro, planning), veckan dag för dag och en checklista för Scrum Master |
+| 2026-11-02 | [sprintar/sprint-2/planning.md](sprintar/sprint-2/planning.md) | Förslag till sprint planning 2026-11-02: sprintmål, kort med ansvariga, vilka filer korten rör, risker |
+| 2026-11-02 | [sprintar/sprint-2/standup.md](sprintar/sprint-2/standup.md) | Scrum Masters logg, tisdag 2026-11-03 till fredag 2026-11-06 |
+| 2026-11-02 | [sprintar/sprint-2/review.md](sprintar/sprint-2/review.md) | Förberedelse och feedback från sprint review 2026-11-09 |
+| 2026-11-02 | [sprintar/sprint-2/retro.md](sprintar/sprint-2/retro.md) | Retrospektiv 2026-11-09, med uppföljning av åtgärderna från sprint 1 |
 
 ## GitHub-mallar
 
@@ -102,3 +107,4 @@ Läxorna i den ordning vi fick dem, och materialet som hör till varje läxa. Al
 | 2026-10-26 | La till `databas-och-docker.md` |
 | 2026-10-28 | La till `bilder/mockups/slutliga/README.md` |
 | 2026-10-28 | La till `omrostning-mockups.md` |
+| 2026-11-02 | La till filerna för sprint 2 |
