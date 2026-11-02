@@ -12,7 +12,7 @@
 -->
 
 **Datum:** måndag 2026-11-02, direkt efter reviewn
-**Deltagare:**
+**Deltagare:** Jose Muñoz, Martin Friis, Ermias Demessie
 **Leds av:** Ermias Demessie (Scrum Master)
 
 ## Förra retrons åtgärder
@@ -25,14 +25,20 @@
 
 Första sprinten, ingen tidigare retro.
 
+<!--
+  Punkterna nedan är FÖRSLAG från Jose, som underlag för Scrum Master.
+  Stryk det ni inte håller med om och lägg till era egna punkter på mötet.
+-->
+
 ## Vad gick bra?
 
 > **Exempel:**
 > - Standupen tog aldrig mer än 10 minuter.
 > - Lina och Jonas parprogrammerade API-kopplingen och båda förstår den nu.
 
--
--
+- Story 1 delades upp i sju små PR:er enligt lärarens råd, var och en med egna tester. CI är grönt på alla.
+- Besluten (JWT, mappar efter funktion) skrevs in i beslutsloggen innan koden byggdes, så alla kan följa mönstret.
+- Testdatan och instruktionsboken gör att alla kan starta projektet och logga in på samma sätt.
 
 ## Vad gick mindre bra?
 
@@ -41,8 +47,11 @@ Första sprinten, ingen tidigare retro.
 > - Vi tog in för mycket. Två stories blev inte klara.
 > - Ingen visste att Amir satt fast med Docker förrän torsdag.
 
--
--
+- Ingen PR blev granskad under sprinten. Tio PR:er väntar, så inget kort blev klart enligt DoD.
+- PR:erna öppnades i slutet av veckan, så det fanns ingen tid kvar att granska.
+- Planeringen fylldes aldrig i och fältet Sprint sattes inte på boarden. Det är oklart vad vi lovade.
+- Standupen hölls inte alla dagar, och loggen kom först efter sprinten.
+- #11–#13 väntade på inloggningen. Vi bröt inte beroendet, t.ex. med `msw` i frontend.
 
 ## Åtgärder till nästa sprint
 
@@ -58,8 +67,9 @@ Första sprinten, ingen tidigare retro.
 
 | Åtgärd | Ansvarig |
 |---|---|
-| | |
-| | |
+| Granskning först: varje dag efter standupen granskar vi öppna PR:er innan vi bygger vidare (enligt gruppkontraktet, före kl. 12) | Scrum Master påminner på standupen |
+| Öppna PR:en så fort ett litet steg är klart, inte i slutet av veckan. Högst en dag mellan "Pågår" och "Granskas" | Alla |
+| Planeringen fylls i och mergas på måndagen, och fältet Sprint sätts på korten samma dag | Product Owner |
 
 ## Ändringar i Definition of Done eller gruppkontrakt
 
