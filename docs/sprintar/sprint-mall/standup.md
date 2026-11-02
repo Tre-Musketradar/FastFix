@@ -22,7 +22,9 @@
 
 ---
 
-## Måndag ÅÅÅÅ-MM-DD
+#Sprint 1
+
+## Måndag 2026-10-26
 
 | Namn | Närvaro | Igår | Idag | Hinder |
 |---|---|---|---|---|
@@ -31,38 +33,39 @@
 | | | | | |
 | | | | | |
 
-## Tisdag ÅÅÅÅ-MM-DD
+## Tisdag 2026-10-27
 
 | Namn | Närvaro | Igår | Idag | Hinder |
 |---|---|---|---|---|
-| | | | | |
-| | | | | |
-| | | | | |
-| | | | | |
+| Ermias | Ja | Plannering | start på issue #13 | inget |
+| Jose | Ja | Plannering | start på issues #6/9 | inget |
+| Jose | Ja | Plannering | start på issues #6/9 | inget |
 
-## Onsdag ÅÅÅÅ-MM-DD
-
-| Namn | Närvaro | Igår | Idag | Hinder |
-|---|---|---|---|---|
-| | | | | |
-| | | | | |
-| | | | | |
-| | | | | |
-
-## Torsdag ÅÅÅÅ-MM-DD
+## Onsdag 2026-10-28
 
 | Namn | Närvaro | Igår | Idag | Hinder |
 |---|---|---|---|---|
-| | | | | |
-| | | | | |
-| | | | | |
-| | | | | |
+| Ermias | nej | start på arbete | fortsättning | inget |
+| Jose | nej | start på arbete | fortsättning | inget |
+| Jose | nej | start på arbete | fortsättning | inget |
 
-## Fredag ÅÅÅÅ-MM-DD
+## Torsdag 2026-10-29
 
 | Namn | Närvaro | Igår | Idag | Hinder |
 |---|---|---|---|---|
-| | | | | |
-| | | | | |
-| | | | | |
-| | | | | |
+| Ermias | nej | fortsatt arbete | fortsättning | inget |
+| Jose | nej | fortsatt arbete | fortsättning | inget |
+| Jose | nej | fortsatt arbete | fortsättning | inget |
+
+## Fredag 2026-10-29
+
+| Namn | Närvaro | Igår | Idag | Hinder |
+|---|---|---|---|---|
+| Ermias | nej | fortsatt arbete | fortsättning | inget |
+| Jose | nej | fortsatt arbete | fortsättning | inget |
+| Jose | nej | fortsatt arbete | fortsättning | inget |
+
+
+
+
+
