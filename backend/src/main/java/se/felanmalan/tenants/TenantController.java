@@ -40,6 +40,7 @@ public class TenantController {
                     .build();
         }
     }
+
     @GetMapping("/getAll")
     public ResponseEntity<TenantResponseDTO> getAll() {
         return tenantService

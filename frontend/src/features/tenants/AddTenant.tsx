@@ -4,12 +4,14 @@ import { z } from 'zod';
 import { useState } from 'react';
 import { insertCall } from './api/TenantApi';
 
+type Role = 'TENANT' | 'MANAGER' | 'TECHNICIAN'
 
 interface tenantProp {
     name: string,
     email: string,
     password: string,
-    userRole: string,
+    userRole: Role,
+    createdAt: Date,
 }
 
 // Define Zod schema for validation
@@ -64,7 +66,8 @@ export const AddRenter = () => {
         name: data.name,
         email: data.email,
         password: data.password,
-        userRole: "TENANT",
+        userRole: 'TENANT',
+        createdAt: new Date(), // right now
       };
       const apartmentId = data.apartmentId; // to be used when aoartnebts can be retrieved and sent
 
