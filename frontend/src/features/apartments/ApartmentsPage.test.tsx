@@ -3,24 +3,13 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { http, HttpResponse } from 'msw'
 import { setupServer } from 'msw/node'
 import { MemoryRouter } from 'react-router'
-import {
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-} from 'vitest'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from 'vitest'
 import App from '../../App'
 import { tokenStorage } from '../../shared/apiClient'
 import { AuthProvider } from '../auth/AuthProvider'
 import { authHandlers, testUsers, tokenFor } from '../auth/authHandlers'
 import { pingHandlers } from '../ping/pingHandlers'
-import {
-  propertyHandlers,
-  resetProperties,
-} from '../properties/propertyHandlers'
+import { propertyHandlers, resetProperties, } from '../properties/propertyHandlers'
 import { apartmentHandlers, resetApartments } from './apartmentHandlers'
 
 const manager = testUsers.find((user) => user.role === 'MANAGER')!
@@ -37,12 +26,7 @@ const property2 = {
   ownerId: manager.id,
 }
 
-const server = setupServer(
-  ...authHandlers,
-  ...pingHandlers,
-  ...propertyHandlers,
-  ...apartmentHandlers,
-)
+const server = setupServer(...authHandlers, ...pingHandlers, ...propertyHandlers, ...apartmentHandlers,)
 
 beforeAll(() => server.listen({ onUnhandledFrame: 'error' }))
 beforeEach(() => {
