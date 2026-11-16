@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PropertyRepository extends JpaRepository<Property, Long> {
     List<Property> findByOwnerIdOrderByIdDesc(Long ownerId);
+
+    boolean existsByIdAndOwnerId(Long id, Long ownerId);
 }

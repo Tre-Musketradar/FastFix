@@ -43,3 +43,8 @@ export const propertyHandlers = [
     return HttpResponse.json(created, { status: 201 })
   }),
 ]
+
+/** Testhjälp: lägenhetstesterna kontrollerar samma ägare som fastighets-API:t. */
+export function ownsTestProperty(propertyId: number, managerId: number) {
+  return properties.some((property) => property.id === propertyId && property.ownerId === managerId)
+}

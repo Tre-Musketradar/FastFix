@@ -158,7 +158,12 @@ function PropertiesContent({ userId }: { userId: number }) {
           <ul className="mt-4 divide-y divide-slate-200">
             {properties.data.map((property) => (
               <li key={property.id} className="py-3">
-                <p className="font-semibold">{property.name}</p>
+                <Link
+                  to={`/properties/${property.id}`}
+                  className="font-semibold text-blue-700 hover:underline"
+                >
+                  {property.name}
+                </Link>
                 <p className="text-sm text-slate-600">{property.address}</p>
               </li>
             ))}
