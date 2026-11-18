@@ -5,7 +5,7 @@ import { Link, Navigate, useParams } from 'react-router'
 import { z } from 'zod'
 import { ApiError } from '../../shared/apiClient'
 import { useAuth } from '../auth/useAuth'
-import { propertyApi } from '../properties/propertyApi'
+import { propertyApi } from './propertyApi'
 import { apartmentApi, type Apartment } from './apartmentApi'
 
 const schema = z.object({

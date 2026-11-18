@@ -1,8 +1,22 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { cleanup, fireEvent, render, screen, within, } from '@testing-library/react'
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  within,
+} from '@testing-library/react'
 import { setupServer } from 'msw/node'
 import { MemoryRouter } from 'react-router'
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from 'vitest'
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+} from 'vitest'
 import App from '../../App'
 import { tokenStorage } from '../../shared/apiClient'
 import { AuthProvider } from '../auth/AuthProvider'
@@ -10,7 +24,11 @@ import { authHandlers, testUsers, tokenFor } from '../auth/authHandlers'
 import { pingHandlers } from '../ping/pingHandlers'
 import { propertyHandlers, resetProperties } from './propertyHandlers'
 
-const server = setupServer(...authHandlers, ...pingHandlers, ...propertyHandlers,)
+const server = setupServer(
+  ...authHandlers,
+  ...pingHandlers,
+  ...propertyHandlers,
+)
 
 beforeAll(() => server.listen({ onUnhandledFrame: 'error' }))
 beforeEach(() => resetProperties())
@@ -40,7 +58,9 @@ function renderAs(role: string, path = '/properties') {
 
 function fillIn(name: string, address: string) {
   fireEvent.change(screen.getByLabelText('Namn'), { target: { value: name } })
-  fireEvent.change(screen.getByLabelText('Adress'), { target: { value: address } })
+  fireEvent.change(screen.getByLabelText('Adress'), {
+    target: { value: address },
+  })
   fireEvent.click(screen.getByRole('button', { name: 'Spara fastighet' }))
 }
 

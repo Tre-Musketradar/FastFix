@@ -1,4 +1,4 @@
-package se.felanmalan.apartment;
+package se.felanmalan.property;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

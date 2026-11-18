@@ -1,4 +1,4 @@
-package se.felanmalan.apartment;
+package se.felanmalan.property;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
