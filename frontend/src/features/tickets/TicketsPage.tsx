@@ -1,8 +1,9 @@
 import { useAuth } from '../auth/useAuth'
 import type { Role } from '../../shared/types'
+import { MyTickets } from './MyTickets'
 
-// Startsidan för varje roll. Bara rubriker tills listorna byggs i sprint 2
-// (story 7, 8 och 10).
+// Startsidan för varje roll. Hyresgästens lista finns (story 7); teknikerns och
+// förvaltarens kommer med story 8 och 10.
 const titles: Record<Role, { title: string; text: string }> = {
   TENANT: {
     title: 'Mina ärenden',
@@ -24,9 +25,12 @@ export function TicketsPage() {
 
   const { title, text } = titles[user.role]
   return (
-    <section className="flex flex-col gap-2">
-      <h1 className="text-2xl font-bold tracking-tight">{title}</h1>
-      <p className="text-slate-600">{text}</p>
+    <section className="flex flex-col gap-6">
+      <div className="flex flex-col gap-2">
+        <h1 className="text-2xl font-bold tracking-tight">{title}</h1>
+        <p className="text-slate-600">{text}</p>
+      </div>
+      {user.role === 'TENANT' && <MyTickets userId={user.id} />}
     </section>
   )
 }

@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { setupServer } from 'msw/node'
 import { MemoryRouter } from 'react-router'
@@ -6,9 +7,10 @@ import App from './App'
 import { AuthProvider } from './features/auth/AuthProvider'
 import { authHandlers, testUsers, tokenFor } from './features/auth/authHandlers'
 import { pingHandlers } from './features/ping/pingHandlers'
+import { ticketHandlers } from './features/tickets/ticketHandlers'
 import { tokenStorage } from './shared/apiClient'
 
-const server = setupServer(...authHandlers, ...pingHandlers)
+const server = setupServer(...authHandlers, ...pingHandlers, ...ticketHandlers)
 
 beforeAll(() => server.listen({ onUnhandledFrame: 'error' }))
 afterEach(() => {
@@ -20,11 +22,13 @@ afterAll(() => server.close())
 
 const renderApp = (path: string) =>
   render(
-    <MemoryRouter initialEntries={[path]}>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </MemoryRouter>,
+    <QueryClientProvider client={new QueryClient()}>
+      <MemoryRouter initialEntries={[path]}>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </MemoryRouter>
+    </QueryClientProvider>,
   )
 
 function logIn(email: string) {
