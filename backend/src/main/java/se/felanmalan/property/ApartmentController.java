@@ -1,4 +1,4 @@
-package se.felanmalan.apartment;
+package se.felanmalan.property;
 
 import java.util.List;
 

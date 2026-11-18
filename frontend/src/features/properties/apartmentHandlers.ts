@@ -1,7 +1,7 @@
 // Låtsas-API för lägenheter. Samma endpoints och begränsningar som backend.
 import { http, HttpResponse } from 'msw'
 import { testUsers, tokenFor } from '../auth/authHandlers'
-import { ownsTestProperty } from '../properties/propertyHandlers'
+import { ownsTestProperty } from './propertyHandlers'
 import type { Apartment } from './apartmentApi'
 
 let apartments: Apartment[] = []

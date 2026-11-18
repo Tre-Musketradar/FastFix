@@ -8,7 +8,11 @@ import { ApiError } from '../../shared/apiClient'
 import { propertyApi, type Property } from './propertyApi'
 
 const schema = z.object({
-  name: z.string().trim().min(1, 'Namn måste anges').max(100, 'Högst 100 tecken'),
+  name: z
+    .string()
+    .trim()
+    .min(1, 'Namn måste anges')
+    .max(100, 'Högst 100 tecken'),
   address: z
     .string()
     .trim()
@@ -105,7 +109,11 @@ function PropertiesContent({ userId }: { userId: number }) {
             aria-describedby={errors.name ? 'property-name-error' : undefined}
           />
           {errors.name && (
-            <p id="property-name-error" role="alert" className="text-sm text-red-700">
+            <p
+              id="property-name-error"
+              role="alert"
+              className="text-sm text-red-700"
+            >
               {errors.name.message}
             </p>
           )}
@@ -120,10 +128,16 @@ function PropertiesContent({ userId }: { userId: number }) {
             {...register('address')}
             className={inputClass}
             aria-invalid={Boolean(errors.address)}
-            aria-describedby={errors.address ? 'property-address-error' : undefined}
+            aria-describedby={
+              errors.address ? 'property-address-error' : undefined
+            }
           />
           {errors.address && (
-            <p id="property-address-error" role="alert" className="text-sm text-red-700">
+            <p
+              id="property-address-error"
+              role="alert"
+              className="text-sm text-red-700"
+            >
               {errors.address.message}
             </p>
           )}
@@ -153,7 +167,9 @@ function PropertiesContent({ userId }: { userId: number }) {
             Kunde inte hämta fastigheterna.
           </p>
         ) : properties.data.length === 0 ? (
-          <p className="mt-3 text-slate-600">Inga fastigheter registrerade ännu.</p>
+          <p className="mt-3 text-slate-600">
+            Inga fastigheter registrerade ännu.
+          </p>
         ) : (
           <ul className="mt-4 divide-y divide-slate-200">
             {properties.data.map((property) => (

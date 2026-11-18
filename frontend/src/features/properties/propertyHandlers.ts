@@ -15,9 +15,9 @@ export function resetProperties(start: Property[] = []) {
 const managerFrom = (request: Request) =>
   testUsers.find(
     (u) =>
-u.role === 'MANAGER' &&
-request.headers.get('Authorization') === `Bearer ${tokenFor(u)}`,
-)
+      u.role === 'MANAGER' &&
+      request.headers.get('Authorization') === `Bearer ${tokenFor(u)}`,
+  )
 
 export const propertyHandlers = [
   http.get('/api/properties', ({ request }) => {
@@ -46,5 +46,7 @@ export const propertyHandlers = [
 
 /** Testhjälp: lägenhetstesterna kontrollerar samma ägare som fastighets-API:t. */
 export function ownsTestProperty(propertyId: number, managerId: number) {
-  return properties.some((property) => property.id === propertyId && property.ownerId === managerId)
+  return properties.some(
+    (property) => property.id === propertyId && property.ownerId === managerId,
+  )
 }
