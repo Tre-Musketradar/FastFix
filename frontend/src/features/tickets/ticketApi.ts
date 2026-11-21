@@ -20,6 +20,23 @@ export type Ticket = {
   closedAt: string | null
 }
 
+// Kompakt svar för förvaltarens öppna ärenden (inklusive fastighet och tilldelad tekniker).
+export type ManagerOpenTicket = {
+  id: number
+  propertyId: number
+  propertyName: string
+  apartmentId: number
+  apartmentNumber: string
+  category: TicketCategory
+  priority: TicketPriority
+  status: TicketStatus
+  description: string
+  assignedTo: number | null
+  assignedTechnicianName: string | null
+  createdAt: string
+}
+
 export const ticketApi = {
   mine: () => apiFetch<Ticket[]>('/api/tickets/mine'),
+  openForManager: () => apiFetch<ManagerOpenTicket[]>('/api/tickets/open'),
 }

@@ -17,6 +17,11 @@ public class TicketService {
         this.apartmentRepository = apartmentRepository;
     }
 
+    // Förvaltarens alla ej stängda ärenden i de fastigheter som hen äger.
+    public List<ManagerOpenTicketResponse> listOpenForManager(Long managerId) {
+        return ticketRepository.findOpenForManager(managerId, TicketStatus.CLOSED, TicketStatus.NEW);
+    }
+
     // Hyresgästen ser bara ärenden för sin egen lägenhet, nyaste först.
     // Utan lägenhet finns inga ärenden att visa, så då blir listan tom.
     public List<Ticket> listMyTickets(Long tenantId) {
