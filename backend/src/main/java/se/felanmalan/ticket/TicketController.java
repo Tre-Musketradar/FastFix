@@ -25,6 +25,12 @@ public class TicketController {
         return ticketService.listOpenForManager(Long.valueOf(jwt.getSubject()));
     }
 
+    @GetMapping("/assigned")
+    @PreAuthorize("hasRole('TECHNICIAN')")
+    public List<TechnicianTicketResponse> getAssignedTickets(@AuthenticationPrincipal Jwt jwt) {
+        return ticketService.listAssignedToTechnician(Long.valueOf(jwt.getSubject()));
+    }
+
     @GetMapping("/mine")
     @PreAuthorize("hasRole('TENANT')")
     public List<Ticket> getMyTickets(@AuthenticationPrincipal Jwt jwt) {

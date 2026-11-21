@@ -22,6 +22,12 @@ public class TicketService {
         return ticketRepository.findOpenForManager(managerId, TicketStatus.CLOSED, TicketStatus.NEW);
     }
 
+    // Teknikern ser bara ärenden som är tilldelade hen. Åtgärdade och stängda visas inte.
+    public List<TechnicianTicketResponse> listAssignedToTechnician(Long technicianId) {
+        return ticketRepository.findAssignedToTechnician(
+                technicianId, List.of(TicketStatus.RESOLVED, TicketStatus.CLOSED));
+    }
+
     // Hyresgästen ser bara ärenden för sin egen lägenhet, nyaste först.
     // Utan lägenhet finns inga ärenden att visa, så då blir listan tom.
     public List<Ticket> listMyTickets(Long tenantId) {
