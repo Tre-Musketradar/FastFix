@@ -1,12 +1,32 @@
 package se.felanmalan.ticket;
 
 import java.util.List;
+import java.util.Optional;
+import jakarta.persistence.LockModeType;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
     List<Ticket> findByApartmentIdOrderByCreatedAtDescIdDesc(Long apartmentId);
+
+    // Teknikern ser bara sina egna, ännu inte stängda uppdrag.
+    List<Ticket> findByAssignedToAndStatusNotOrderByCreatedAtDescIdDesc(
+            Long technicianId, TicketStatus closed);
+
+    // Inga ID:n från klienten får ge tillgång till ärenden i någon annans fastighet.
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query("""
+            select t from Ticket t
+            join Apartment a on a.id = t.apartmentId
+            join Property p on p.id = a.propertyId
+            where t.id = :ticketId and p.ownerId = :managerId
+            """)
+    Optional<Ticket> findForManagerAssignment(
+            @Param("ticketId") Long ticketId,
+            @Param("managerId") Long managerId);
+
 
     // Förena ärende, lägenhet, fastighet och eventuell tekniker direkt i databasen.
     // Begränsa listan till förvaltarens fastigheter, dölj CLOSED och visa NEW först.

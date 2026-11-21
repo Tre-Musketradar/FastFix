@@ -68,6 +68,12 @@ public class Ticket {
         this.description = description;
     }
 
+    /** Tilldelning sätter alltid status Tilldelad, även vid byte av tekniker. */
+    public void assignTechnician(Long technicianId) {
+        this.assignedTo = technicianId;
+        this.status = TicketStatus.ASSIGNED;
+    }
+
     public Long getId() {
         return id;
     }

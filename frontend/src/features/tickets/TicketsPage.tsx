@@ -2,6 +2,7 @@ import { useAuth } from '../auth/useAuth'
 import type { Role } from '../../shared/types'
 import { MyTickets } from './MyTickets'
 import { ManagerOpenTickets } from './ManagerOpenTickets'
+import { TechnicianAssignments } from './TechnicianAssignments'
 
 // Startsidan för varje roll. Hyresgästens och förvaltarens listor är implementerade.
 // Teknikerns lista kommer i en separat story.
@@ -33,6 +34,7 @@ export function TicketsPage() {
       </div>
       {user.role === 'TENANT' && <MyTickets userId={user.id} />}
       {user.role === 'MANAGER' && <ManagerOpenTickets userId={user.id} />}
+      {user.role === 'TECHNICIAN' && <TechnicianAssignments userId={user.id} />}
     </section>
   )
 }
