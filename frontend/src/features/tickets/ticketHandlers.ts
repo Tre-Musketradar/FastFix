@@ -1,10 +1,16 @@
 // Låtsas-API (msw) för ärenden, samma kontrakt som TicketController. Används i testerna.
 import { http, HttpResponse } from 'msw'
 import { testUsers, tokenFor } from '../auth/authHandlers'
-import type { ManagerOpenTicket, Ticket } from './ticketApi'
+import type { ManagerOpenTicket, TechnicianTicket, Ticket } from './ticketApi'
 
 let tickets: Ticket[] = []
 let managerTickets: ManagerOpenTicket[] = []
+let technicianTickets: TechnicianTicket[] = []
+
+/** Sätt teknikerns ärenden inför ett test (redan filtrerade och sorterade, som backend). */
+export function resetTechnicianTickets(start: TechnicianTicket[] = []) {
+  technicianTickets = [...start]
+}
 
 /** Sätt förvaltarens ärenden inför ett test. */
 export function resetManagerTickets(start: ManagerOpenTicket[] = []) {
@@ -17,6 +23,15 @@ export function resetTickets(start: Ticket[] = []) {
 }
 
 export const ticketHandlers = [
+  http.get('/api/tickets/assigned', ({ request }) => {
+    const technician = testUsers.find(
+      (u) =>
+        u.role === 'TECHNICIAN' &&
+        request.headers.get('Authorization') === `Bearer ${tokenFor(u)}`,
+    )
+    if (!technician) return new HttpResponse(null, { status: 403 })
+    return HttpResponse.json(technicianTickets)
+  }),
   http.get('/api/tickets/open', ({ request }) => {
     const manager = testUsers.find(
       (u) =>
