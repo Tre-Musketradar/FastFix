@@ -22,11 +22,13 @@ import { tokenStorage } from '../../shared/apiClient'
 import { AuthProvider } from '../auth/AuthProvider'
 import { authHandlers, testUsers, tokenFor } from '../auth/authHandlers'
 import { pingHandlers } from '../ping/pingHandlers'
+import { ticketHandlers } from '../tickets/ticketHandlers'
 import { propertyHandlers, resetProperties } from './propertyHandlers'
 
 const server = setupServer(
   ...authHandlers,
   ...pingHandlers,
+  ...ticketHandlers,
   ...propertyHandlers,
 )
 
