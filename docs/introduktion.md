@@ -41,7 +41,7 @@ Vi jobbar med **Scrum** i sprintar à en vecka.
 
 **När är något klart?** När det uppfyller vår [Definition of Done](definition-of-done.md): acceptanskriterierna är testade, PR:en är granskad och godkänd, CI är grönt, appen startar och kortet ligger i Klart.
 
-**Samarbete:** vi pratar i Slack, svarar inom 24 timmar på vardagar och ger feedback på koden, inte på personen. Allt står i [gruppkontraktet](gruppkontrakt.md).
+**Samarbete:** vi skriver i Slack, har möten i Teams och skickar sms när någon inte kommer åt datorn. Vi svarar inom 24 timmar på vardagar och ger feedback på koden, inte på personen. Allt står i [gruppkontraktet](gruppkontrakt.md).
 
 ## Så kommer kod in i projektet
 
@@ -170,3 +170,4 @@ Följ "Kom igång" i [README](../README.md). Efter några kommandon körs appen 
 |---|---|
 | 2026-10-20 | Första versionen |
 | 2026-10-26 | Gjord om till en sammanfattning av projektet. Inga fler nya medlemmar (utvecklingsfasen har börjat), så delarna för nya i gruppen är borttagna. "Var står vi nu?" uppdaterad |
+| 2026-11-21 | Samarbete: möten i Teams och sms när man inte kommer åt datorn (beslut #10) |
