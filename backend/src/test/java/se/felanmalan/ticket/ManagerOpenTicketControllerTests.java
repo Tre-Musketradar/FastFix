@@ -39,11 +39,14 @@ class ManagerOpenTicketControllerTests {
 
     @Test
     void managerSeesOpenTicketsWithPropertyApartmentAndTechnicianButNotClosedOrOthers() throws Exception {
-        User manager = users.findByEmail("forvaltare@felanmalan.se").orElseThrow();
         User tenant = users.findByEmail("hyresgast@felanmalan.se").orElseThrow();
         User technician = users.findByEmail("tekniker@felanmalan.se").orElseThrow();
-        Property property = properties.findByOwnerIdOrderByIdDesc(manager.getId()).stream().findFirst().orElseThrow();
-        Apartment apartment = apartments.findByPropertyIdOrderByIdDesc(property.getId()).stream().findFirst().orElseThrow();
+
+        // Egen förvaltare med egen fastighet och lägenhet, så att testet inte
+        // beror på vad som redan finns i databasen (t.ex. testdata.sql).
+        User manager = newManager("Testförvaltare");
+        Property property = newProperty(manager, "Testfastigheten");
+        Apartment apartment = apartments.saveAndFlush(new Apartment(property.getId(), "1001", 1));
 
         Ticket assigned = new Ticket(apartment.getId(), tenant.getId(), TicketCategory.ELECTRICAL, "Elen fungerar inte");
         ReflectionTestUtils.setField(assigned, "status", TicketStatus.ASSIGNED);
@@ -57,14 +60,7 @@ class ManagerOpenTicketControllerTests {
         tickets.saveAndFlush(closed);
 
         // En annan förvaltares fastighet ska inte dyka upp i listan.
-        Long otherManagerId = jdbc.queryForObject("""
-            insert into users (name, email, password_hash, role)
-            select 'Annan förvaltare', ?, password_hash, 'MANAGER'::user_role
-            from users where id = ? returning id
-            """, Long.class, UUID.randomUUID() + "@example.test", manager.getId());
-        Property otherProperty = new Property("Andra fastigheten", "Annan adress");
-        otherProperty.setOwnerId(otherManagerId);
-        otherProperty = properties.saveAndFlush(otherProperty);
+        Property otherProperty = newProperty(newManager("Annan förvaltare"), "Andra fastigheten");
         Apartment otherApartment = apartments.saveAndFlush(new Apartment(otherProperty.getId(), "9999", null));
         tickets.saveAndFlush(new Ticket(otherApartment.getId(), tenant.getId(), TicketCategory.OTHER, "Hemligt ärende"));
 
@@ -94,5 +90,21 @@ class ManagerOpenTicketControllerTests {
     @Test
     void anonymousRequestIsUnauthorized() throws Exception {
         mvc.perform(get("/api/tickets/open")).andExpect(status().isUnauthorized());
+    }
+
+    // Ny förvaltare med samma lösenordshash som seed-förvaltaren (rullas tillbaka efter testet).
+    private User newManager(String name) {
+        Long id = jdbc.queryForObject("""
+            insert into users (name, email, password_hash, role)
+            select ?, ?, password_hash, 'MANAGER'::user_role
+            from users where email = 'forvaltare@felanmalan.se' returning id
+            """, Long.class, name, UUID.randomUUID() + "@example.test");
+        return users.findById(id).orElseThrow();
+    }
+
+    private Property newProperty(User owner, String name) {
+        Property property = new Property(name, "Testgatan 1");
+        property.setOwnerId(owner.getId());
+        return properties.saveAndFlush(property);
     }
 }
