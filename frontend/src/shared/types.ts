@@ -2,6 +2,19 @@
 
 export type Role = 'TENANT' | 'TECHNICIAN' | 'MANAGER'
 
+export type TicketStatus =
+  'NEW' | 'ASSIGNED' | 'IN_PROGRESS' | 'WAITING' | 'RESOLVED' | 'CLOSED'
+
+export type TicketCategory =
+  | 'PLUMBING'
+  | 'ELECTRICAL'
+  | 'APPLIANCES'
+  | 'VENTILATION'
+  | 'LOCKS_DOORS'
+  | 'OTHER'
+
+export type TicketPriority = 'URGENT' | 'HIGH' | 'NORMAL' | 'LOW'
+
 export type User = {
   id: number
   name: string

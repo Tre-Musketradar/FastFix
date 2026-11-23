@@ -16,7 +16,7 @@ Alla Markdown-dokument i repot, med datum då de lades till. Varje nytt dokument
 | 2026-10-15 | [gruppkontrakt.md](gruppkontrakt.md) | Hur vi samarbetar: tillgänglighet, kommunikation, frånvaro, beslut, kod och kvalitet. Signerat 2026-10-16 |
 | 2026-10-15 | [definition-of-done.md](definition-of-done.md) | Vad som krävs för att en story ska räknas som klar |
 | 2026-10-15 | [databasschema.md](databasschema.md) | Tabeller, relationer och enums (ER-diagram i Mermaid) |
-| 2026-10-15 | [beslutslogg.md](beslutslogg.md) | Större beslut med alternativ och motivering (#1–#9) |
+| 2026-10-15 | [beslutslogg.md](beslutslogg.md) | Större beslut med alternativ och motivering (#1–#10) |
 | 2026-10-15 | [frontend-plan.md](frontend-plan.md) | Vyer per roll, mappstruktur, typer och plan per sprint för frontend |
 | 2026-10-15 | [CONTRIBUTING.md](CONTRIBUTING.md) | Grenflödet, regler för PR:er och vägen från issue till Klart |
 | 2026-10-15 | [uppstart.md](uppstart.md) | Hur repot sattes upp: teknikval, organisation, grenskydd och CI |
@@ -49,6 +49,8 @@ Alla Markdown-dokument i repot, med datum då de lades till. Varje nytt dokument
 | 2026-11-02 | [sprintar/sprint-2/standup.md](sprintar/sprint-2/standup.md) | Scrum Masters logg, tisdag 2026-11-03 till fredag 2026-11-06 |
 | 2026-11-02 | [sprintar/sprint-2/review.md](sprintar/sprint-2/review.md) | Förberedelse och feedback från sprint review 2026-11-09 |
 | 2026-11-02 | [sprintar/sprint-2/retro.md](sprintar/sprint-2/retro.md) | Retrospektiv 2026-11-09, med uppföljning av åtgärderna från sprint 1 |
+| 2026-11-23 | [sprintar/sprint-4/veckoplan.md](sprintar/sprint-4/veckoplan.md) | Sprint 4 i efterhand: fem klara stories (#11, #12, #16, #17, #19), de elva mergade PR:erna, det som pågår och förslag till retron |
+| 2026-11-23 | [sprintar/sprint-5/veckoplan.md](sprintar/sprint-5/veckoplan.md) | Sprint 5, sista sprinten: mål att alla Must (MVP) blir klara plus några Should, förslag till ansvariga och ordning, veckan dag för dag och hela flödet att testa |
 
 ## GitHub-mallar
 
@@ -113,3 +115,5 @@ Läxorna i den ordning vi fick dem, och materialet som hör till varje läxa. Al
 | 2026-10-30 | La till `sprintar/sprint-1/plan-story-1.md` |
 | 2026-10-30 | La till `projektstruktur.md`, beslutsloggen har nu #9 |
 | 2026-11-02 | La till filerna för sprint 2 |
+| 2026-11-21 | Beslutsloggen har nu #10 |
+| 2026-11-23 | La till veckoplanerna för sprint 4 och 5 |

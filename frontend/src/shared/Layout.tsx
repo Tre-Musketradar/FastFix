@@ -1,5 +1,5 @@
 import { LogOut, Wrench } from 'lucide-react'
-import { Outlet } from 'react-router'
+import { Outlet, NavLink } from 'react-router'
 import { useAuth } from '../features/auth/useAuth'
 import type { Role } from './types'
 
@@ -8,7 +8,10 @@ const roleNames: Record<Role, string> = {
   TECHNICIAN: 'Tekniker',
   MANAGER: 'Förvaltare',
 }
-
+const navClass = ({ isActive }: { isActive: boolean }) =>
+  `flex h-11 items-center rounded-lg px-3 font-semibold ${
+    isActive ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800'
+  }`
 /** Ramen för alla sidor som kräver inloggning. Menyn får en rad per sida när de finns. */
 export function Layout() {
   const { user, logout } = useAuth()
@@ -20,6 +23,16 @@ export function Layout() {
           <Wrench size={18} aria-hidden="true" />
         </div>
         <span className="text-lg font-bold">Felanmälan</span>
+        {user?.role === 'MANAGER' && (
+          <nav aria-label="Huvudmeny" className="ml-4 flex gap-1 text-sm">
+            <NavLink to="/tickets" className={navClass}>
+              Ärenden
+            </NavLink>
+            <NavLink to="/properties" className={navClass}>
+              Fastigheter
+            </NavLink>
+          </nav>
+        )}
         {user && (
           <div className="ml-auto flex items-center gap-4">
             <div className="flex flex-col text-right text-sm leading-tight">
