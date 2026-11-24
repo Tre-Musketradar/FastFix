@@ -1,5 +1,12 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { cleanup, render, screen, within } from '@testing-library/react'
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  within,
+} from '@testing-library/react'
 import { http, HttpResponse } from 'msw'
 import { setupServer } from 'msw/node'
 import { MemoryRouter } from 'react-router'
@@ -133,4 +140,83 @@ describe('TechnicianTickets', () => {
       expect(screen.queryByText('Solrosvägen 12, 123 45 Stockholm')).toBeNull()
     },
   )
+
+  it('visar bara de statusar teknikern får byta till', async () => {
+    resetTechnicianTickets(tickets)
+    renderAs('TECHNICIAN')
+
+    const urgent = within(
+      await screen.findByRole('group', { name: 'Ändra status på ärende #6' }),
+    )
+    expect(urgent.getByRole('button', { name: 'Väntar' })).toBeTruthy()
+    expect(urgent.getByRole('button', { name: 'Åtgärdad' })).toBeTruthy()
+    expect(urgent.queryByRole('button', { name: 'Pågår' })).toBeNull()
+
+    const assigned = within(
+      screen.getByRole('group', { name: 'Ändra status på ärende #4' }),
+    )
+    expect(assigned.getAllByRole('button').map((b) => b.textContent)).toEqual([
+      'Pågår',
+    ])
+  })
+
+  it('ändrar status och skickar den nya statusen till backend', async () => {
+    let body: unknown
+    server.events.on('request:start', async ({ request }) => {
+      if (request.method === 'PATCH') body = await request.clone().json()
+    })
+    resetTechnicianTickets(tickets)
+    renderAs('TECHNICIAN')
+
+    const group = await screen.findByRole('group', {
+      name: 'Ändra status på ärende #4',
+    })
+    fireEvent.click(within(group).getByRole('button', { name: 'Pågår' }))
+
+    // Listan hämtas igen: kortet visar Pågår och erbjuder Väntar/Åtgärdad.
+    const updated = within(
+      await screen.findByRole('group', { name: 'Ändra status på ärende #4' }),
+    )
+    expect(await updated.findByRole('button', { name: 'Väntar' })).toBeTruthy()
+    expect(body).toEqual({ status: 'IN_PROGRESS' })
+    server.events.removeAllListeners()
+  })
+
+  it('tar bort åtgärdade ärenden ur listan och bekräftar', async () => {
+    resetTechnicianTickets(tickets)
+    renderAs('TECHNICIAN')
+
+    const group = await screen.findByRole('group', {
+      name: 'Ändra status på ärende #6',
+    })
+    fireEvent.click(within(group).getByRole('button', { name: 'Åtgärdad' }))
+
+    expect((await screen.findByRole('status')).textContent).toBe(
+      'Ärende #6 är markerat som åtgärdat.',
+    )
+    await waitFor(() => expect(screen.getAllByRole('listitem')).toHaveLength(1))
+    expect(
+      screen.queryByRole('group', { name: 'Ändra status på ärende #6' }),
+    ).toBeNull()
+  })
+
+  it('visar ett fel om statusen inte kan ändras', async () => {
+    server.use(
+      http.patch(
+        '/api/tickets/:ticketId/status',
+        () => new HttpResponse(null, { status: 409 }),
+      ),
+    )
+    resetTechnicianTickets(tickets)
+    renderAs('TECHNICIAN')
+
+    const group = await screen.findByRole('group', {
+      name: 'Ändra status på ärende #4',
+    })
+    fireEvent.click(within(group).getByRole('button', { name: 'Pågår' }))
+
+    expect((await screen.findByRole('alert')).textContent).toBe(
+      'Kunde inte ändra status. Ladda om sidan och försök igen.',
+    )
+  })
 })
