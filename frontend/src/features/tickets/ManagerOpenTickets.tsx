@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
-import { useMemo, useState } from 'react'
+import { Fragment, useMemo, useState } from 'react'
 import { StatusBadge } from '../../shared/StatusBadge'
 import type { TicketStatus } from '../../shared/types'
 import { ticketApi } from './ticketApi'
+import { AssignTechnicianForm } from './AssignTechnicianForm'
 import { categoryLabels, formatDate, priorityLabels } from './ticketLabels'
 
 const summary: { status: TicketStatus; title: string }[] = [
@@ -18,6 +19,8 @@ const summary: { status: TicketStatus; title: string }[] = [
 export function ManagerOpenTickets({ userId }: { userId: number }) {
   const [search, setSearch] = useState('')
   const [propertyId, setPropertyId] = useState('all')
+  const [assigningId, setAssigningId] = useState<number | null>(null)
+  const [assignmentMessage, setAssignmentMessage] = useState('')
   const tickets = useQuery({
     queryKey: ['tickets', 'open', userId],
     queryFn: ticketApi.openForManager,
@@ -69,6 +72,11 @@ export function ManagerOpenTickets({ userId }: { userId: number }) {
       <p className="text-sm text-slate-600">
         {allTickets.length} öppna ärenden i dina fastigheter
       </p>
+      {assignmentMessage && (
+        <p role="status" className="rounded-lg bg-green-50 p-3 text-green-800">
+          {assignmentMessage}
+        </p>
+      )}
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
         {summary.map(({ status, title }) => (
@@ -159,37 +167,72 @@ export function ManagerOpenTickets({ userId }: { userId: number }) {
                     <th scope="col" className="px-4 py-3">
                       Tilldelad tekniker
                     </th>
+                    <th scope="col" className="px-4 py-3">
+                      Åtgärd
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200">
                   {visibleTickets.map((ticket) => (
-                    <tr
-                      key={ticket.id}
-                      className={ticket.status === 'NEW' ? 'bg-blue-50' : ''}
-                    >
-                      <td className="px-4 py-3 font-semibold">
-                        {ticket.propertyName}
-                      </td>
-                      <td className="px-4 py-3">{ticket.apartmentNumber}</td>
-                      <td className="px-4 py-3">
-                        {categoryLabels[ticket.category]}
-                      </td>
-                      <td className="max-w-56 px-4 py-3">
-                        <p className="line-clamp-2">{ticket.description}</p>
-                        <p className="mt-1 text-xs text-slate-500">
-                          #{ticket.id} · {formatDate(ticket.createdAt)}
-                        </p>
-                      </td>
-                      <td className="px-4 py-3">
-                        {priorityLabels[ticket.priority]}
-                      </td>
-                      <td className="px-4 py-3">
-                        <StatusBadge status={ticket.status} />
-                      </td>
-                      <td className="px-4 py-3">
-                        {ticket.assignedTechnicianName ?? 'Ej tilldelad'}
-                      </td>
-                    </tr>
+                    <Fragment key={ticket.id}>
+                      <tr
+                        className={ticket.status === 'NEW' ? 'bg-blue-50' : ''}
+                      >
+                        <td className="px-4 py-3 font-semibold">
+                          {ticket.propertyName}
+                        </td>
+                        <td className="px-4 py-3">{ticket.apartmentNumber}</td>
+                        <td className="px-4 py-3">
+                          {categoryLabels[ticket.category]}
+                        </td>
+                        <td className="max-w-56 px-4 py-3">
+                          <p className="line-clamp-2">{ticket.description}</p>
+                          <p className="mt-1 text-xs text-slate-500">
+                            #{ticket.id} · {formatDate(ticket.createdAt)}
+                          </p>
+                        </td>
+                        <td className="px-4 py-3">
+                          {priorityLabels[ticket.priority]}
+                        </td>
+                        <td className="px-4 py-3">
+                          <StatusBadge status={ticket.status} />
+                        </td>
+                        <td className="px-4 py-3">
+                          {ticket.assignedTechnicianName ?? 'Ej tilldelad'}
+                        </td>
+                        <td className="px-4 py-3">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setAssigningId(
+                                assigningId === ticket.id ? null : ticket.id,
+                              )
+                              setAssignmentMessage('')
+                            }}
+                            className="rounded-lg border border-blue-700 px-3 py-2 font-semibold text-blue-800 hover:bg-blue-50"
+                          >
+                            {ticket.assignedTo ? 'Byt tekniker' : 'Tilldela'}
+                          </button>
+                        </td>
+                      </tr>
+                      {assigningId === ticket.id && (
+                        <tr>
+                          <td colSpan={8} className="px-4 py-3">
+                            <AssignTechnicianForm
+                              ticket={ticket}
+                              managerId={userId}
+                              onCancel={() => setAssigningId(null)}
+                              onAssigned={() => {
+                                setAssigningId(null)
+                                setAssignmentMessage(
+                                  'Teknikern har tilldelats ärendet.',
+                                )
+                              }}
+                            />
+                          </td>
+                        </tr>
+                      )}
+                    </Fragment>
                   ))}
                 </tbody>
               </table>

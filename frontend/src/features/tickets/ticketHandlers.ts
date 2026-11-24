@@ -43,6 +43,45 @@ export const ticketHandlers = [
       managerTickets.filter((ticket) => ticket.status !== 'CLOSED'),
     )
   }),
+  http.get('/api/tickets/technicians', ({ request }) => {
+    const manager = testUsers.find(
+      (u) =>
+        u.role === 'MANAGER' &&
+        request.headers.get('Authorization') === `Bearer ${tokenFor(u)}`,
+    )
+    if (!manager) return new HttpResponse(null, { status: 403 })
+    return HttpResponse.json(
+      testUsers
+        .filter((u) => u.role === 'TECHNICIAN')
+        .map(({ id, name }) => ({ id, name })),
+    )
+  }),
+  http.patch('/api/tickets/:ticketId/assign', async ({ request, params }) => {
+    const manager = testUsers.find(
+      (u) =>
+        u.role === 'MANAGER' &&
+        request.headers.get('Authorization') === `Bearer ${tokenFor(u)}`,
+    )
+    if (!manager) return new HttpResponse(null, { status: 403 })
+    const ticket = managerTickets.find((t) => t.id === Number(params.ticketId))
+    if (!ticket) return new HttpResponse(null, { status: 404 })
+    if (ticket.status === 'CLOSED')
+      return new HttpResponse(null, { status: 409 })
+    const { technicianId } = (await request.json()) as { technicianId?: number }
+    const technician = testUsers.find(
+      (u) => u.id === technicianId && u.role === 'TECHNICIAN',
+    )
+    if (!technician) return new HttpResponse(null, { status: 400 })
+    ticket.assignedTo = technician.id
+    ticket.assignedTechnicianName = technician.name
+    ticket.status = 'ASSIGNED'
+    return HttpResponse.json({
+      id: ticket.id,
+      assignedTo: technician.id,
+      assignedTechnicianName: technician.name,
+      status: ticket.status,
+    })
+  }),
   http.get('/api/tickets/mine', ({ request }) => {
     const tenant = testUsers.find(
       (u) =>
