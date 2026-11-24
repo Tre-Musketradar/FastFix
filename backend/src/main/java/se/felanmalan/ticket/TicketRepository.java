@@ -1,5 +1,6 @@
 package se.felanmalan.ticket;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import jakarta.persistence.LockModeType;
@@ -49,5 +50,26 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
             @Param("managerId") Long managerId,
             @Param("closed") TicketStatus closed,
             @Param("newStatus") TicketStatus newStatus
+    );
+
+    // Teknikerns ärenden: bara de som är tilldelade hen och inte är åtgärdade eller stängda.
+    // Mest brådskande först (PostgreSQL sorterar enum i deklarationsordning: URGENT, HIGH,
+    // NORMAL, LOW), sedan äldst först (det som väntat längst).
+    @Query("""
+            select new se.felanmalan.ticket.TechnicianTicketResponse(
+                t.id, p.name, p.address, a.number, a.floor,
+                t.category, t.priority, t.status, t.description,
+                t.masterKeyAllowed, t.createdAt
+            )
+            from Ticket t
+            join Apartment a on a.id = t.apartmentId
+            join Property p on p.id = a.propertyId
+            where t.assignedTo = :technicianId
+              and t.status not in :hidden
+            order by t.priority, t.createdAt asc, t.id asc
+            """)
+    List<TechnicianTicketResponse> findAssignedToTechnician(
+            @Param("technicianId") Long technicianId,
+            @Param("hidden") Collection<TicketStatus> hidden
     );
 }

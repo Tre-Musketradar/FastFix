@@ -9,20 +9,22 @@ Kontraktet får ändras under kursen. Ändringar tas upp på retron, alla måste
 
 - Vi har flexibla arbetstider: var och en planerar sina egna timmar.
 - Alla är med på kursens schemalagda pass och på våra ceremonier: daily standup, sprint planning, review och retro.
-- Vardagar svarar vi på meddelanden i Slack inom 24 timmar.
+- Vardagar svarar vi på meddelanden i Slack inom 24 timmar. Den som inte kommer åt datorn kan svara med sms.
 - Helger är frivilliga. Ingen förväntas svara då.
-- Den som vet att den inte kan jobba under en period säger till i Slack i förväg.
+- Den som vet att den inte kan jobba under en period säger till i Slack (eller med sms) i förväg.
 
 ## Kommunikation
 
 - Slack används för daglig kontakt, frågor och snabba beslut.
+- Möten och samtal (daily standup, sprint planning, review, retro) hålls i Microsoft Teams. Slacks gratisversion har inte samtal med fler än två.
+- Sms används när någon inte kommer åt datorn, till exempel för att säga att man är sen eller borta, eller för att svara på något brådskande.
 - Frågor om specifik kod tas som kommentarer på pull requesten.
 - Vad som görs och vem som gör det syns på boarden i GitHub Projects, inte bara i Slack.
 - Vi ger feedback på koden, inte på personen, och förklarar varför.
 
 ## Närvaro och frånvaro
 
-- Frånvaro meddelas i Slack innan daily standup samma dag.
+- Frånvaro meddelas i Slack, eller med sms om man inte kommer åt datorn, innan daily standup samma dag.
 - Den som missar daily standup skriver sin rad i sprintens `standup.md` samma dag.
 - Den som missar planning, review eller retro läser anteckningarna i `docs/sprintar/` och tar upp frågor i Slack.
 
@@ -69,3 +71,4 @@ Vi har läst kontraktet och är överens om det.
 | Datum | Ändring | Varför |
 |---|---|---|
 | 2026-10-15 | Första versionen | — |
+| 2026-11-21 | Möten och samtal hålls i Teams. Sms när man inte kommer åt datorn. Slack är kvar för daglig kontakt | Slack-prenumerationen har gått ut och gratisversionen har inte gruppsamtal. Alla kommer inte alltid åt datorn. Se [beslut #10](beslutslogg.md#10-möten-i-teams-och-sms-när-man-inte-kommer-åt-datorn) |

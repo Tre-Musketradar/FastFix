@@ -27,6 +27,33 @@ Kopiera den här för varje nytt beslut:
 
 ---
 
+## #10 Möten i Teams och sms när man inte kommer åt datorn
+
+**Datum:** 2026-11-21
+**Status:** Gäller
+
+**Bakgrund:** Slack-prenumerationen har gått ut. Slacks gratisversion har inte samtal med fler än två, så vi kan inte längre ha möten med alla tre där. Dessutom kommer alla inte alltid åt datorn, och då behövs ett sätt att nå varandra från mobilen.
+
+**Alternativ:**
+- Betala för Slack Pro och fortsätta som förut.
+- Flytta allt (chatt och möten) till Microsoft Teams.
+- Behålla Slack för chatt, ha möten i Teams och använda sms när man inte kommer åt datorn.
+
+**Beslut:** Slack är kvar för daglig kontakt, frågor och snabba beslut. Möten och samtal (daily standup, sprint planning, review, retro) hålls i Microsoft Teams. Sms används när någon inte kommer åt datorn, till exempel för frånvaro, förseningar eller något brådskande.
+
+**Varför:**
+- Ingen av oss vill betala för Slack Pro för de veckor som är kvar av kursen.
+- Teams har gruppsamtal utan kostnad.
+- Att flytta chatten till Teams ger inget extra: Slack fungerar för chatt, och historiken finns redan där.
+- Sms når alla även utan dator eller app.
+
+**Konsekvenser:**
+- [Gruppkontraktet](gruppkontrakt.md) och [introduktionen](introduktion.md) är uppdaterade.
+- Det som bestäms på ett möte eller i sms och som gäller hela gruppen skrivs i Slack eller i `docs/sprintar/`, så att det inte bara finns i någons telefon.
+- Telefonnummer skrivs inte i repot (det är publikt).
+
+---
+
 ## #9 Mappar efter funktion
 
 **Datum:** 2026-10-30
@@ -274,3 +301,4 @@ Föreslås inte: Lombok (DTO:er skrivs som Java 21-`record`, och vi slipper stä
 |---|---|
 | 2026-10-30 | La till #8 Inloggning med JWT (resultatet av U1). Avsnittet Ändringar är nytt |
 | 2026-10-30 | La till #9 Mappar efter funktion |
+| 2026-11-21 | La till #10 Möten i Teams och sms när man inte kommer åt datorn |
