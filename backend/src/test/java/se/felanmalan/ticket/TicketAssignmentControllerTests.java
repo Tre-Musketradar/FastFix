@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.UUID;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,8 +38,26 @@ class TicketAssignmentControllerTests {
     @Autowired JdbcTemplate jdbc;
     @Autowired jakarta.persistence.EntityManager entityManager;
 
+    private User testManager;
+    private Apartment testApartment;
+
+    @BeforeEach
+    void createManagerWithApartment() {
+        // Egen fastighet per test så befintliga testdata inte påverkar resultatet.
+        Long managerId = jdbc.queryForObject("""
+                insert into users (name, email, password_hash, role)
+                select 'Testförvaltare', ?, password_hash, 'MANAGER'::user_role
+                from users where email = 'forvaltare@felanmalan.se' returning id
+                """, Long.class, UUID.randomUUID() + "@example.test");
+        testManager = users.findById(managerId).orElseThrow();
+        Property property = new Property("Testfastigheten", "Testgatan 1");
+        property.setOwnerId(testManager.getId());
+        property = properties.saveAndFlush(property);
+        testApartment = apartments.saveAndFlush(new Apartment(property.getId(), "1001", 1));
+    }
+
     private User manager() {
-        return users.findByEmail("forvaltare@felanmalan.se").orElseThrow();
+        return testManager;
     }
 
     private User technician() {
@@ -46,9 +65,7 @@ class TicketAssignmentControllerTests {
     }
 
     private Ticket createTicket() {
-        Property property = properties.findByOwnerIdOrderByIdDesc(manager().getId()).getFirst();
-        Apartment apartment = apartments.findByPropertyIdOrderByIdDesc(property.getId()).getFirst();
-        return tickets.saveAndFlush(new Ticket(apartment.getId(),
+        return tickets.saveAndFlush(new Ticket(testApartment.getId(),
                 users.findByEmail("hyresgast@felanmalan.se").orElseThrow().getId(),
                 TicketCategory.PLUMBING, "Vattenläcka"));
     }
@@ -77,14 +94,14 @@ class TicketAssignmentControllerTests {
         mvc.perform(get("/api/tickets/assigned")
                 .header("Authorization", "Bearer " + tokens.createToken(technician)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].id").value(ticket.getId()))
-                .andExpect(jsonPath("$[0].status").value("ASSIGNED"));
+                .andExpect(jsonPath("$[?(@.id == " + ticket.getId() + ")].status").value("ASSIGNED"));
 
         mvc.perform(get("/api/tickets/open")
                 .header("Authorization", "Bearer " + tokens.createToken(manager)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].status").value("ASSIGNED"))
-                .andExpect(jsonPath("$[0].assignedTechnicianName").value(technician.getName()));
+                .andExpect(jsonPath("$[?(@.id == " + ticket.getId() + ")].status").value("ASSIGNED"))
+                .andExpect(jsonPath("$[?(@.id == " + ticket.getId() + ")].assignedTechnicianName")
+                        .value(technician.getName()));
 
         Integer historyCount = jdbc.queryForObject(
                 "select count(*) from status_history where ticket_id = ? and new_status = 'ASSIGNED'",

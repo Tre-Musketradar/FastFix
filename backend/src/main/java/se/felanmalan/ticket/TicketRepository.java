@@ -12,10 +12,6 @@ import org.springframework.data.repository.query.Param;
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
     List<Ticket> findByApartmentIdOrderByCreatedAtDescIdDesc(Long apartmentId);
 
-    // Teknikern ser bara sina egna, ännu inte stängda uppdrag.
-    List<Ticket> findByAssignedToAndStatusNotOrderByCreatedAtDescIdDesc(
-            Long technicianId, TicketStatus closed);
-
     // Inga ID:n från klienten får ge tillgång till ärenden i någon annans fastighet.
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("""

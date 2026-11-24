@@ -23,7 +23,11 @@ import { AuthProvider } from '../auth/AuthProvider'
 import { authHandlers, testUsers, tokenFor } from '../auth/authHandlers'
 import { pingHandlers } from '../ping/pingHandlers'
 import type { ManagerOpenTicket } from './ticketApi'
-import { resetManagerTickets, ticketHandlers } from './ticketHandlers'
+import {
+  resetManagerTickets,
+  resetTechnicianTickets,
+  ticketHandlers,
+} from './ticketHandlers'
 
 const server = setupServer(...authHandlers, ...pingHandlers, ...ticketHandlers)
 
@@ -43,7 +47,10 @@ const sample: ManagerOpenTicket = {
 }
 
 beforeAll(() => server.listen({ onUnhandledFrame: 'error' }))
-beforeEach(() => resetManagerTickets([sample].map((t) => ({ ...t }))))
+beforeEach(() => {
+  resetManagerTickets([sample].map((t) => ({ ...t })))
+  resetTechnicianTickets([])
+})
 afterEach(() => {
   cleanup()
   server.resetHandlers()
@@ -102,12 +109,19 @@ describe('Tilldela tekniker (#18)', () => {
   })
 
   it('visar tilldelningen i teknikerns Mina uppdrag', async () => {
-    resetManagerTickets([
+    resetTechnicianTickets([
       {
-        ...sample,
+        id: sample.id,
+        propertyName: sample.propertyName,
+        propertyAddress: 'Solrosvägen 12',
+        apartmentNumber: sample.apartmentNumber,
+        floor: 1,
+        category: sample.category,
+        priority: sample.priority,
         status: 'ASSIGNED',
-        assignedTo: 3,
-        assignedTechnicianName: 'Ali Hassan',
+        description: sample.description,
+        masterKeyAllowed: false,
+        createdAt: sample.createdAt,
       },
     ])
     renderAs('TECHNICIAN')
@@ -117,10 +131,10 @@ describe('Tilldela tekniker (#18)', () => {
   })
 
   it('visar ett tomt läge för tekniker utan uppdrag', async () => {
-    resetManagerTickets([])
+    resetTechnicianTickets([])
     renderAs('TECHNICIAN')
     expect(
-      await screen.findByText('Du har inga tilldelade ärenden.'),
+      await screen.findByText('Du har inga tilldelade ärenden just nu.'),
     ).toBeTruthy()
   })
 

@@ -32,12 +32,6 @@ public class TicketAssignmentService {
                 .toList();
     }
 
-    @Transactional(readOnly = true)
-    public List<Ticket> listAssignedToTechnician(Long technicianId) {
-        return tickets.findByAssignedToAndStatusNotOrderByCreatedAtDescIdDesc(
-                technicianId, TicketStatus.CLOSED);
-    }
-
     @Transactional
     public TicketAssignmentResponse assign(Long managerId, Long ticketId, Long technicianId) {
         // Kolla ägarskap direkt i SQL-frågan: ingen åtkomst till andras ärenden.

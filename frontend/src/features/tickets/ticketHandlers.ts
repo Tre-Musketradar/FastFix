@@ -82,31 +82,6 @@ export const ticketHandlers = [
       status: ticket.status,
     })
   }),
-  http.get('/api/tickets/assigned', ({ request }) => {
-    const technician = testUsers.find(
-      (u) =>
-        u.role === 'TECHNICIAN' &&
-        request.headers.get('Authorization') === `Bearer ${tokenFor(u)}`,
-    )
-    if (!technician) return new HttpResponse(null, { status: 403 })
-    return HttpResponse.json(
-      managerTickets
-        .filter((t) => t.assignedTo === technician.id && t.status !== 'CLOSED')
-        .map((t) => ({
-          id: t.id,
-          apartmentId: t.apartmentId,
-          createdBy: 6,
-          assignedTo: t.assignedTo,
-          category: t.category,
-          priority: t.priority,
-          status: t.status,
-          description: t.description,
-          masterKeyAllowed: false,
-          createdAt: t.createdAt,
-          closedAt: null,
-        })),
-    )
-  }),
   http.get('/api/tickets/mine', ({ request }) => {
     const tenant = testUsers.find(
       (u) =>

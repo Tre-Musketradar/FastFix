@@ -38,9 +38,4 @@ public class TicketAssignmentController {
         return service.assign(Long.valueOf(jwt.getSubject()), ticketId, request.technicianId());
     }
 
-    @GetMapping("/assigned")
-    @PreAuthorize("hasRole('TECHNICIAN')")
-    public List<Ticket> myAssignments(@AuthenticationPrincipal Jwt jwt) {
-        return service.listAssignedToTechnician(Long.valueOf(jwt.getSubject()));
-    }
 }
