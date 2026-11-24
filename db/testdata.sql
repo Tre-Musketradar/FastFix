@@ -66,23 +66,23 @@ INSERT INTO apartments (id, property_id, number, floor, tenant_id) VALUES
     (13, 3, '1101', 1, NULL);
 
 -- Ärenden
-INSERT INTO tickets (id, apartment_id, created_by, assigned_to, category, priority, status, description, master_key_allowed, created_at, closed_at) VALUES
-    (1, 1, 6, NULL, 'PLUMBING', 'NORMAL', 'NEW', 'Kranen i köket droppar hela tiden, även när den är helt avstängd.', TRUE, now() - interval '0 days', NULL),
-    (2, 2, 7, NULL, 'ELECTRICAL', 'HIGH', 'NEW', 'Taklampan i hallen blinkar och slocknar ibland. Det luktar lite bränt.', FALSE, now() - interval '1 days', NULL),
-    (3, 9, 12, NULL, 'VENTILATION', 'LOW', 'NEW', 'Fläkten i badrummet låter mycket och drar dåligt.', TRUE, now() - interval '2 days', NULL),
-    (4, 3, 8, 3, 'APPLIANCES', 'NORMAL', 'ASSIGNED', 'Diskmaskinen tömmer inte ut vattnet. Det står vatten i botten efter varje körning.', TRUE, now() - interval '3 days', NULL),
-    (5, 11, 14, 5, 'LOCKS_DOORS', 'HIGH', 'ASSIGNED', 'Ytterdörren går svårt att låsa. Nyckeln fastnar i låset.', FALSE, now() - interval '2 days', NULL),
-    (6, 5, 9, 3, 'PLUMBING', 'URGENT', 'IN_PROGRESS', 'Det läcker vatten under handfatet i badrummet. Golvet är blött.', TRUE, now() - interval '1 days', NULL),
-    (7, 7, 11, 4, 'ELECTRICAL', 'NORMAL', 'IN_PROGRESS', 'Två eluttag i vardagsrummet fungerar inte.', FALSE, now() - interval '4 days', NULL),
-    (8, 10, 13, 4, 'APPLIANCES', 'NORMAL', 'WAITING', 'Kylskåpet håller inte kylan. Det är 12 grader inne i det.', TRUE, now() - interval '6 days', NULL),
-    (9, 12, 15, 5, 'VENTILATION', 'NORMAL', 'WAITING', 'Det kommer kall luft från ventilen i sovrummet och det drar.', FALSE, now() - interval '8 days', NULL),
-    (10, 6, 10, 3, 'OTHER', 'LOW', 'RESOLVED', 'Balkongdörrens list har lossnat.', TRUE, now() - interval '9 days', NULL),
-    (11, 1, 6, 4, 'APPLIANCES', 'HIGH', 'RESOLVED', 'Spisen: två av plattorna blir inte varma.', FALSE, now() - interval '7 days', NULL),
-    (12, 2, 7, 3, 'PLUMBING', 'NORMAL', 'CLOSED', 'Toaletten spolar hela tiden.', TRUE, now() - interval '20 days', now() - interval '20 days' + interval '70 hours'),
-    (13, 9, 12, 5, 'LOCKS_DOORS', 'URGENT', 'CLOSED', 'Låset till lägenhetsdörren är trasigt, dörren går inte att låsa.', FALSE, now() - interval '15 days', now() - interval '15 days' + interval '70 hours'),
-    (14, 11, 14, 4, 'ELECTRICAL', 'NORMAL', 'CLOSED', 'Jordfelsbrytaren löser ut när jag använder eluttaget i badrummet.', TRUE, now() - interval '30 days', now() - interval '30 days' + interval '146 hours'),
-    (15, 3, 8, 3, 'OTHER', 'LOW', 'CLOSED', 'Brevinkastet har lossnat från dörren.', TRUE, now() - interval '25 days', now() - interval '25 days' + interval '70 hours'),
-    (16, 12, 15, 5, 'PLUMBING', 'HIGH', 'IN_PROGRESS', 'Golvbrunnen i badrummet är stopp och det luktar.', FALSE, now() - interval '1 days', NULL);
+INSERT INTO tickets (id, apartment_id, created_by, assigned_to, category, priority, status, room, description, master_key_allowed, created_at, closed_at) VALUES
+    (1, 1, 6, NULL, 'PLUMBING', 'NORMAL', 'NEW', 'Kök', 'Kranen i köket droppar hela tiden, även när den är helt avstängd.', TRUE, now() - interval '0 days', NULL),
+    (2, 2, 7, NULL, 'ELECTRICAL', 'HIGH', 'NEW', 'Hall', 'Taklampan i hallen blinkar och slocknar ibland. Det luktar lite bränt.', FALSE, now() - interval '1 days', NULL),
+    (3, 9, 12, NULL, 'VENTILATION', 'LOW', 'NEW', 'Badrum', 'Fläkten i badrummet låter mycket och drar dåligt.', TRUE, now() - interval '2 days', NULL),
+    (4, 3, 8, 3, 'APPLIANCES', 'NORMAL', 'ASSIGNED', 'Kök', 'Diskmaskinen tömmer inte ut vattnet. Det står vatten i botten efter varje körning.', TRUE, now() - interval '3 days', NULL),
+    (5, 11, 14, 5, 'LOCKS_DOORS', 'HIGH', 'ASSIGNED', 'Hall', 'Ytterdörren går svårt att låsa. Nyckeln fastnar i låset.', FALSE, now() - interval '2 days', NULL),
+    (6, 5, 9, 3, 'PLUMBING', 'URGENT', 'IN_PROGRESS', 'Badrum', 'Det läcker vatten under handfatet i badrummet. Golvet är blött.', TRUE, now() - interval '1 days', NULL),
+    (7, 7, 11, 4, 'ELECTRICAL', 'NORMAL', 'IN_PROGRESS', 'Vardagsrum', 'Två eluttag i vardagsrummet fungerar inte.', FALSE, now() - interval '4 days', NULL),
+    (8, 10, 13, 4, 'APPLIANCES', 'NORMAL', 'WAITING', 'Kök', 'Kylskåpet håller inte kylan. Det är 12 grader inne i det.', TRUE, now() - interval '6 days', NULL),
+    (9, 12, 15, 5, 'VENTILATION', 'NORMAL', 'WAITING', 'Sovrum', 'Det kommer kall luft från ventilen i sovrummet och det drar.', FALSE, now() - interval '8 days', NULL),
+    (10, 6, 10, 3, 'OTHER', 'LOW', 'RESOLVED', 'Balkong', 'Balkongdörrens list har lossnat.', TRUE, now() - interval '9 days', NULL),
+    (11, 1, 6, 4, 'APPLIANCES', 'HIGH', 'RESOLVED', 'Kök', 'Spisen: två av plattorna blir inte varma.', FALSE, now() - interval '7 days', NULL),
+    (12, 2, 7, 3, 'PLUMBING', 'NORMAL', 'CLOSED', 'Badrum', 'Toaletten spolar hela tiden.', TRUE, now() - interval '20 days', now() - interval '20 days' + interval '70 hours'),
+    (13, 9, 12, 5, 'LOCKS_DOORS', 'URGENT', 'CLOSED', 'Hall', 'Låset till lägenhetsdörren är trasigt, dörren går inte att låsa.', FALSE, now() - interval '15 days', now() - interval '15 days' + interval '70 hours'),
+    (14, 11, 14, 4, 'ELECTRICAL', 'NORMAL', 'CLOSED', 'Badrum', 'Jordfelsbrytaren löser ut när jag använder eluttaget i badrummet.', TRUE, now() - interval '30 days', now() - interval '30 days' + interval '146 hours'),
+    (15, 3, 8, 3, 'OTHER', 'LOW', 'CLOSED', 'Hall', 'Brevinkastet har lossnat från dörren.', TRUE, now() - interval '25 days', now() - interval '25 days' + interval '70 hours'),
+    (16, 12, 15, 5, 'PLUMBING', 'HIGH', 'IN_PROGRESS', 'Badrum', 'Golvbrunnen i badrummet är stopp och det luktar.', FALSE, now() - interval '1 days', NULL);
 
 -- Statushistorik (old_status NULL = ärendet skapades)
 INSERT INTO status_history (ticket_id, old_status, new_status, changed_by, changed_at) VALUES

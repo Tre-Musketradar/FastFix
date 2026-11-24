@@ -46,6 +46,10 @@ public class Ticket {
     @Column(nullable = false, columnDefinition = "ticket_status")
     private TicketStatus status = TicketStatus.NEW;
 
+    // Fritt textfält (V3). NULL för äldre ärenden.
+    @Column(length = 50)
+    private String room;
+
     @Column(nullable = false, columnDefinition = "text")
     private String description;
 
@@ -66,6 +70,14 @@ public class Ticket {
         this.createdBy = createdBy;
         this.category = category;
         this.description = description;
+    }
+
+    /** Ny felanmälan från hyresgästen (story 5): med rum och val av huvudnyckel. */
+    public Ticket(Long apartmentId, Long createdBy, TicketCategory category, String room,
+            String description, boolean masterKeyAllowed) {
+        this(apartmentId, createdBy, category, description);
+        this.room = room;
+        this.masterKeyAllowed = masterKeyAllowed;
     }
 
     /** Tilldelning sätter alltid status Tilldelad, även vid byte av tekniker. */
@@ -100,6 +112,10 @@ public class Ticket {
 
     public TicketStatus getStatus() {
         return status;
+    }
+
+    public String getRoom() {
+        return room;
     }
 
     public String getDescription() {

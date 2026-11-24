@@ -49,6 +49,7 @@ const tickets: Ticket[] = [
     category: 'PLUMBING',
     priority: 'NORMAL',
     status: 'NEW',
+    room: null,
     description: 'Kranen i köket droppar hela tiden.',
     masterKeyAllowed: true,
     createdAt: '2026-11-18T08:14:00Z',
@@ -62,6 +63,7 @@ const tickets: Ticket[] = [
     category: 'APPLIANCES',
     priority: 'HIGH',
     status: 'RESOLVED',
+    room: 'Kök',
     description: 'Spisen: två av plattorna blir inte varma.',
     masterKeyAllowed: false,
     createdAt: '2026-10-20T09:02:00Z',
@@ -115,6 +117,8 @@ describe('MyTickets', () => {
     expect(within(dialog).getByText('Ärende #1')).toBeTruthy()
     expect(within(dialog).getByText('Hög')).toBeTruthy()
     expect(within(dialog).getByText('Nej')).toBeTruthy()
+    expect(within(dialog).getByText('Rum')).toBeTruthy()
+    expect(within(dialog).getByText('Kök')).toBeTruthy()
 
     fireEvent.click(within(dialog).getByRole('button', { name: 'Stäng' }))
     expect(screen.queryByRole('dialog')).toBeNull()
@@ -125,7 +129,9 @@ describe('MyTickets', () => {
     renderAs('TENANT')
 
     fireEvent.click(await screen.findByRole('button', { name: /Kranen/ }))
-    expect(screen.getByRole('dialog', { name: 'VVS' })).toBeTruthy()
+    const dialog = screen.getByRole('dialog', { name: 'VVS' })
+    // Äldre ärenden utan rum visar inte raden Rum
+    expect(within(dialog).queryByText('Rum')).toBeNull()
 
     fireEvent.keyDown(window, { key: 'Escape' })
     expect(screen.queryByRole('dialog')).toBeNull()
