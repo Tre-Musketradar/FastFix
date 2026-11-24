@@ -74,6 +74,11 @@ public class Ticket {
         this.status = TicketStatus.ASSIGNED;
     }
 
+    /** Statusändring (story 11). Vilka ändringar som är tillåtna avgör TicketStatusService. */
+    public void changeStatus(TicketStatus status) {
+        this.status = status;
+    }
+
     public Long getId() {
         return id;
     }
