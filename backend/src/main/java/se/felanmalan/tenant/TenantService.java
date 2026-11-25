@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
-import se.felanmalan.apartment.Apartment;
-import se.felanmalan.apartment.ApartmentRepository;
+import se.felanmalan.property.Apartment;
+import se.felanmalan.property.ApartmentRepository;
 import se.felanmalan.property.PropertyRepository;
 import se.felanmalan.user.Role;
 import se.felanmalan.user.User;
