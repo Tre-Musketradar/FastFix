@@ -29,4 +29,10 @@ public class TicketStatusController {
         return service.changeStatusAsTechnician(Long.valueOf(jwt.getSubject()), ticketId, request.status());
     }
 
+    @PatchMapping("/{ticketId}/close")
+    @PreAuthorize("hasRole('MANAGER')")
+    public TicketStatusResponse close(@PathVariable Long ticketId, @AuthenticationPrincipal Jwt jwt) {
+        return service.closeAsManager(Long.valueOf(jwt.getSubject()), ticketId);
+    }
+
 }
