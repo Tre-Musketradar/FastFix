@@ -82,6 +82,13 @@ const tickets: ManagerOpenTicket[] = [
   },
 ]
 
+const resolved: ManagerOpenTicket = {
+  ...tickets[1],
+  id: 15,
+  status: 'RESOLVED',
+  description: 'Element fixat',
+}
+
 function renderAs(role: string) {
   const user = testUsers.find((u) => u.role === role)!
   tokenStorage.set(tokenFor(user))
@@ -157,6 +164,58 @@ describe('ManagerOpenTickets', () => {
       'textContent',
       'Kunde inte hämta öppna ärenden.',
     )
+  })
+
+  it('visar Stäng ärende bara för åtgärdade ärenden', async () => {
+    resetManagerTickets([...tickets, resolved])
+    renderAs('MANAGER')
+    await screen.findByText('Element fixat')
+
+    expect(
+      screen.getAllByRole('button', { name: /Stäng ärende/ }),
+    ).toHaveLength(1)
+    expect(
+      screen.getByRole('button', { name: 'Stäng ärende #15' }),
+    ).toBeTruthy()
+    expect(screen.getByRole('button', { name: 'Tilldela' })).toBeTruthy()
+    expect(screen.getByRole('button', { name: 'Byt tekniker' })).toBeTruthy()
+  })
+
+  it('stänger ett åtgärdat ärende så att det försvinner ur listan', async () => {
+    resetManagerTickets([...tickets, resolved])
+    renderAs('MANAGER')
+    await screen.findByText('3 öppna ärenden i dina fastigheter')
+
+    fireEvent.click(screen.getByRole('button', { name: 'Stäng ärende #15' }))
+
+    expect(
+      await screen.findByText('2 öppna ärenden i dina fastigheter'),
+    ).toBeTruthy()
+    expect(screen.queryByText('Element fixat')).toBeNull()
+    expect(screen.getByRole('status')).toHaveProperty(
+      'textContent',
+      'Ärende #15 är stängt.',
+    )
+  })
+
+  it('visar ett fel om ärendet inte kunde stängas', async () => {
+    resetManagerTickets([...tickets, resolved])
+    server.use(
+      http.patch(
+        '/api/tickets/:ticketId/close',
+        () => new HttpResponse(null, { status: 409 }),
+      ),
+    )
+    renderAs('MANAGER')
+    fireEvent.click(
+      await screen.findByRole('button', { name: 'Stäng ärende #15' }),
+    )
+
+    expect(await screen.findByRole('alert')).toHaveProperty(
+      'textContent',
+      'Kunde inte stänga ärendet. Ladda om sidan och försök igen.',
+    )
+    expect(screen.getByText('Element fixat')).toBeTruthy()
   })
 
   it.each(['TENANT', 'TECHNICIAN'])(

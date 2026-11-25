@@ -4,6 +4,7 @@ import { StatusBadge } from '../../shared/StatusBadge'
 import type { TicketStatus } from '../../shared/types'
 import { ticketApi } from './ticketApi'
 import { AssignTechnicianForm } from './AssignTechnicianForm'
+import { CloseTicketButton } from './CloseTicketButton'
 import { categoryLabels, formatDate, priorityLabels } from './ticketLabels'
 
 const summary: { status: TicketStatus; title: string }[] = [
@@ -201,18 +202,30 @@ export function ManagerOpenTickets({ userId }: { userId: number }) {
                           {ticket.assignedTechnicianName ?? 'Ej tilldelad'}
                         </td>
                         <td className="px-4 py-3">
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setAssigningId(
-                                assigningId === ticket.id ? null : ticket.id,
-                              )
-                              setAssignmentMessage('')
-                            }}
-                            className="rounded-lg border border-blue-700 px-3 py-2 font-semibold text-blue-800 hover:bg-blue-50"
-                          >
-                            {ticket.assignedTo ? 'Byt tekniker' : 'Tilldela'}
-                          </button>
+                          {ticket.status === 'RESOLVED' ? (
+                            <CloseTicketButton
+                              ticketId={ticket.id}
+                              onClosed={() => {
+                                setAssigningId(null)
+                                setAssignmentMessage(
+                                  `Ärende #${ticket.id} är stängt.`,
+                                )
+                              }}
+                            />
+                          ) : (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setAssigningId(
+                                  assigningId === ticket.id ? null : ticket.id,
+                                )
+                                setAssignmentMessage('')
+                              }}
+                              className="rounded-lg border border-blue-700 px-3 py-2 font-semibold text-blue-800 hover:bg-blue-50"
+                            >
+                              {ticket.assignedTo ? 'Byt tekniker' : 'Tilldela'}
+                            </button>
+                          )}
                         </td>
                       </tr>
                       {assigningId === ticket.id && (

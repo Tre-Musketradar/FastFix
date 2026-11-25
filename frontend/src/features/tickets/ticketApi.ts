@@ -83,4 +83,8 @@ export const ticketApi = {
       method: 'PATCH',
       body: JSON.stringify({ status }),
     }),
+  close: (ticketId: number) =>
+    apiFetch<TicketStatusResponse>(`/api/tickets/${ticketId}/close`, {
+      method: 'PATCH',
+    }),
 }
