@@ -32,7 +32,7 @@ Routes och kod skrivs på engelska, all text i gränssnittet på svenska.
 | Fält | Typ | Regel |
 |------|-----|-------|
 | Kategori | Val | Obligatorisk: VVS, El, Vitvaror, Ventilation, Lås och dörrar, Övrigt |
-| Rum | Text/val | Obligatorisk |
+| Rum | Text (fritt, högst 50 tecken) | Obligatorisk |
 | Beskrivning | Textområde | Obligatorisk, tydligt felmeddelande om den saknas |
 | Huvudnyckel får användas | Ja/Nej | Obligatorisk, inget förval |
 
@@ -103,7 +103,7 @@ Statusfärger i mockuperna: Ny blå, Tilldelad lila, Pågår orange, Väntar gul
 
 Att tänka på:
 
-- Fältet **Rum** finns i formuläret (story 5) men inte i databasen än. Se öppen fråga 6.
+- Fältet **Rum** är ett fritt textfält (kolumnen `room`, `V3__ticket_room.sql`). Se fråga 6.
 - Historiken visar "Väntar på material". Om orsaken ska vara ett eget fält är öppen fråga 5.
 - Hur hyresgästen får sitt lösenord är inte bestämt (öppet beslut 3 i U1). Mockupen för hyresgäster visar därför inget lösenordsfält.
 
@@ -184,7 +184,7 @@ Beslutet dokumenteras i beslutsloggen (VG).
 3. **JWT:** var sparas token (minne, `localStorage` eller httpOnly-cookie)? Hur länge gäller den?
 4. **Användare:** registrerar sig hyresgäster själva eller skapas de av förvaltaren?
 5. **Väntar:** behövs orsaken (material/hyresgäst) som eget fält eller räcker en kommentar?
-6. **Rum:** fritt textfält eller fast lista?
+6. ~~**Rum:** fritt textfält eller fast lista?~~ Beslutat: fritt textfält, högst 50 tecken (`V3__ticket_room.sql`).
 
 ## Notering om grenar
 
@@ -199,3 +199,4 @@ Projektförslagets risktabell säger "uppdatera från `main` dagligen". I det h�
 | 2026-10-28 | Bilderna är utkast för omröstning och ligger i `bilder/mockups/utkast/`. Ny mapp `bilder/mockups/slutliga/` för de slutliga |
 | 2026-10-28 | Länk till omröstningen |
 | 2026-10-30 | Mappstrukturen efter funktion (beslut #9, [projektstruktur.md](projektstruktur.md)) |
+| 2026-11-24 | Rum är ett fritt textfält (fråga 6 besvarad) |

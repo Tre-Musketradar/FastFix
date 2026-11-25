@@ -64,6 +64,12 @@ export function TicketDetailsModal({
               {formatDateTime(ticket.createdAt)}
             </dd>
           </div>
+          {ticket.room && (
+            <div>
+              <dt className="text-sm text-slate-600">Rum</dt>
+              <dd className="font-semibold">{ticket.room}</dd>
+            </div>
+          )}
           <div>
             <dt className="text-sm text-slate-600">Prioritet</dt>
             <dd className="font-semibold">{priorityLabels[ticket.priority]}</dd>

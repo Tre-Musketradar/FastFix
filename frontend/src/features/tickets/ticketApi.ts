@@ -14,6 +14,7 @@ export type Ticket = {
   category: TicketCategory
   priority: TicketPriority
   status: TicketStatus
+  room: string | null
   description: string
   masterKeyAllowed: boolean
   createdAt: string

@@ -1,6 +1,6 @@
 # Databasschema
 
-Utgår från Must-stories i [user stories](user-stories.md). Tabellerna skapas av Flyway: [`V1__init.sql`](../backend/src/main/resources/db/migration/V1__init.sql). Större ändringar skrivs också in i [beslutsloggen](beslutslogg.md).
+Utgår från Must-stories i [user stories](user-stories.md). Tabellerna skapas av Flyway: [`V1__init.sql`](../backend/src/main/resources/db/migration/V1__init.sql), och kolumnen `room` i `tickets` av [`V3__ticket_room.sql`](../backend/src/main/resources/db/migration/V3__ticket_room.sql). Större ändringar skrivs också in i [beslutsloggen](beslutslogg.md).
 
 ## Diagram
 
@@ -43,6 +43,7 @@ erDiagram
         ticket_category category
         ticket_priority priority
         ticket_status status
+        varchar room
         text description
         boolean master_key_allowed
         timestamptz created_at
@@ -71,7 +72,7 @@ erDiagram
     }
 ```
 
-Samma diagram som bild, med fler detaljer (unika kolumner, standardvärden och kommentarer): [`bilder/databasschema.png`](bilder/databasschema.png). Källan finns i [`bilder/databasschema.mmd`](bilder/databasschema.mmd). Bilden har också kolumnen `room` i `tickets`, markerad "ny i V2". Den finns inte i `V1__init.sql` än, och det är inte bestämt om rummet ska vara fritt textfält eller en fast lista (öppen fråga 6 i [frontendplanen](frontend-plan.md)).
+Samma diagram som bild, med fler detaljer (unika kolumner, standardvärden och kommentarer): [`bilder/databasschema.png`](bilder/databasschema.png). Källan finns i [`bilder/databasschema.mmd`](bilder/databasschema.mmd). Bilden markerar kolumnen `room` i `tickets` som "ny i V2". Den kom i stället med `V3__ticket_room.sql`: ett fritt textfält (`varchar(50)`), t.ex. "Kök". Den får vara tom i databasen, så att äldre ärenden fungerar, men en ny felanmälan kräver rum (story 5).
 
 ## Tabeller
 
@@ -80,7 +81,7 @@ Samma diagram som bild, med fler detaljer (unika kolumner, standardvärden och k
 | `users` | En användare med e-post, lösenord (hashat) och roll. |
 | `properties` | En fastighet med namn och adress. Ägs av en förvaltare. |
 | `apartments` | En lägenhet i en fastighet. Numret är unikt inom fastigheten. Kan ha en hyresgäst. |
-| `tickets` | En felanmälan för en lägenhet: kategori, prioritet, status, beskrivning och om huvudnyckel får användas. |
+| `tickets` | En felanmälan för en lägenhet: kategori, prioritet, status, rum, beskrivning och om huvudnyckel får användas. |
 | `comments` | En kommentar på ett ärende (Should). |
 | `status_history` | Varje statusändring: från vilken status, till vilken, vem och när. Ger ärendets tidslinje. |
 | `attachments` | En bild som bifogats ett ärende (Should). |
@@ -106,3 +107,4 @@ Värdena är samma i databasen, backend och frontend ([frontendplanen](frontend-
 |---|---|
 | 2026-10-21 | La till diagrammet som bild (`bilder/databasschema.png` och `.mmd`) |
 | 2026-10-26 | La till avsnittet Testdata (`db/testdata.sql`) |
+| 2026-11-24 | Kolumnen `room` i `tickets` (`V3__ticket_room.sql`, fritt textfält). Testdatan har rum på alla ärenden |
