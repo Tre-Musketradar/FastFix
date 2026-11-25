@@ -14,10 +14,9 @@ export interface Tenant {
   apartmentId: number;
 }
 
-export const tenantApi = {
-  create: (data: CreateTenantRequest) =>
-    apiFetch<Tenant>('/api/tenants', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    }),
-};
+export const createTenant = (body: CreateTenantRequest) =>
+  apiFetch<Tenant>('/api/tenants', {
+    method: 'POST',
+    body: JSON.stringify(body),
+  });
+
