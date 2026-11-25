@@ -19,7 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.server.ResponseStatusException;
 
 import se.felanmalan.property.Apartment;
-import se.felanmalan.apartment.ApartmentRepository;
+import se.felanmalan.property.ApartmentRepository;
 import se.felanmalan.property.PropertyRepository;
 import se.felanmalan.user.Role;
 import se.felanmalan.user.User;
