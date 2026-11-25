@@ -79,6 +79,12 @@ public class Ticket {
         this.status = status;
     }
 
+    // Förvaltaren stänger ett åtgärdat ärende (story 13). Tidpunkten sparas i closed_at.
+    public void close() {
+        this.status = TicketStatus.CLOSED;
+        this.closedAt = OffsetDateTime.now();
+    }
+
     public Long getId() {
         return id;
     }

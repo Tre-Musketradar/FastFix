@@ -9,8 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
-// Teknikerns statusändringar (story 11). Flödet följer docs/frontend-plan.md:
-// Tilldelad → Pågår, Pågår ⇄ Väntar, Pågår → Åtgärdad.
+// Statusändringar. Flödet följer docs/frontend-plan.md:
+// teknikern (story 11): Tilldelad → Pågår, Pågår ⇄ Väntar, Pågår → Åtgärdad;
+// förvaltaren (story 13): Åtgärdad → Stängd.
 @Service
 public class TicketStatusService {
 
@@ -45,11 +46,34 @@ public class TicketStatusService {
 
         ticket.changeStatus(newStatus);
         tickets.saveAndFlush(ticket);
+        saveHistory(ticket, oldStatus, technicianId);
+
+        return new TicketStatusResponse(ticket.getId(), ticket.getStatus());
+    }
+
+    @Transactional
+    public TicketStatusResponse closeAsManager(Long managerId, Long ticketId) {
+        // Bara ärenden i förvaltarens egna fastigheter (404 annars, som vid tilldelning).
+        Ticket ticket = tickets.findForManagerAssignment(ticketId, managerId)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Ärendet hittades inte"));
+
+        TicketStatus oldStatus = ticket.getStatus();
+        if (oldStatus != TicketStatus.RESOLVED) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Bara åtgärdade ärenden kan stängas");
+        }
+
+        ticket.close();
+        tickets.saveAndFlush(ticket);
+        saveHistory(ticket, oldStatus, managerId);
+
+        return new TicketStatusResponse(ticket.getId(), ticket.getStatus());
+    }
+
+    private void saveHistory(Ticket ticket, TicketStatus oldStatus, Long changedBy) {
         jdbc.update("""
                 insert into status_history (ticket_id, old_status, new_status, changed_by)
                 values (?, CAST(? AS ticket_status), CAST(? AS ticket_status), ?)
-                """, ticket.getId(), oldStatus.name(), newStatus.name(), technicianId);
-
-        return new TicketStatusResponse(ticket.getId(), ticket.getStatus());
+                """, ticket.getId(), oldStatus.name(), ticket.getStatus().name(), changedBy);
     }
 }
