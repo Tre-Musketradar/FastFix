@@ -68,4 +68,7 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
             @Param("technicianId") Long technicianId,
             @Param("hidden") Collection<TicketStatus> hidden
     );
+
+    // Teknikerns statusändring: ärendet måste vara tilldelat just den teknikern.
+    Optional<Ticket> findByIdAndAssignedTo(Long id, Long assignedTo);
 }
