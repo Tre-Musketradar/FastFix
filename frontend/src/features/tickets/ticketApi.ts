@@ -64,6 +64,11 @@ export type TicketAssignmentResponse = {
   status: TicketStatus
 }
 
+export type TicketStatusResponse = {
+  id: number
+  status: TicketStatus
+}
+
 export const ticketApi = {
   mine: () => apiFetch<Ticket[]>('/api/tickets/mine'),
   openForManager: () => apiFetch<ManagerOpenTicket[]>('/api/tickets/open'),
@@ -73,5 +78,10 @@ export const ticketApi = {
     apiFetch<TicketAssignmentResponse>(`/api/tickets/${ticketId}/assign`, {
       method: 'PATCH',
       body: JSON.stringify({ technicianId }),
+    }),
+  changeStatus: (ticketId: number, status: TicketStatus) =>
+    apiFetch<TicketStatusResponse>(`/api/tickets/${ticketId}/status`, {
+      method: 'PATCH',
+      body: JSON.stringify({ status }),
     }),
 }
