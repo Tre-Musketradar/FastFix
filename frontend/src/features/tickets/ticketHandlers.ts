@@ -14,7 +14,8 @@ export function resetTechnicianTickets(start: TechnicianTicket[] = []) {
 
 /** Sätt förvaltarens ärenden inför ett test. */
 export function resetManagerTickets(start: ManagerOpenTicket[] = []) {
-  managerTickets = [...start]
+  // Kopior, så att tilldelning/stängning i ett test inte ändrar testets data.
+  managerTickets = start.map((ticket) => ({ ...ticket }))
 }
 
 /** Sätt hyresgästens ärenden inför ett test (nyaste först, som backend). */
@@ -114,6 +115,21 @@ export const ticketHandlers = [
       assignedTechnicianName: technician.name,
       status: ticket.status,
     })
+  }),
+  http.patch('/api/tickets/:ticketId/close', ({ request, params }) => {
+    const manager = testUsers.find(
+      (u) =>
+        u.role === 'MANAGER' &&
+        request.headers.get('Authorization') === `Bearer ${tokenFor(u)}`,
+    )
+    if (!manager) return new HttpResponse(null, { status: 403 })
+    const ticket = managerTickets.find((t) => t.id === Number(params.ticketId))
+    if (!ticket) return new HttpResponse(null, { status: 404 })
+    // Samma regel som backend: bara åtgärdade ärenden kan stängas.
+    if (ticket.status !== 'RESOLVED')
+      return new HttpResponse(null, { status: 409 })
+    ticket.status = 'CLOSED'
+    return HttpResponse.json({ id: ticket.id, status: ticket.status })
   }),
   http.get('/api/tickets/mine', ({ request }) => {
     const tenant = testUsers.find(
