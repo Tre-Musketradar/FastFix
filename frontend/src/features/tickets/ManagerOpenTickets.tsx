@@ -5,6 +5,7 @@ import type { TicketStatus } from '../../shared/types'
 import { ticketApi } from './ticketApi'
 import { AssignTechnicianForm } from './AssignTechnicianForm'
 import { CloseTicketButton } from './CloseTicketButton'
+import { TicketHistory } from './TicketHistory'
 import { categoryLabels, formatDate, priorityLabels } from './ticketLabels'
 
 const summary: { status: TicketStatus; title: string }[] = [
@@ -21,6 +22,8 @@ export function ManagerOpenTickets({ userId }: { userId: number }) {
   const [search, setSearch] = useState('')
   const [propertyId, setPropertyId] = useState('all')
   const [assigningId, setAssigningId] = useState<number | null>(null)
+  const [historyId, setHistoryId] = useState<number | null>(null)
+
   const [assignmentMessage, setAssignmentMessage] = useState('')
   const tickets = useQuery({
     queryKey: ['tickets', 'open', userId],
@@ -202,32 +205,59 @@ export function ManagerOpenTickets({ userId }: { userId: number }) {
                           {ticket.assignedTechnicianName ?? 'Ej tilldelad'}
                         </td>
                         <td className="px-4 py-3">
-                          {ticket.status === 'RESOLVED' ? (
-                            <CloseTicketButton
-                              ticketId={ticket.id}
-                              onClosed={() => {
-                                setAssigningId(null)
-                                setAssignmentMessage(
-                                  `Ärende #${ticket.id} är stängt.`,
-                                )
-                              }}
-                            />
-                          ) : (
+                          <div className="flex flex-col items-start gap-2">
                             <button
                               type="button"
-                              onClick={() => {
-                                setAssigningId(
-                                  assigningId === ticket.id ? null : ticket.id,
+                              aria-expanded={historyId === ticket.id}
+                              onClick={() =>
+                                setHistoryId(
+                                  historyId === ticket.id ? null : ticket.id,
                                 )
-                                setAssignmentMessage('')
-                              }}
-                              className="rounded-lg border border-blue-700 px-3 py-2 font-semibold text-blue-800 hover:bg-blue-50"
+                              }
+                              className="text-sm font-semibold text-blue-700 hover:underline"
                             >
-                              {ticket.assignedTo ? 'Byt tekniker' : 'Tilldela'}
+                              {historyId === ticket.id
+                                ? 'Dölj historik'
+                                : `Visa historik för ärende #${ticket.id}`}
                             </button>
-                          )}
+                            {ticket.status === 'RESOLVED' ? (
+                              <CloseTicketButton
+                                ticketId={ticket.id}
+                                onClosed={() => {
+                                  setAssigningId(null)
+                                  setAssignmentMessage(
+                                    `Ärende #${ticket.id} är stängt.`,
+                                  )
+                                }}
+                              />
+                            ) : (
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setAssigningId(
+                                    assigningId === ticket.id
+                                      ? null
+                                      : ticket.id,
+                                  )
+                                  setAssignmentMessage('')
+                                }}
+                                className="rounded-lg border border-blue-700 px-3 py-2 font-semibold text-blue-800 hover:bg-blue-50"
+                              >
+                                {ticket.assignedTo
+                                  ? 'Byt tekniker'
+                                  : 'Tilldela'}
+                              </button>
+                            )}
+                          </div>
                         </td>
                       </tr>
+                      {historyId === ticket.id && (
+                        <tr>
+                          <td colSpan={8} className="bg-slate-50 px-5 py-4">
+                            <TicketHistory ticketId={ticket.id} />
+                          </td>
+                        </tr>
+                      )}
                       {assigningId === ticket.id && (
                         <tr>
                           <td colSpan={8} className="px-4 py-3">

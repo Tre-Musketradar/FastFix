@@ -3,8 +3,9 @@ import { useEffect } from 'react'
 import { StatusBadge } from '../../shared/StatusBadge'
 import type { Ticket } from './ticketApi'
 import { categoryLabels, formatDateTime, priorityLabels } from './ticketLabels'
+import { TicketHistory } from './TicketHistory'
 
-// Detaljvyn för ett ärende. Historik och kommentarer kommer med story 9 och 18.
+// Detaljvyn för ett ärende, inklusive statushistorik (story 12).
 export function TicketDetailsModal({
   ticket,
   onClose,
@@ -30,7 +31,7 @@ export function TicketDetailsModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="ticket-details-title"
-        className="w-full max-w-lg rounded-xl bg-white p-6 shadow-lg"
+        className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl bg-white p-6 shadow-lg"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4">
@@ -89,6 +90,7 @@ export function TicketDetailsModal({
             </div>
           )}
         </dl>
+        <TicketHistory ticketId={ticket.id} />
       </div>
     </div>
   )
