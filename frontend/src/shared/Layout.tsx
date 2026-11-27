@@ -31,6 +31,9 @@ export function Layout() {
             <NavLink to="/properties" className={navClass}>
               Fastigheter
             </NavLink>
+            <NavLink to="/tenants/new" className={navClass}>
+              Hyresgäster
+            </NavLink>
           </nav>
         )}
         {user && (

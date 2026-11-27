@@ -28,8 +28,14 @@ import {
   resetTechnicianTickets,
   ticketHandlers,
 } from './ticketHandlers'
+import { tenantHandlers } from '../tenants/tenantHandlers'
 
-const server = setupServer(...authHandlers, ...pingHandlers, ...ticketHandlers)
+const server = setupServer(
+  ...authHandlers,
+  ...pingHandlers,
+  ...ticketHandlers,
+  ...tenantHandlers,
+)
 
 const sample: ManagerOpenTicket = {
   id: 55,

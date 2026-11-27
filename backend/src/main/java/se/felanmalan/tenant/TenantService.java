@@ -1,5 +1,7 @@
 package se.felanmalan.tenant;
 
+import java.util.List;
+
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -9,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import se.felanmalan.property.Apartment;
 import se.felanmalan.property.ApartmentRepository;
+import se.felanmalan.property.ApartmentSummary;
 import se.felanmalan.property.PropertyRepository;
 import se.felanmalan.user.Role;
 import se.felanmalan.user.User;
@@ -74,7 +77,19 @@ public class TenantService {
         return TenantResponse.from(savedTenant, apartment.getId());
     }
 
+    @Transactional(readOnly = true)
+    public List<ApartmentSummary> availableApartments(Long managerId) {
+        return apartmentRepository.findAvailableForManager(managerId);
+    }
+
+    @Transactional(readOnly = true)
+    public ApartmentSummary apartmentOf(Long tenantId) {
+        return apartmentRepository.findSummaryByTenantId(tenantId)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Du är inte kopplad till någon lägenhet."));
+    }
+
     private ResponseStatusException emailTaken() {
-        return new ResponseStatusException(HttpStatus.CONFLICT, "E-postadressen används redan");
+        return new ResponseStatusException(HttpStatus.CONFLICT, "E-postadressen används redan.");
     }
 }

@@ -26,8 +26,14 @@ import { authHandlers, testUsers, tokenFor } from '../auth/authHandlers'
 import { pingHandlers } from '../ping/pingHandlers'
 import type { TechnicianTicket } from './ticketApi'
 import { resetTechnicianTickets, ticketHandlers } from './ticketHandlers'
+import { tenantHandlers } from '../tenants/tenantHandlers'
 
-const server = setupServer(...authHandlers, ...pingHandlers, ...ticketHandlers)
+const server = setupServer(
+  ...authHandlers,
+  ...pingHandlers,
+  ...ticketHandlers,
+  ...tenantHandlers,
+)
 
 beforeAll(() => server.listen({ onUnhandledFrame: 'error' }))
 beforeEach(() => resetTechnicianTickets())
