@@ -9,8 +9,14 @@ import { authHandlers, testUsers, tokenFor } from './features/auth/authHandlers'
 import { pingHandlers } from './features/ping/pingHandlers'
 import { ticketHandlers } from './features/tickets/ticketHandlers'
 import { tokenStorage } from './shared/apiClient'
+import { tenantHandlers } from './features/tenants/tenantHandlers'
 
-const server = setupServer(...authHandlers, ...pingHandlers, ...ticketHandlers)
+const server = setupServer(
+  ...authHandlers,
+  ...pingHandlers,
+  ...ticketHandlers,
+  ...tenantHandlers,
+)
 
 beforeAll(() => server.listen({ onUnhandledFrame: 'error' }))
 afterEach(() => {

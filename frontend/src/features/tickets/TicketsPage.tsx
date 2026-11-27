@@ -3,6 +3,7 @@ import type { Role } from '../../shared/types'
 import { MyTickets } from './MyTickets'
 import { ManagerOpenTickets } from './ManagerOpenTickets'
 import { TechnicianTickets } from './TechnicianTickets'
+import { MyApartment } from '../tenants/MyApartment'
 
 // Startsidan för varje roll: hyresgästens ärenden (story 7), teknikerns uppdrag
 // (story 10) och förvaltarens öppna ärenden (story 8).
@@ -32,6 +33,7 @@ export function TicketsPage() {
         <h1 className="text-2xl font-bold tracking-tight">{title}</h1>
         <p className="text-slate-600">{text}</p>
       </div>
+      {user.role === 'TENANT' && <MyApartment userId={user.id} />}
       {user.role === 'TENANT' && <MyTickets userId={user.id} />}
       {user.role === 'TECHNICIAN' && <TechnicianTickets userId={user.id} />}
       {user.role === 'MANAGER' && <ManagerOpenTickets userId={user.id} />}

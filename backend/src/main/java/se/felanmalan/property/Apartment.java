@@ -55,22 +55,6 @@ public class Apartment {
         return tenantId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setPropertyId(Long propertyId) {
-        this.propertyId = propertyId;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public void setFloor(Integer floor) {
-        this.floor = floor;
-    }
-
     public void setTenantId(Long tenantId) {
         this.tenantId = tenantId;
     }

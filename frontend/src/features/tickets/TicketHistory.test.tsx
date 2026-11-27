@@ -36,8 +36,14 @@ import {
   resetTickets,
   ticketHandlers,
 } from './ticketHandlers'
+import { tenantHandlers } from '../tenants/tenantHandlers'
 
-const server = setupServer(...authHandlers, ...pingHandlers, ...ticketHandlers)
+const server = setupServer(
+  ...authHandlers,
+  ...pingHandlers,
+  ...ticketHandlers,
+  ...tenantHandlers,
+)
 
 const tenantTicket: Ticket = {
   id: 42,

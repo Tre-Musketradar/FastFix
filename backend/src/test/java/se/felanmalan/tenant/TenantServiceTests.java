@@ -16,9 +16,10 @@ import org.mockito.ArgumentCaptor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.server.ResponseStatusException;
 
-import se.felanmalan.property.Apartment; // corrected
+import se.felanmalan.property.Apartment;
 import se.felanmalan.property.ApartmentRepository;
 import se.felanmalan.property.PropertyRepository;
 import se.felanmalan.user.Role;
@@ -45,13 +46,13 @@ class TenantServiceTests {
     @Test
     void createsTenantAndLinksApartment() {
         Apartment apartment = new Apartment(10L, "1001", 0);
-        apartment.setId(5L);
+        ReflectionTestUtils.setField(apartment, "id", 5L);
         when(users.findByEmail("anna@example.com")).thenReturn(Optional.empty());
         when(apartments.findById(5L)).thenReturn(Optional.of(apartment));
         when(properties.existsByIdAndOwnerId(10L, 1L)).thenReturn(true);
         when(passwordEncoder.encode("hemligt123")).thenReturn("hash");
         when(users.saveAndFlush(any(User.class)))
-                .thenReturn(new User(7L, "Anna Andersson", "anna@example.com", "hash", Role.TENANT));
+                .thenReturn(user(7L, "Anna Andersson", "anna@example.com"));
         when(apartments.saveAndFlush(any(Apartment.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
         TenantResponse response = service.createTenant(
@@ -71,7 +72,7 @@ class TenantServiceTests {
     @Test
     void refusesEmailThatAlreadyExists() {
         when(users.findByEmail("anna@example.com"))
-                .thenReturn(Optional.of(new User(3L, "Befintlig", "anna@example.com", "hash", Role.TENANT)));
+                .thenReturn(Optional.of(user(3L, "Befintlig", "anna@example.com")));
 
         assertThatThrownBy(() -> service.createTenant(
                 new CreateTenantRequest("Anna", "anna@example.com", "hemligt123", 5L), 1L))
@@ -110,7 +111,7 @@ class TenantServiceTests {
     @Test
     void refusesApartmentInSomeoneElsesProperty() {
         Apartment apartment = new Apartment(10L, "1001", 0);
-        apartment.setId(5L);
+        ReflectionTestUtils.setField(apartment, "id", 5L);
         when(users.findByEmail("anna@example.com")).thenReturn(Optional.empty());
         when(apartments.findById(5L)).thenReturn(Optional.of(apartment));
         when(properties.existsByIdAndOwnerId(10L, 2L)).thenReturn(false);
@@ -125,7 +126,7 @@ class TenantServiceTests {
     @Test
     void refusesApartmentThatAlreadyHasATenant() {
         Apartment apartment = new Apartment(10L, "1001", 0);
-        apartment.setId(5L);
+        ReflectionTestUtils.setField(apartment, "id", 5L);
         apartment.setTenantId(9L);
         when(users.findByEmail("anna@example.com")).thenReturn(Optional.empty());
         when(apartments.findById(5L)).thenReturn(Optional.of(apartment));
@@ -136,5 +137,12 @@ class TenantServiceTests {
                 .isInstanceOfSatisfying(ResponseStatusException.class,
                         exception -> assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
         verify(users, never()).saveAndFlush(any());
+    }
+
+    // Användare med id, som om den redan vore sparad.
+    private static User user(Long id, String name, String email) {
+        User user = new User(name, email, "hash", Role.TENANT);
+        ReflectionTestUtils.setField(user, "id", id);
+        return user;
     }
 }
