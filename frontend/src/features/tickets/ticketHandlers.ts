@@ -1,11 +1,44 @@
 // Låtsas-API (msw) för ärenden, samma kontrakt som TicketController. Används i testerna.
 import { http, HttpResponse } from 'msw'
 import { testUsers, tokenFor } from '../auth/authHandlers'
-import type { ManagerOpenTicket, TechnicianTicket, Ticket } from './ticketApi'
+import type {
+  ManagerOpenTicket,
+  TechnicianTicket,
+  Ticket,
+  TicketHistoryEntry,
+} from './ticketApi'
 
 let tickets: Ticket[] = []
 let managerTickets: ManagerOpenTicket[] = []
 let technicianTickets: TechnicianTicket[] = []
+let ticketHistories: Record<number, TicketHistoryEntry[]> = {}
+
+/** Ange historik för de ärenden som används i ett test. */
+export function resetTicketHistories(
+  start: Record<number, TicketHistoryEntry[]> = {},
+) {
+  ticketHistories = Object.fromEntries(
+    Object.entries(start).map(([id, entries]) => [id, [...entries]]),
+  )
+}
+
+function recordHistory(
+  ticketId: number,
+  oldStatus: TicketHistoryEntry['newStatus'],
+  newStatus: TicketHistoryEntry['newStatus'],
+  changedBy: (typeof testUsers)[number],
+) {
+  if (oldStatus === newStatus) return
+  const entries = (ticketHistories[ticketId] ??= [])
+  entries.push({
+    id: entries.length + 1,
+    oldStatus,
+    newStatus,
+    changedById: changedBy.id,
+    changedByName: changedBy.name,
+    changedAt: new Date().toISOString(),
+  })
+}
 
 /** Sätt teknikerns ärenden inför ett test (redan filtrerade och sorterade, som backend). */
 export function resetTechnicianTickets(start: TechnicianTicket[] = []) {
@@ -31,6 +64,22 @@ const technicianTransitions: Record<string, string[]> = {
 }
 
 export const ticketHandlers = [
+  http.get('/api/tickets/:ticketId/history', ({ request, params }) => {
+    const user = testUsers.find(
+      (u) => request.headers.get('Authorization') === `Bearer ${tokenFor(u)}`,
+    )
+    if (!user) return new HttpResponse(null, { status: 401 })
+    const ticketId = Number(params.ticketId)
+    const allowed =
+      (user.role === 'TENANT' &&
+        tickets.some((ticket) => ticket.id === ticketId)) ||
+      (user.role === 'TECHNICIAN' &&
+        technicianTickets.some((ticket) => ticket.id === ticketId)) ||
+      (user.role === 'MANAGER' &&
+        managerTickets.some((ticket) => ticket.id === ticketId))
+    if (!allowed) return new HttpResponse(null, { status: 404 })
+    return HttpResponse.json(ticketHistories[ticketId] ?? [])
+  }),
   http.get('/api/tickets/assigned', ({ request }) => {
     const technician = testUsers.find(
       (u) =>
@@ -58,6 +107,7 @@ export const ticketHandlers = [
       return new HttpResponse(null, { status: 409 })
     }
     // Åtgärdade ärenden visas inte i teknikerns lista (som i backend).
+    recordHistory(ticket.id, ticket.status, status, technician)
     technicianTickets =
       status === 'RESOLVED'
         ? technicianTickets.filter((t) => t.id !== ticket.id)
@@ -106,6 +156,7 @@ export const ticketHandlers = [
       (u) => u.id === technicianId && u.role === 'TECHNICIAN',
     )
     if (!technician) return new HttpResponse(null, { status: 400 })
+    recordHistory(ticket.id, ticket.status, 'ASSIGNED', manager)
     ticket.assignedTo = technician.id
     ticket.assignedTechnicianName = technician.name
     ticket.status = 'ASSIGNED'
@@ -128,6 +179,7 @@ export const ticketHandlers = [
     // Samma regel som backend: bara åtgärdade ärenden kan stängas.
     if (ticket.status !== 'RESOLVED')
       return new HttpResponse(null, { status: 409 })
+    recordHistory(ticket.id, ticket.status, 'CLOSED', manager)
     ticket.status = 'CLOSED'
     return HttpResponse.json({ id: ticket.id, status: ticket.status })
   }),

@@ -5,6 +5,7 @@ import { StatusBadge } from '../../shared/StatusBadge'
 import type { TicketPriority } from '../../shared/types'
 import { ticketApi } from './ticketApi'
 import { TicketStatusActions } from './TicketStatusActions'
+import { TicketHistory } from './TicketHistory'
 import { categoryLabels, formatDate, priorityLabels } from './ticketLabels'
 
 // Akut och hög prioritet sticker ut, så att teknikern ser dem direkt.
@@ -21,6 +22,7 @@ const priorityStyles: Record<TicketPriority, string> = {
 export function TechnicianTickets({ userId }: { userId: number }) {
   // Åtgärdade ärenden försvinner ur listan, så teknikern får en bekräftelse.
   const [resolvedId, setResolvedId] = useState<number | null>(null)
+  const [historyId, setHistoryId] = useState<number | null>(null)
   const tickets = useQuery({
     queryKey: ['tickets', 'assigned', userId],
     queryFn: ticketApi.assigned,
@@ -116,6 +118,24 @@ export function TechnicianTickets({ userId }: { userId: number }) {
               <span className="text-slate-600">
                 #{ticket.id} · Skapad {formatDate(ticket.createdAt)}
               </span>
+            </div>
+
+            <div>
+              <button
+                type="button"
+                aria-expanded={historyId === ticket.id}
+                onClick={() =>
+                  setHistoryId(historyId === ticket.id ? null : ticket.id)
+                }
+                className="text-sm font-semibold text-blue-700 hover:underline"
+              >
+                {historyId === ticket.id
+                  ? 'Dölj historik'
+                  : `Visa historik för ärende #${ticket.id}`}
+              </button>
+              {historyId === ticket.id && (
+                <TicketHistory ticketId={ticket.id} />
+              )}
             </div>
 
             <TicketStatusActions

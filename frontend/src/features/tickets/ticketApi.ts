@@ -69,7 +69,19 @@ export type TicketStatusResponse = {
   status: TicketStatus
 }
 
+// En rad i status_history, med namn från users.
+export type TicketHistoryEntry = {
+  id: number
+  oldStatus: TicketStatus | null
+  newStatus: TicketStatus
+  changedById: number
+  changedByName: string
+  changedAt: string
+}
+
 export const ticketApi = {
+  history: (ticketId: number) =>
+    apiFetch<TicketHistoryEntry[]>(`/api/tickets/${ticketId}/history`),
   mine: () => apiFetch<Ticket[]>('/api/tickets/mine'),
   openForManager: () => apiFetch<ManagerOpenTicket[]>('/api/tickets/open'),
   assigned: () => apiFetch<TechnicianTicket[]>('/api/tickets/assigned'),
